@@ -1,0 +1,1511 @@
+{
+  "gameIndex": 15,
+  "gameCount": 16,
+  "team1": [
+    {
+      "id": 0,
+      "name": "tbc",
+      "weighting": 0,
+      "balance": 0,
+      "listidx": 10
+    },
+    {
+      "id": 1,
+      "name": "Lee",
+      "weighting": 3,
+      "balance": -6,
+      "listidx": 11
+    },
+    {
+      "id": 2,
+      "name": "Auldrius",
+      "weighting": 4,
+      "balance": 12.2,
+      "listidx": 11
+    },
+    {
+      "id": 3,
+      "name": "Paul",
+      "weighting": 3,
+      "balance": -32.2,
+      "listidx": 12
+    },
+    {
+      "id": 4,
+      "name": "Liam",
+      "weighting": 5,
+      "balance": -2.3,
+      "listidx": 12
+    },
+    {
+      "id": 5,
+      "name": "Brian",
+      "weighting": 2,
+      "balance": -9.5,
+      "listidx": 13
+    },
+    {
+      "id": 6,
+      "name": "Adam",
+      "weighting": 2,
+      "balance": 19.9,
+      "listidx": 5
+    },
+    {
+      "id": 7,
+      "name": "Jake",
+      "weighting": 3,
+      "balance": 0,
+      "listidx": 6
+    },
+    {
+      "id": 8,
+      "name": "Mark",
+      "weighting": 5,
+      "balance": -1.8,
+      "listidx": 14
+    },
+    {
+      "id": 9,
+      "name": "Rich V",
+      "weighting": 3,
+      "balance": 19.2,
+      "listidx": 14,
+      "paid": 10
+    },
+    {
+      "id": 10,
+      "name": "Si",
+      "weighting": 4,
+      "balance": 0,
+      "listidx": 14
+    },
+    {
+      "id": 11,
+      "name": "Dean",
+      "weighting": 2,
+      "balance": 2.7,
+      "listidx": 15
+    },
+    {
+      "id": 12,
+      "name": "Aders",
+      "weighting": 3,
+      "balance": -2.4,
+      "listidx": 15,
+      "paid": 0
+    },
+    {
+      "id": 13,
+      "name": "Jon",
+      "weighting": 3,
+      "balance": -21,
+      "listidx": 19,
+      "paid": 10
+    },
+    {
+      "id": 14,
+      "name": "Joe",
+      "weighting": 5,
+      "balance": -3.5,
+      "listidx": 16
+    },
+    {
+      "id": 15,
+      "name": "James",
+      "weighting": 3,
+      "balance": 0,
+      "listidx": 17
+    },
+    {
+      "id": 16,
+      "name": "Russ",
+      "weighting": 2,
+      "balance": 0,
+      "listidx": 18
+    },
+    {
+      "id": 17,
+      "name": "Mike",
+      "weighting": 3,
+      "balance": 17.3,
+      "listidx": 19
+    },
+    {
+      "id": 18,
+      "name": "Rich M",
+      "weighting": 3,
+      "balance": 9.23,
+      "listidx": 20
+    },
+    {
+      "id": 19,
+      "name": "Josh",
+      "weighting": 3,
+      "balance": 0,
+      "listidx": 21
+    },
+    {
+      "id": 20,
+      "name": "Elliott (Adz)",
+      "weighting": 2,
+      "balance": 0,
+      "listidx": 21
+    },
+    {
+      "id": 21,
+      "name": "Steve H",
+      "weighting": 3,
+      "balance": -6,
+      "listidx": 22
+    },
+    {
+      "id": 22,
+      "name": "Lee (via...)",
+      "weighting": 3,
+      "balance": -6,
+      "listidx": 23
+    },
+    {
+      "id": 23,
+      "name": "Charlie",
+      "weighting": 3,
+      "balance": 0,
+      "listidx": 23
+    },
+    {
+      "name": "Paul T2",
+      "weighting": 3,
+      "balance": -1,
+      "listidx": 24
+    }
+  ],
+  "games": [
+    {
+      "gameDate": "2017-06-22",
+      "team1": [
+        {
+          "id": 2,
+          "name": "Auldrius",
+          "weighting": 3,
+          "balance": 14.2,
+          "listidx": 0,
+          "paid": "10.00"
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": 6,
+          "listidx": 1,
+          "paid": "10.00"
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 2,
+          "paid": "6.00"
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -3.3,
+          "listidx": 3
+        },
+        {
+          "id": 16,
+          "name": "Russ",
+          "weighting": 2,
+          "balance": 13,
+          "listidx": 4,
+          "paid": "10.00"
+        }
+      ],
+      "team2": [
+        {
+          "id": 12,
+          "name": "Aders",
+          "weighting": 3,
+          "balance": 10.6,
+          "listidx": 5,
+          "paid": "10.00"
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": 6,
+          "listidx": 6,
+          "paid": "6.00"
+        },
+        {
+          "id": 11,
+          "name": "Dean",
+          "weighting": 2,
+          "balance": 6.7,
+          "listidx": 7,
+          "paid": "5.00"
+        },
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 9.9,
+          "listidx": 8,
+          "paid": "14.00"
+        },
+        {
+          "id": 10,
+          "name": "Si",
+          "weighting": 4,
+          "balance": 6,
+          "listidx": 9,
+          "paid": "6.00"
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-06-29",
+      "team1": [
+        {
+          "id": 11,
+          "name": "Dean",
+          "weighting": 2,
+          "balance": 10.7,
+          "listidx": 0,
+          "paid": "10.00"
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": 4,
+          "listidx": 1,
+          "paid": "4.00"
+        },
+        {
+          "id": 19,
+          "name": "Josh Bishop",
+          "weighting": 3,
+          "balance": 6,
+          "listidx": 2,
+          "paid": "6.00"
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 3
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -9.3,
+          "listidx": 4
+        }
+      ],
+      "team2": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 17.9,
+          "listidx": 5,
+          "paid": "14.00"
+        },
+        {
+          "id": 2,
+          "name": "Auldrius",
+          "weighting": 3,
+          "balance": 8.2,
+          "listidx": 6,
+          "paid": "0.00"
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 7,
+          "paid": "6.00"
+        },
+        {
+          "id": 16,
+          "name": "Russ",
+          "weighting": 2,
+          "balance": 7,
+          "listidx": 8
+        },
+        {
+          "id": 10,
+          "name": "Si",
+          "weighting": 4,
+          "balance": 6,
+          "listidx": 9,
+          "paid": "6.00"
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-07-06",
+      "team1": [
+        {
+          "id": 11,
+          "name": "Dean",
+          "weighting": 2,
+          "balance": 6.70,
+          "listidx": 0,
+          "paid": "2.00"
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": -2,
+          "listidx": 1
+        },
+        {
+          "id": 19,
+          "name": "Josh Bishop",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 2
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 3
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -15.3,
+          "listidx": 4
+        }
+      ],
+      "team2": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 25.9,
+          "listidx": 5,
+          "paid": "14.00"
+        },
+        {
+          "id": 2,
+          "name": "Auldrius",
+          "weighting": 3,
+          "balance": 12.2,
+          "listidx": 6,
+          "paid": "10.00"
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 7,
+          "paid": "6.00"
+        },
+        {
+          "id": 16,
+          "name": "Russ",
+          "weighting": 2,
+          "balance": 6,
+          "listidx": 8,
+          "paid": "5.00"
+        },
+        {
+          "id": 10,
+          "name": "Si",
+          "weighting": 4,
+          "balance": 6,
+          "listidx": 9,
+          "paid": "6.00"
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-07-13",
+      "team1": [
+        {
+          "id": 2,
+          "name": "Auldrius",
+          "weighting": 3,
+          "balance": 16.2,
+          "listidx": 0,
+          "paid": "10.00"
+        },
+        {
+          "id": 19,
+          "name": "Josh Bishop",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 1,
+          "paid": "6.00"
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 2,
+          "paid": "6.00"
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -21.3,
+          "listidx": 3
+        },
+        {
+          "id": 16,
+          "name": "Russ",
+          "weighting": 2,
+          "balance": 6,
+          "listidx": 4,
+          "paid": "6.00"
+        }
+      ],
+      "team2": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 19.9,
+          "listidx": 5
+        },
+        {
+          "id": 20,
+          "name": "Elliott (Adz)",
+          "weighting": 2,
+          "balance": 0,
+          "listidx": 6
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 7
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": 6,
+          "listidx": 8,
+          "paid": "14.00"
+        },
+        {
+          "id": 10,
+          "name": "Si",
+          "weighting": 4,
+          "balance": 6,
+          "listidx": 9,
+          "paid": "6.00"
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-07-20",
+      "team1": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 15.90,
+          "listidx": 0,
+          "paid": "8.00"
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 1,
+          "paid": "6.00"
+        },
+        {
+          "id": 20,
+          "name": "Elliott (Adz)",
+          "weighting": 2,
+          "balance": -6,
+          "listidx": 2,
+          "paid": "6.00"
+        },
+        {
+          "id": 15,
+          "name": "James",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 3,
+          "paid": "6.00"
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -33.3,
+          "listidx": 4
+        }
+      ],
+      "team2": [
+        {
+          "id": 2,
+          "name": "Auldrius",
+          "weighting": 3,
+          "balance": 10.2,
+          "listidx": 5
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": 8,
+          "listidx": 6,
+          "paid": "14.00"
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 7
+        },
+        {
+          "id": 16,
+          "name": "Russ",
+          "weighting": 2,
+          "balance": 0,
+          "listidx": 8,
+          "paid": "6.00"
+        },
+        {
+          "id": 10,
+          "name": "Si",
+          "weighting": 4,
+          "balance": 0,
+          "listidx": 9,
+          "paid": "6.00"
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-07-27",
+      "team1": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 17.9,
+          "listidx": 0,
+          "paid": 8
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 1,
+          "paid": 6
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -39.3,
+          "listidx": 2
+        },
+        {
+          "id": 9,
+          "name": "Rich V",
+          "weighting": 3,
+          "balance": -0.80,
+          "listidx": 3,
+          "paid": 10
+        },
+        {
+          "id": 10,
+          "name": "Si",
+          "weighting": 4,
+          "balance": 0,
+          "listidx": 4,
+          "paid": 0
+        }
+      ],
+      "team2": [
+        {
+          "id": 20,
+          "name": "Elliott (Adz)",
+          "weighting": 2,
+          "balance": 0,
+          "listidx": 5,
+          "paid": 6
+        },
+        {
+          "id": 21,
+          "name": "Steve H",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 6,
+          "paid": 6
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 7,
+          "paid": 6
+        },
+        {
+          "id": 8,
+          "name": "Mark",
+          "weighting": 5,
+          "balance": -6.8,
+          "listidx": 8
+        },
+        {
+          "id": 16,
+          "name": "Russ",
+          "weighting": 2,
+          "balance": 0,
+          "listidx": 9,
+          "paid": 6
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-08-03",
+      "team1": [
+        {
+          "id": 12,
+          "name": "Aders",
+          "weighting": 3,
+          "balance": 4.6,
+          "listidx": 0,
+          "paid": 6
+        },
+        {
+          "id": 20,
+          "name": "Elliott (Adz)",
+          "weighting": 2,
+          "balance": -6,
+          "listidx": 1
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": -6,
+          "listidx": 2
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": 4.70,
+          "listidx": 3,
+          "paid": 50
+        },
+        {
+          "id": 10,
+          "name": "Si",
+          "weighting": 4,
+          "balance": 0,
+          "listidx": 4,
+          "paid": 6
+        }
+      ],
+      "team2": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 11.90,
+          "listidx": 5
+        },
+        {
+          "id": 5,
+          "name": "Brian",
+          "weighting": 2,
+          "balance": -3.5,
+          "listidx": 6,
+          "paid": 20
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": -6,
+          "listidx": 7
+        },
+        {
+          "id": 8,
+          "name": "Mark",
+          "weighting": 5,
+          "balance": 0.20,
+          "listidx": 8,
+          "paid": 13
+        },
+        {
+          "id": 21,
+          "name": "Steve H",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 9,
+          "paid": 6
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-08-10",
+      "team1": [
+        {
+          "id": 2,
+          "name": "Auldrius",
+          "weighting": 4,
+          "balance": 4.20,
+          "listidx": 0
+        },
+        {
+          "id": 5,
+          "name": "Brian",
+          "weighting": 2,
+          "balance": -9.5,
+          "listidx": 1
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": -12,
+          "listidx": 2
+        },
+        {
+          "id": 8,
+          "name": "Mark",
+          "weighting": 5,
+          "balance": -5.8,
+          "listidx": 3
+        },
+        {
+          "id": 21,
+          "name": "Steve H",
+          "weighting": 3,
+          "balance": -6,
+          "listidx": 4
+        }
+      ],
+      "team2": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 5.9,
+          "listidx": 5
+        },
+        {
+          "id": 12,
+          "name": "Aders",
+          "weighting": 3,
+          "balance": -1.40,
+          "listidx": 6
+        },
+        {
+          "id": 20,
+          "name": "Elliott (Adz)",
+          "weighting": 2,
+          "balance": -12,
+          "listidx": 7
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -1.30,
+          "listidx": 8
+        },
+        {
+          "id": 3,
+          "name": "Paul",
+          "weighting": 3,
+          "balance": -20.2,
+          "listidx": 9
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-08-17",
+      "team1": [
+        {
+          "id": 20,
+          "name": "Elliott (Adz)",
+          "weighting": 2,
+          "balance": -18,
+          "listidx": 0
+        },
+        {
+          "id": 22,
+          "name": "Lee (via...)",
+          "weighting": 3,
+          "balance": -6,
+          "listidx": 1
+        },
+        {
+          "id": 23,
+          "name": "Charlie",
+          "weighting": 3,
+          "balance": -6,
+          "listidx": 2
+        },
+        {
+          "id": 3,
+          "name": "Paul",
+          "weighting": 3,
+          "balance": -26.2,
+          "listidx": 3
+        },
+        {
+          "id": 0,
+          "name": "tbc",
+          "weighting": 0,
+          "balance": 0,
+          "listidx": 4
+        }
+      ],
+      "team2": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": -0.10,
+          "listidx": 5
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": -18,
+          "listidx": 6
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -7.3,
+          "listidx": 7
+        },
+        {
+          "id": 0,
+          "name": "tbc",
+          "weighting": 0,
+          "balance": 0,
+          "listidx": 8
+        },
+        {
+          "id": 0,
+          "name": "tbc",
+          "weighting": 0,
+          "balance": 0,
+          "listidx": 9
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-08-24",
+      "team1": [
+        {
+          "id": 23,
+          "name": "Charlie",
+          "weighting": 3,
+          "balance": -12,
+          "listidx": 0
+        },
+        {
+          "id": 20,
+          "name": "Elliott (Adz)",
+          "weighting": 2,
+          "balance": -24,
+          "listidx": 1
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": -6,
+          "listidx": 2,
+          "paid": 6
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -3.3,
+          "listidx": 3,
+          "paid": 10
+        },
+        {
+          "id": 9,
+          "name": "Rich V",
+          "weighting": 3,
+          "balance": 3.20,
+          "listidx": 4,
+          "paid": 10
+        }
+      ],
+      "team2": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 33.9,
+          "listidx": 5,
+          "paid": 40
+        },
+        {
+          "id": 12,
+          "name": "Aders",
+          "weighting": 3,
+          "balance": -0.40,
+          "listidx": 6,
+          "paid": 7
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": -24,
+          "listidx": 7
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": 12,
+          "listidx": 8,
+          "paid": 10
+        },
+        {
+          "id": 24,
+          "name": "Paul T2",
+          "weighting": 3,
+          "balance": -1,
+          "listidx": 9,
+          "paid": 5
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-08-31",
+      "team1": [
+        {
+          "id": 23,
+          "name": "Charlie",
+          "weighting": 3,
+          "balance": -18,
+          "listidx": 0
+        },
+        {
+          "id": 20,
+          "name": "Elliott (Adz)",
+          "weighting": 2,
+          "balance": -30,
+          "listidx": 1
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": 11,
+          "listidx": 2,
+          "paid": 5
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": -6,
+          "listidx": 3,
+          "paid": 6
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -4.3,
+          "listidx": 4,
+          "paid": 5
+        }
+      ],
+      "team2": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 47.9,
+          "listidx": 5,
+          "paid": 20
+        },
+        {
+          "id": 12,
+          "name": "Aders",
+          "weighting": 3,
+          "balance": 0.60,
+          "listidx": 6,
+          "paid": 7
+        },
+        {
+          "id": 2,
+          "name": "Auldrius",
+          "weighting": 4,
+          "balance": 18.2,
+          "listidx": 7,
+          "paid": 20
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": -30,
+          "listidx": 8
+        },
+        {
+          "id": 9,
+          "name": "Rich V",
+          "weighting": 3,
+          "balance": 7.20,
+          "listidx": 9,
+          "paid": 10
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-09-07",
+      "team1": [
+        {
+          "id": 20,
+          "name": "Elliott (Adz)",
+          "weighting": 2,
+          "balance": 0,
+          "listidx": 0,
+          "paid": 6
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 1,
+          "paid": 6
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": 5,
+          "listidx": 2,
+          "paid": 10
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 3,
+          "paid": 6
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -10.3,
+          "listidx": 4
+        }
+      ],
+      "team2": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 1.90,
+          "listidx": 5,
+          "paid": 8
+        },
+        {
+          "id": 2,
+          "name": "Auldrius",
+          "weighting": 4,
+          "balance": 12.2,
+          "listidx": 6
+        },
+        {
+          "id": 23,
+          "name": "Charlie",
+          "weighting": 3,
+          "balance": -24,
+          "listidx": 7
+        },
+        {
+          "id": 11,
+          "name": "Dean",
+          "weighting": 2,
+          "balance": 4.70,
+          "listidx": 8,
+          "paid": 10
+        },
+        {
+          "id": 9,
+          "name": "Rich V",
+          "weighting": 3,
+          "balance": 11.2,
+          "listidx": 9,
+          "paid": 10
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-09-14",
+      "team1": [
+        {
+          "id": 11,
+          "name": "Dean",
+          "weighting": 2,
+          "balance": 8.7,
+          "listidx": 0,
+          "paid": 10
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 1,
+          "paid": 6
+        },
+        {
+          "id": 3,
+          "name": "Paul",
+          "weighting": 3,
+          "balance": -32.2,
+          "listidx": 2
+        },
+        {
+          "id": 9,
+          "name": "Rich V",
+          "weighting": 3,
+          "balance": 5.20,
+          "listidx": 3,
+          "paid": 0
+        },
+        {
+          "id": 10,
+          "name": "Si",
+          "weighting": 4,
+          "balance": 6,
+          "listidx": 4,
+          "paid": 12
+        }
+      ],
+      "team2": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 3.90,
+          "listidx": 5,
+          "paid": 8
+        },
+        {
+          "id": 23,
+          "name": "Charlie",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 6,
+          "paid": 30
+        },
+        {
+          "id": 20,
+          "name": "Elliott (Adz)",
+          "weighting": 2,
+          "balance": 0,
+          "listidx": 7,
+          "paid": 6
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 8,
+          "paid": 6
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": 9,
+          "listidx": 9,
+          "paid": 10
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-09-21",
+      "team1": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 11.90,
+          "listidx": 0,
+          "paid": 14
+        },
+        {
+          "id": 19,
+          "name": "Josh",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 1,
+          "paid": 6
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": -6,
+          "listidx": 2
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": 3.70,
+          "listidx": 3,
+          "paid": 20
+        },
+        {
+          "id": 9,
+          "name": "Rich V",
+          "weighting": 3,
+          "balance": 19.2,
+          "listidx": 4,
+          "paid": 20
+        }
+      ],
+      "team2": [
+        {
+          "id": 23,
+          "name": "Charlie",
+          "weighting": 3,
+          "balance": 6,
+          "listidx": 5,
+          "paid": 12
+        },
+        {
+          "id": 11,
+          "name": "Dean",
+          "weighting": 2,
+          "balance": 2.70,
+          "listidx": 6
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 7,
+          "paid": 6
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": -9,
+          "listidx": 8,
+          "paid": -12
+        },
+        {
+          "id": 10,
+          "name": "Si",
+          "weighting": 4,
+          "balance": 0,
+          "listidx": 9
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-09-28",
+      "team1": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 19.9,
+          "listidx": 0,
+          "paid": 14
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 1,
+          "paid": 6
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": -21,
+          "listidx": 2,
+          "paid": -6
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -2.3,
+          "listidx": 3
+        },
+        {
+          "id": 10,
+          "name": "Si",
+          "weighting": 4,
+          "balance": 0,
+          "listidx": 4,
+          "paid": 6
+        }
+      ],
+      "team2": [
+        {
+          "id": 12,
+          "name": "Aders",
+          "weighting": 3,
+          "balance": -2.4,
+          "listidx": 5,
+          "paid": 10
+        },
+        {
+          "id": 23,
+          "name": "Charlie",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 6
+        },
+        {
+          "id": 19,
+          "name": "Josh",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 7,
+          "paid": 6
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": -6,
+          "listidx": 8,
+          "paid": 6
+        },
+        {
+          "id": 8,
+          "name": "Mark",
+          "weighting": 5,
+          "balance": -1.80,
+          "listidx": 9,
+          "paid": 10
+        }
+      ]
+    },
+    {
+      "gameDate": "2017-10-05",
+      "team1": [
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 19.9,
+          "listidx": 0
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 1
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": -21,
+          "listidx": 2
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": -2.3,
+          "listidx": 3
+        },
+        {
+          "id": 10,
+          "name": "Si",
+          "weighting": 4,
+          "balance": 0,
+          "listidx": 4
+        }
+      ],
+      "team2": [
+        {
+          "id": 12,
+          "name": "Aders",
+          "weighting": 3,
+          "balance": -2.4,
+          "listidx": 5
+        },
+        {
+          "id": 23,
+          "name": "Charlie",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 6
+        },
+        {
+          "id": 19,
+          "name": "Josh",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 7
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": -6,
+          "listidx": 8
+        },
+        {
+          "id": 8,
+          "name": "Mark",
+          "weighting": 5,
+          "balance": -1.80,
+          "listidx": 9
+        }
+      ]
+    }
+  ]
+}
