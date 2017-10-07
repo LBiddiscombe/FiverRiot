@@ -145,7 +145,7 @@ function FiverStore() {
   })
 
   self.on('perform_action', index => {
-    route('/subs')
+    route('/subs/' + self.fiver.games[self.fiver.gameIndex].players[index].name)
   })
   //endregion
 }
