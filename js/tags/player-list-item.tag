@@ -115,7 +115,6 @@
       let money = Math.round(value * Math.pow(10, 2)) / Math.pow(10, 2)
       return "£" + money.toFixed(2)
     }
-    //endregion
 
     handleSelected() {
 
@@ -125,12 +124,13 @@
           break
         case "subs":
           route('/')
-          console.log('subs player_selected')
           RiotControl.trigger('player_selected', -1, self.player.id)
           break
         default:
-          self.selected = !self.selected
-          RiotControl.trigger('player_selected', self.i, 0)
+          if (!self.parent.opts.locked) {
+            self.selected = !self.selected
+            RiotControl.trigger('player_selected', self.i, 0)
+          }
           break
       }
     }

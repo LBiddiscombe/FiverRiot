@@ -1,5 +1,5 @@
 <game-page-subs>
-  <div class="modal {is-active: open} ">
+  <div class="modal {is-active: open}">
     <div class="modal-background" onclick={ onClose }></div>
     <div class="modal-card">
       <section class="modal-card-body">
@@ -29,6 +29,7 @@
       route('/')
     }
 
+    // Tag Lifecycle events
     self.on('mount', () => {
       RiotControl.trigger('get_players', "subs")
     })

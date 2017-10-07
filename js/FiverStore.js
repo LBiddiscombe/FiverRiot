@@ -66,6 +66,10 @@ function FiverStore() {
         self.swapList[0]
       ] = self.fiver.players.find(p => p.id == playerId)
 
+      self.fiver.games[self.fiver.gameIndex].players[
+        self.swapList[0]
+      ].anim = true
+
       self.swapList = []
       self.trigger(
         'players_changed',
