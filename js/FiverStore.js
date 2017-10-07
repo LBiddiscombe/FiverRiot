@@ -59,7 +59,10 @@ function FiverStore() {
 
   //#region Player Logic
   self.on('player_selected', (idx, playerId) => {
-    if (idx === null || idx === self.swapList[0]) return
+    if (idx === null || idx === self.swapList[0]) {
+      self.swapList = []
+      return
+    }
 
     if (idx === -1 && playerId) {
       self.fiver.games[self.fiver.gameIndex].players[
@@ -131,13 +134,13 @@ function FiverStore() {
     )
   })
 
+  self.on('show_payment', (index, value) => {
+    route('/pay/' + index.toString())
+  })
+
   self.on('add_payment', (index, value) => {
-    if (self.fiver.games[self.fiver.gameIndex].players[index].paid) {
-      self.fiver.games[self.fiver.gameIndex].players[index].paid =
-        self.fiver.games[self.fiver.gameIndex].players[index].paid + value
-    } else {
-      self.fiver.games[self.fiver.gameIndex].players[index].paid = value
-    }
+    self.fiver.games[self.fiver.gameIndex].players[index].paid = value
+
     self.trigger(
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
@@ -146,6 +149,10 @@ function FiverStore() {
 
   self.on('perform_action', index => {
     route('/subs/' + self.fiver.games[self.fiver.gameIndex].players[index].name)
+  })
+
+  self.on('clear_swaps', () => {
+    self.swapList = []
   })
   //endregion
 }

@@ -102,7 +102,7 @@
 
 
     setTeamColours() {
-      self.team1 = (self.parent.opts.filter == "teams" && self.i < 5) || self.parent.opts.filter == "all"
+      self.team1 = (self.parent.opts.filter == "teams" && self.i < 5) || self.parent.opts.filter == "all" || self.parent.opts.filter == "subs"
       self.team2 = self.parent.opts.filter == "teams" && self.i >= 5
     }
     self.setTeamColours()
@@ -136,7 +136,7 @@
     }
 
     pay() {
-      RiotControl.trigger('add_payment', self.i, 1.00)
+      RiotControl.trigger('show_payment', self.i)
     }
 
     action() {

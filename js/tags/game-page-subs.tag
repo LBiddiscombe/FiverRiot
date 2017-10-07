@@ -16,7 +16,7 @@
   <style>
     .modal-card {
       max-height: calc(100vh - 100px) !important;
-      margin: 0 60px;
+      margin: 0 50px;
     }
 
     .modal-card-title>header {
@@ -24,7 +24,7 @@
     }
 
     .modal-card-title {
-      color: var(--main-bg-color);
+      color: var(--nav-bg-color);
     }
 
     .modal-card-body {
@@ -36,16 +36,16 @@
   <script>
     var self = this
     self.open = true
-    self.playerOutName = ""
 
     onClose() {
       self.open = false
       route('/')
+      RiotControl.trigger('clear_swaps')
     }
 
     // Tag Lifecycle events
-    self.on('route', (id) => {
-      self.playerOutName = id
+    self.on('route', (name) => {
+      self.playerOutName = name
       self.update()
     })
 
