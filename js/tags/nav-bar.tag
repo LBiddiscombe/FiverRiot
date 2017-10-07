@@ -9,7 +9,7 @@
 
     <div class="nav-center">
       <a class="nav-item is-disabled"><span class="icon" id="sync"><i class="fa fa-lg fa-refresh fa-spin"></i></span></a>
-      <a class="nav-item is-active" data-page="pick"><span class="icon"><i class="fa fa-lg fa-random"></i></span>&nbsp;Pick</a>
+      <a class="nav-item is-active" onclick={ onPick }><span class="icon"><i class="fa fa-lg fa-random"></i></span>&nbsp;Pick</a>
     </div>
 
     <span class="nav-toggle is-large { is-active: isActive }" onclick="{ toggleMenu }">
@@ -69,16 +69,18 @@
     #sync.syncing {
       visibility: visible;
     }
-
   </style>
 
   <script>
-    this.isActive = false;
+    this.isActive = false
 
     toggleMenu() {
       this.isActive = !this.isActive
     }
 
+    onPick() {
+      RiotControl.trigger('pick_teams')
+    }
   </script>
 
 </nav-bar>

@@ -1,9 +1,22 @@
 :root {
-  --main-bg-color: #FFECC9;
-  --nav-bg-color: #FFC04D;
-  --playerbox-bg-color: #ffffff;
+  --main-bg-color: #ffecc9;
+  --nav-bg-color: #ffc04d;
+  --playerbox-bg-color: #fefdfb;
 }
 
 html {
   background-color: var(--main-bg-color);
+}
+
+@keyframes pop {
+  10% {
+    opacity: 0.5;
+    transform: scale(0.5);
+    transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
+  }
 }

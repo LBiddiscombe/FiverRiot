@@ -6,6 +6,9 @@
       <route path="/">
         <game-page></game-page>
       </route>
+      <route path="/subs">
+        <game-page-subs></game-page-subs>
+      </route>
       <route path="/players">
         <players-page></players-page>
       </route>
@@ -17,6 +20,7 @@
       </route>
     </router>
   </div>
+
 
   <style>
     #main {
