@@ -59,31 +59,33 @@ function FiverStore() {
 
   //#region Player Logic
   self.on('player_selected', (idx, playerId) => {
-    if (idx === null || idx === self.swapList[0]) {
+    // same player selected
+    if (idx === self.swapList[0] && playerId === -1) {
       self.swapList = []
       return
     }
 
-    if (idx === -1 && playerId) {
+    // sub selected
+    if (idx === -1 && playerId != -1) {
       self.fiver.games[self.fiver.gameIndex].players[
         self.swapList[0]
       ] = self.fiver.players.find(p => p.id == playerId)
-
-      self.fiver.games[self.fiver.gameIndex].players[
-        self.swapList[0]
-      ].anim = true
 
       self.swapList = []
       self.trigger(
         'players_changed',
         self.fiver.games[self.fiver.gameIndex].players
       )
-    } else {
+      return
+    }
+
+    if (idx != self.swapList[0]) {
       self.swapList.push(idx)
+      // two players selected
       if (self.swapList.length === 2) {
         if (self.swapList[0] !== self.swapList[1]) {
           RiotControl.trigger('swap_players', self.swapList)
-          RiotControl.trigger('player_selected', null, null)
+          RiotControl.trigger('clear_selected')
         }
 
         self.swapList = []
@@ -93,9 +95,7 @@ function FiverStore() {
 
   self.on('swap_players', swaps => {
     var p1 = self.fiver.games[self.fiver.gameIndex].players[swaps[0]]
-    p1.anim = true
     var p2 = self.fiver.games[self.fiver.gameIndex].players[swaps[1]]
-    p2.anim = true
 
     self.fiver.games[self.fiver.gameIndex].players[swaps[0]] = p2
     self.fiver.games[self.fiver.gameIndex].players[swaps[1]] = p1
@@ -112,6 +112,7 @@ function FiverStore() {
     var teams = self.fiver.games[self.fiver.gameIndex].players
 
     teams
+      // sort players by ability + a random factor
       .sort((a, b) => {
         return (
           parseFloat(a.weighting + Math.random()) -
@@ -120,10 +121,10 @@ function FiverStore() {
       })
       .map((p, i) => {
         p.team = teamPick[i]
-        p.anim = true
         return p
       })
 
+    //sort by team then by name
     teams.sort((a, b) => {
       return a.team - b.team || a.name.localeCompare(b.name)
     })

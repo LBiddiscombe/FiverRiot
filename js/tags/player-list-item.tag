@@ -1,18 +1,17 @@
 <player-list-item>
 
-  <div if={ show } onclick="{ handleSelected }" class="box is-paddingless player-box {selected: selected, paid: player.paid > 0, anim: player.anim }"
-    data-playerid="{ player.id }">
+  <div if={ show } class="box is-paddingless player-box {selected: selected, paid: player.paid > 0 }" data-playerid="{ player.id }">
     <div class="player-box-left">
       <span show={ !selected } class="icon is-large">
         <i class="fa fa-3x { fa-user: team1, fa-user-o: team2 }"></i>
       </span>
       <a show={ selected } onclick="{ pay }">
-        <span class="selected icon is-large">
+        <span class="selected icon is-large anim">
           <i class="fa fa-3x fa-gbp"></i>
         </span>
       </a>
     </div>
-    <div class="player-box-centre">
+    <div class="player-box-centre" onclick="{ handleSelected }">
       <p class="player-name">{player.name}</p>
       <p class="player-monies {hidePaid}">Paid:
         <strong>{ asMoney(player.paid) }</strong>
@@ -23,7 +22,7 @@
     </div>
     <div class="player-box-right">
       <a show="{ selected }" onclick="{ action }">
-        <span class="icon is-large">
+        <span class="icon is-large anim">
           <i class="fa fa-2x fa-chevron-right"></i>
         </span>
       </a>
@@ -89,8 +88,8 @@
       box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1), inset 0px -5px 0px 0px limegreen;
     }
 
-    .player-box.anim {
-      animation: pop 0.15s ease-in-out;
+    .anim {
+      animation: pop 0.1s ease-in-out;
     }
   </style>
 
@@ -129,7 +128,7 @@
         default:
           if (!self.parent.opts.locked) {
             self.selected = !self.selected
-            RiotControl.trigger('player_selected', self.i, 0)
+            RiotControl.trigger('player_selected', self.i, -1)
           }
           break
       }
@@ -139,32 +138,27 @@
       RiotControl.trigger('show_payment', self.i)
     }
 
-    action() {
+    action(e) {
       RiotControl.trigger('perform_action', self.i)
     }
 
-    onPlayerSelected(i, pId) {
-      if (self.i !== i) {
-        self.selected = false
-        self.update()
-      }
+    onClearSelected() {
+      self.selected = false
+      self.update()
     }
 
     self.on('before-mount', () => {
-      RiotControl.on('player_selected', self.onPlayerSelected)
+      RiotControl.on('clear_selected', self.onClearSelected)
     })
 
     self.on('unmount', () => {
-      RiotControl.off('player_selected', self.onPlayerSelected)
+      RiotControl.off('clear_selected', self.onClearSelected)
     })
 
     self.on('update', () => {
       self.setTeamColours()
     })
 
-    self.on('updated', () => {
-      setTimeout(() => { delete self.player.anim }, 500)
-    })
   </script>
 
 </player-list-item>
