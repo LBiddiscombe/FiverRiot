@@ -10,7 +10,9 @@ function FiverStore() {
     .then(res => res.json())
     .then(res => {
       self.fiver = res
-      self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
+      setTimeout(function() {
+        self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
+      }, 0)
     })
 
   //#region Games
@@ -68,15 +70,24 @@ function FiverStore() {
 
     // sub selected
     if (idx === -1 && playerId != -1) {
+      // player removed
       if (playerId === 0) {
         self.fiver.games[self.fiver.gameIndex].players.splice(
           self.swapList[0],
           1
         )
       } else {
-        self.fiver.games[self.fiver.gameIndex].players[
-          self.swapList[0]
-        ] = self.fiver.players.find(p => p.id == playerId)
+        // player added
+        if (self.swapList.length === 0) {
+          self.fiver.games[self.fiver.gameIndex].players.push(
+            self.fiver.players.find(p => p.id == playerId)
+          )
+        } else {
+          // player swapped
+          self.fiver.games[self.fiver.gameIndex].players[
+            self.swapList[0]
+          ] = self.fiver.players.find(p => p.id == playerId)
+        }
       }
 
       self.swapList = []
@@ -156,7 +167,7 @@ function FiverStore() {
     )
   })
 
-  self.on('perform_action', index => {
+  self.on('sub_player', index => {
     route('/subs/' + self.fiver.games[self.fiver.gameIndex].players[index].name)
   })
 

@@ -3,7 +3,7 @@
   <div if={ show } class="box is-paddingless player-box {selected: selected, paid: player.paid > 0 }">
     <div class="player-box-left">
       <span show={ !selected } class="icon is-large">
-        <i class="fa fa-3x { fa-user: team1, fa-user-o: team2 }"></i>
+        <i class="fa fa-3x { fa-user: team1, fa-user-o: team2, fa-exclamation: tbc, anim: tbc }"></i>
       </span>
       <a show={ selected } onclick="{ pay }">
         <span class="selected icon is-large anim">
@@ -21,9 +21,14 @@
       </p>
     </div>
     <div class="player-box-right">
-      <a show="{ selected }" onclick="{ action }">
+      <a show="{ selected }" onclick="{ sub }">
         <span class="icon is-large anim">
           <i class="fa fa-2x fa-chevron-circle-right"></i>
+        </span>
+      </a>
+      <a show="{ !player.id && parent.opts.filter != 'subs'  }" onclick="{ sub }">
+        <span class="icon is-large anim">
+          <i class="fa fa-3x fa-chevron-circle-right"></i>
         </span>
       </a>
     </div>
@@ -41,6 +46,8 @@
       height: 80px;
       background-color: var(--playerbox-bg-color);
       margin: 5px;
+      border-radius: 0px;
+      box-shadow: 0 3px 5px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
     }
 
     .player-box-left {
@@ -98,10 +105,10 @@
 
     self.selected = false
     self.show = true
-
+    self.tbc = (!self.player.id && self.parent.opts.filter != 'subs')
 
     setTeamColours() {
-      self.team1 = (self.parent.opts.filter == "teams" && self.i < 5) || self.parent.opts.filter == "all" || self.parent.opts.filter == "subs"
+      self.team1 = (self.parent.opts.filter == "teams" && self.i < 5 && self.player.id != 0) || self.parent.opts.filter == "all" || self.parent.opts.filter == "subs"
       self.team2 = self.parent.opts.filter == "teams" && self.i >= 5
     }
     self.setTeamColours()
@@ -116,6 +123,8 @@
     }
 
     handleSelected() {
+
+      if (self.player.id === 0 && self.parent.opts.filter != "subs") return
 
       // player list logic goes here
       switch (self.parent.opts.filter) {
@@ -138,8 +147,8 @@
       RiotControl.trigger('show_payment', self.i)
     }
 
-    action(e) {
-      RiotControl.trigger('perform_action', self.i)
+    sub(e) {
+      RiotControl.trigger('sub_player', self.i)
     }
 
     onClearSelected() {

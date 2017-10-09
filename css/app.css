@@ -1,7 +1,7 @@
 :root {
-  --main-bg-color: #ffecc9;
-  --nav-bg-color: #ffc04d;
-  --playerbox-bg-color: #fefdfb;
+  --nav-bg-color: #aaaaaa;
+  --main-bg-color: #f3f3f3;
+  --playerbox-bg-color: #ffffff;
 }
 
 html {
@@ -16,7 +16,7 @@ html {
   }
   50% {
     opacity: 0.5;
-    transform: scale(1.5);
+    transform: scale(2);
     transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
   }
   100% {

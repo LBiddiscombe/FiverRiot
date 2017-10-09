@@ -11,6 +11,7 @@
       flex-direction: column;
       flex-wrap: wrap;
       justify-content: space-between;
+      -webkit-tap-highlight-color: transparent;
     }
   </style>
 
