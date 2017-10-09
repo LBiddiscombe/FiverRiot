@@ -10,6 +10,7 @@ function FiverStore() {
     .then(res => res.json())
     .then(res => {
       self.fiver = res
+      self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
     })
 
   //#region Games
@@ -67,9 +68,16 @@ function FiverStore() {
 
     // sub selected
     if (idx === -1 && playerId != -1) {
-      self.fiver.games[self.fiver.gameIndex].players[
-        self.swapList[0]
-      ] = self.fiver.players.find(p => p.id == playerId)
+      if (playerId === 0) {
+        self.fiver.games[self.fiver.gameIndex].players.splice(
+          self.swapList[0],
+          1
+        )
+      } else {
+        self.fiver.games[self.fiver.gameIndex].players[
+          self.swapList[0]
+        ] = self.fiver.players.find(p => p.id == playerId)
+      }
 
       self.swapList = []
       self.trigger(

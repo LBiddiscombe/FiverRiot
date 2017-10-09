@@ -2,6 +2,7 @@
 
   <div id="teams">
     <div data-is="player-list-item" ref="person" each="{ player, i in players }"></div>
+    <div data-is="player-list-item" ref="empty" each="{ player, i in empty }"></div>
   </div>
 
   <style>
@@ -35,7 +36,22 @@
 
     onPlayersChanged(players) {
       self.players = players
+      self.empty = []
+
+      if (self.players.length < 10) {
+        const missing = 10 - self.players.length
+        for (i = 0; i < missing; i++) {
+          self.empty.push({
+            "id": 0,
+            "name": "tbc",
+            "weighting": 0,
+            "balance": 0
+          })
+        }
+      }
+
       self.update()
+
     }
 
     self.on('update', () => {
@@ -56,7 +72,8 @@
 
     self.on('mount', () => {
       updateFlip()
-      // on the teams screen set the column height
+
+      // on the teams screen set the column height when even number of players
       if (self.opts.filter == "teams") { document.getElementById('teams').style.height = "450px" }
     })
 

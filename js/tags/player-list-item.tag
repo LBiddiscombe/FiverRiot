@@ -1,6 +1,6 @@
 <player-list-item>
 
-  <div if={ show } class="box is-paddingless player-box {selected: selected, paid: player.paid > 0 }" data-playerid="{ player.id }">
+  <div if={ show } class="box is-paddingless player-box {selected: selected, paid: player.paid > 0 }">
     <div class="player-box-left">
       <span show={ !selected } class="icon is-large">
         <i class="fa fa-3x { fa-user: team1, fa-user-o: team2 }"></i>
@@ -23,7 +23,7 @@
     <div class="player-box-right">
       <a show="{ selected }" onclick="{ action }">
         <span class="icon is-large anim">
-          <i class="fa fa-2x fa-chevron-right"></i>
+          <i class="fa fa-2x fa-chevron-circle-right"></i>
         </span>
       </a>
     </div>
@@ -81,7 +81,7 @@
     }
 
     .player-box.selected {
-      box-shadow: inset 0px 0px 0px 4px;
+      box-shadow: 0px 0px 0px 2px, inset 0px 0px 0px 2px;
     }
 
     .player-box.paid {
