@@ -1,6 +1,6 @@
 <player-list-item>
 
-  <div if={ show } class="box is-paddingless player-box {selected: selected, paid: player.paid > 0 }">
+  <div if={ show } class="box is-paddingless player-box {selected: selected, paid: player.paid > 0, anim: tbc }">
     <div class="player-box-left">
       <span show={ !selected } class="icon is-large">
         <i class="fa fa-3x { fa-user: team1, fa-user-o: team2, fa-exclamation: tbc, anim: tbc }"></i>
@@ -96,7 +96,7 @@
     }
 
     .anim {
-      animation: pop 0.1s ease-in-out;
+      animation: pop 0.2s ease-in-out;
     }
   </style>
 
