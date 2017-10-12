@@ -1,0 +1,14 @@
+{
+  "name": "fiver",
+  "description": "Fiver",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "author": "Lee Biddiscombe",
+  "engines": {
+    "node": ">=6.9.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

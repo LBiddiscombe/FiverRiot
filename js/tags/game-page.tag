@@ -1,12 +1,13 @@
 <game-page>
-
   <nav class="nav weeks">
-    <div class="nav-center">
+    <div class="nav-left">
       <a class="nav-item" id="previous-game" onclick={ onPrev }>
         <span class="icon">
           <i class="fa fa-arrow-left"></i>
         </span>
       </a>
+    </div>
+    <div class="nav-center">
       <a class="nav-item is-disabled">
         <p class="listheader is-full-width has-text-centered" id="game-date">{ gameDate }</p>
       </a>
@@ -15,6 +16,8 @@
           <i class="fa { fa-lock: locked, fa-unlock: !locked }"></i>
         </span>
       </a>
+    </div>
+    <div class="nav-right">
       <a class="nav-item" id="next-game" onclick={ onNext }>
         <span class="icon">
           <i class="fa fa-arrow-right"></i>
@@ -22,14 +25,25 @@
       </a>
     </div>
   </nav>
-
   <player-list filter="teams" locked={ locked }></player-list>
 
   <style>
     .nav.weeks {
-      background-color: transparent;
+      background-color: var(--game-nav-bg-color);
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 3px 5px rgba(10, 10, 10, 0.1);
+      margin-top: -4px;
+      margin-bottom: 0.3rem;
       min-height: 2rem;
       z-index: 0 !important;
+    }
+
+    .nav-item {
+      color: var(--playerbox-bg-color) !important;
+    }
+
+    .nav-right {
+      margin-right: 5px;
     }
   </style>
 

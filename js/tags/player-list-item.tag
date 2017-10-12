@@ -47,7 +47,7 @@
       background-color: var(--playerbox-bg-color);
       margin: 5px;
       border-radius: 0px;
-      box-shadow: 0 3px 5px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+      box-shadow: 0 3px 5px rgba(10, 10, 10, 0.1);
     }
 
     .player-box-left {

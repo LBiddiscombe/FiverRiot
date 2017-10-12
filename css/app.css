@@ -1,7 +1,26 @@
+/* Red
 :root {
-  --nav-bg-color: #aaaaaa;
-  --main-bg-color: #f3f3f3;
-  --playerbox-bg-color: #ffffff;
+  --nav-bg-color: #f44336;
+  --main-bg-color: #ffcdd2;
+  --game-nav-bg-color: #D32F2F;
+  --playerbox-bg-color: #ffebee;
+}
+*/
+
+/* Green
+:root {
+  --nav-bg-color: #4caf50;
+  --main-bg-color: #c8e6c9;
+  --game-nav-bg-color: #388e3c;
+  --playerbox-bg-color: #e8f5e9;
+}
+*/
+
+:root {
+  --nav-bg-color: #3f51b5;
+  --main-bg-color: #c5cae9;
+  --game-nav-bg-color: #303f9f;
+  --playerbox-bg-color: #f6f7fc;
 }
 
 html {
@@ -11,12 +30,12 @@ html {
 @keyframes pop {
   0% {
     opacity: 0;
-    transform: scale(0);
+    transform: scale(1);
     transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
   }
   50% {
     opacity: 0.5;
-    transform: scale(2);
+    transform: scale(0.5);
     transition: all 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76);
   }
   100% {

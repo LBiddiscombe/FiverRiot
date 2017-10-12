@@ -8,7 +8,6 @@
         <h1 class="title" id="logo-name">&nbsp;Fiver</h1>
       </a>
     </div>
-
     <div class="nav-center">
       <a class="nav-item is-disabled">
         <span class="icon" id="sync">
@@ -20,13 +19,11 @@
           <i class="fa fa-lg fa-random"></i>
         </span>&nbsp;Pick</a>
     </div>
-
     <span class="nav-toggle is-large { is-active: isActive }" onclick="{ toggleMenu }">
       <span></span>
       <span></span>
       <span></span>
     </span>
-
     <div class="nav-right nav-menu { is-active: isActive }">
       <a href="#" onclick="{ toggleMenu }" class="nav-item is-active">
         <span class="icon is-large">
@@ -53,21 +50,26 @@
       top: 0;
       left: 0;
       width: 100%;
+      box-shadow: none !important;
     }
 
     .nav.box {
       background-color: var(--nav-bg-color);
       -webkit-tap-highlight-color: transparent;
-      margin-bottom: 0.3rem;
       border-radius: 0px;
     }
 
+    .nav-menu.nav-right {
+      background-color: var(--nav-bg-color);
+    }
+
     .nav-menu.nav-right .nav-item {
-      font-size: 2em;
+      font-size: 1.7em;
       font-weight: 200;
     }
 
     #logo-name {
+      font-weight: 300;
       margin-top: -5px;
     }
 
@@ -80,7 +82,7 @@
     }
 
     .nav-toggle.is-active span {
-      background-color: #7a7a7a;
+      background-color: var(--playerbox-bg-color)
     }
 
     #sync {
@@ -89,6 +91,12 @@
 
     #sync.syncing {
       visibility: visible;
+    }
+
+    .nav-item,
+    .nav-toggle,
+    #logo-name {
+      color: var(--playerbox-bg-color) !important;
     }
   </style>
 
