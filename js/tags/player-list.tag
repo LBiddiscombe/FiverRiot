@@ -10,8 +10,9 @@
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-start;
       -webkit-tap-highlight-color: transparent;
+      margin: .25rem;
     }
   </style>
 

@@ -1,49 +1,57 @@
 <game-page>
-  <nav class="nav weeks">
-    <div class="nav-left">
-      <a class="nav-item" id="previous-game" onclick={ onPrev }>
-        <span class="icon">
-          <i class="fa fa-arrow-left"></i>
-        </span>
-      </a>
+  <nav class="weeks">
+
+    <a class="prev is-active" id="previous-game" onclick={ onPrev }>
+      <span class="icon">
+        <i class="fa fa-arrow-left"></i>
+      </span>
+    </a>
+
+    <div class="gameweek">
+      { gameDate }
+      <span class="icon">
+        <i class="fa { fa-lock: locked, fa-unlock: !locked }"></i>
+      </span>
     </div>
-    <div class="nav-center">
-      <a class="nav-item is-disabled">
-        <p class="listheader is-full-width has-text-centered" id="game-date">{ gameDate }</p>
-      </a>
-      <a class="nav-item is-paddingless is-disabled" id="game-lock">
-        <span class="icon">
-          <i class="fa { fa-lock: locked, fa-unlock: !locked }"></i>
-        </span>
-      </a>
-    </div>
-    <div class="nav-right">
-      <a class="nav-item" id="next-game" onclick={ onNext }>
-        <span class="icon">
-          <i class="fa fa-arrow-right"></i>
-        </span>
-      </a>
-    </div>
+
+    <a class="next is-active" id="next-game" onclick={ onNext }>
+      <span class="icon">
+        <i class="fa fa-arrow-right"></i>
+      </span>
+    </a>
+
   </nav>
   <player-list filter="teams" locked={ locked }></player-list>
 
   <style>
-    .nav.weeks {
+    nav {
+      display: flex;
+      align-items: center;
       background-color: var(--game-nav-bg-color);
+      color: var(--text-color);
       -webkit-tap-highlight-color: transparent;
       box-shadow: 0 3px 5px rgba(10, 10, 10, 0.1);
       margin-top: -4px;
       margin-bottom: 0.3rem;
-      min-height: 2rem;
+      min-height: 3.25rem;
       z-index: 0 !important;
     }
 
-    .nav-item {
-      color: var(--playerbox-bg-color) !important;
+    .prev,
+    .next {
+      flex: 0 1 auto;
+      margin: 5px;
     }
 
-    .nav-right {
-      margin-right: 5px;
+    .gameweek {
+      flex: 1;
+      text-align: center;
+    }
+
+    a,
+    a.is-active {
+      color: var(--text-color);
+      -webkit-tap-highlight-color: transparent;
     }
   </style>
 

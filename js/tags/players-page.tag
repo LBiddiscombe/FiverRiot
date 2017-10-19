@@ -1,7 +1,5 @@
 <players-page>
 
-  <p>Players Page</p>
-
   <player-list filter="all"></player-list>
 
   <style>

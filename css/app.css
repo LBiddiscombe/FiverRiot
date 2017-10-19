@@ -18,13 +18,19 @@
 
 :root {
   --nav-bg-color: #3f51b5;
-  --main-bg-color: #c5cae9;
+  --main-bg-color: #eaecf7;
   --game-nav-bg-color: #303f9f;
-  --playerbox-bg-color: #f6f7fc;
+  --playerbox-bg-color: #fdfdfd;
+  --playerbox-bg-color2: #eaecf7;
+  --text-color: #f6f7fc;
+  --team1-color: #ff6961;
+  --team2-color: #ffffff;
 }
 
 html {
   background-color: var(--main-bg-color);
+  margin: 0 auto;
+  max-width: 768px;
 }
 
 @keyframes pop {

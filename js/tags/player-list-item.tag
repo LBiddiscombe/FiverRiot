@@ -2,8 +2,9 @@
 
   <div if={ show } class="box is-paddingless player-box {selected: selected, paid: player.paid > 0, anim: tbc }">
     <div class="player-box-left">
-      <span show={ !selected } class="icon is-large">
-        <i class="fa fa-3x { fa-user: team1, fa-user-o: team2, fa-exclamation: tbc, anim: tbc }"></i>
+      <span show={ !selected } class="icon fa-stack fa-lg is-large">
+        <i class="fa fa-user fa-stack-2x { team1 : team1, team2: team2, fa-exclamation: tbc, anim: tbc }"></i>
+        <i class="fa fa-user-o fa-stack-2x"></i>
       </span>
       <a show={ selected } onclick="{ pay }">
         <span class="selected icon is-large anim">
@@ -35,19 +36,18 @@
   </div>
 
   <style>
-    player-list-item {
-      flex: auto;
-    }
+    player-list-item {}
 
     .player-box {
       display: flex;
       flex-flow: row no-wrap;
       position: relative;
       height: 80px;
-      background-color: var(--playerbox-bg-color);
-      margin: 5px;
+      background-image: linear-gradient( 45deg, var(--playerbox-bg-color2) 10%, var(--playerbox-bg-color) 100%);
+      position: relative;
+      margin: 0.25rem;
       border-radius: 0px;
-      box-shadow: 0 3px 5px rgba(10, 10, 10, 0.1);
+      box-shadow: 0 3px 5px rgba(10, 10, 10, 0.2);
     }
 
     .player-box-left {
@@ -62,7 +62,7 @@
 
     .player-name {
       font-size: 1.5rem;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.125;
     }
 
@@ -79,6 +79,18 @@
       top: 15px;
     }
 
+    .fa-user-o {
+      color: #5f5f5f;
+    }
+
+    .fa-user.team1 {
+      color: var(--team1-color)
+    }
+
+    .fa-user.team2 {
+      color: var(--team2-color);
+    }
+
     .player-box-left a {
       color: #4a4a4a;
     }
@@ -92,7 +104,7 @@
     }
 
     .player-box.paid {
-      box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1), inset 0px -5px 0px 0px limegreen;
+      box-shadow: 0 3px 5px rgba(10, 10, 10, 0.1), inset 0px -3px 0px 0px limegreen;
     }
 
     .anim {
