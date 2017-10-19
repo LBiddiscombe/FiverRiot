@@ -27,9 +27,11 @@
           return {
             element: person.root,
             duration: 750,
-            // easeInOutCubic
-            easing: function (t) {
-              return t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
+            // swingFromTo
+            easing: function (pos) {
+              var s = 1.70158;
+              return ((pos /= 0.5) < 1) ? 0.5 * (pos * pos * (((s *= (1.525)) + 1) * pos - s)) :
+                0.5 * ((pos -= 2) * pos * (((s *= (1.525)) + 1) * pos + s) + 2);
             }
           }
         })

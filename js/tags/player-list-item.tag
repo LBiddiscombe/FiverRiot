@@ -32,8 +32,6 @@
   </div>
 
   <style>
-    player-list-item {}
-
     .player-box {
       display: flex;
       flex-flow: row no-wrap;
