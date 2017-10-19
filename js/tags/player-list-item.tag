@@ -14,12 +14,8 @@
     </div>
     <div class="player-box-centre" onclick="{ handleSelected }">
       <p class="player-name">{player.name}</p>
-      <p class="player-monies {hidePaid}">Paid:
-        <strong>{ asMoney(player.paid) }</strong>
-      </p>
-      <p class="player-monies">Balance:
-        <strong>{ asMoney(player.balance) }</strong>
-      </p>
+      <p class="player-monies {hidePaid}">Paid: { asMoney(player.paid) }</p>
+      <p class="player-monies">Balance: { asMoney(player.balance) }</p>
     </div>
     <div class="player-box-right">
       <a show="{ selected }" onclick="{ sub }">
@@ -68,7 +64,7 @@
 
     .player-monies {
       font-size: 0.7rem;
-      font-weight: 300;
+      font-weight: 400;
       width: 110px;
     }
 
