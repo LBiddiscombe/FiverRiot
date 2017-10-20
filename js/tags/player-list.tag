@@ -12,7 +12,7 @@
       flex-wrap: wrap;
       justify-content: flex-start;
       -webkit-tap-highlight-color: transparent;
-      margin: .25rem;
+      margin: 0 .3rem;
     }
   </style>
 

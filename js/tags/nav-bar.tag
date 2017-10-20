@@ -27,8 +27,6 @@
 
     <div class="navbar-menu { is-active: isActive }">
       <div class="navbar-start">
-      </div>
-      <div class="navbar-end">
         <a href="#" onclick="{ toggleMenu }" class="navbar-item is-active">
           <span class="icon is-large">
             <i class="fa fa-soccer-ball-o"></i>
@@ -46,6 +44,9 @@
             <i class="fa fa-cog"></i>
           </span>&nbsp;Settings</a>
       </div>
+      <div class="navbar-end">
+
+      </div>
     </div>
 
   </nav>
@@ -54,13 +55,13 @@
     .navbar {
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
+      max-width: 768px !important;
       box-shadow: none !important;
       background-color: var(--nav-bg-color);
       -webkit-tap-highlight-color: transparent;
       border-radius: 0px;
-      z-index: 999;
+      z-index: 100;
     }
 
     .navbar-burger,
@@ -105,6 +106,10 @@
     .navbar-burger,
     #logo-name {
       color: var(--text-color) !important;
+    }
+
+    .fa-random {
+      padding-top: 4px;
     }
   </style>
 

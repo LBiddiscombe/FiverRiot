@@ -1,4 +1,7 @@
 /*! bulma.io v0.6.0 | MIT License | github.com/jgthms/bulma */
+
+/* Updated navbar media queries @media screen and (max-width: 11023px) */
+
 @-webkit-keyframes spinAround {
   from {
     -webkit-transform: rotate(0deg);
@@ -6900,7 +6903,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
   margin: 0.5rem 0;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 11023px) {
   .navbar > .container {
     display: block;
   }
@@ -6924,7 +6927,7 @@ a.navbar-item:hover, a.navbar-item.is-active,
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 11024px) {
   .navbar,
   .navbar-menu,
   .navbar-start,

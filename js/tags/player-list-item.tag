@@ -1,6 +1,6 @@
 <player-list-item>
 
-  <div if={ show } class="box is-paddingless player-box {selected: selected, paid: player.paid > 0, anim: tbc }">
+  <div if={ show } class="player-box {selected: selected, paid: player.paid > 0, anim: tbc }">
     <div class="player-box-left">
       <span show={ !selected } class="icon fa-stack fa-lg is-large">
         <i class="fa fa-user fa-stack-2x { team1 : team1, team2: team2, fa-exclamation: tbc, anim: tbc }"></i>
@@ -37,11 +37,10 @@
       flex-flow: row no-wrap;
       position: relative;
       height: 80px;
-      background-image: linear-gradient( 45deg, var(--playerbox-bg-color2) 10%, var(--playerbox-bg-color) 100%);
+      background-image: linear-gradient( 45deg, var(--playerbox-bg-color) 10%, var(--playerbox-bg-color) 100%);
       position: relative;
-      margin: 0.25rem;
+      margin: 0.1rem;
       border-radius: 0px;
-      box-shadow: 0 3px 5px rgba(10, 10, 10, 0.2);
     }
 
     .player-box-left {
@@ -94,11 +93,11 @@
     }
 
     .player-box.selected {
-      box-shadow: 0px 0px 0px 2px, inset 0px 0px 0px 2px;
+      box-shadow: inset 0px 0px 0px 3px;
     }
 
     .player-box.paid {
-      box-shadow: 0 3px 5px rgba(10, 10, 10, 0.1), inset 0px -3px 0px 0px limegreen;
+      box-shadow: inset 0px -3px 0px 0px limegreen;
     }
 
     .anim {

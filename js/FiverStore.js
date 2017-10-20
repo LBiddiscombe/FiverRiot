@@ -126,7 +126,11 @@ function FiverStore() {
   })
 
   self.on('pick_teams', () => {
-    const teamPick = [1, 2, 2, 1, 2, 1, 2, 1, 2, 1]
+    const pickAlgorithm = [1, 2, 2, 1, 2, 1, 1, 2, 1, 2]
+
+    if (self.fiver.games[self.fiver.gameIndex].locked) {
+      return
+    }
 
     var teams = self.fiver.games[self.fiver.gameIndex].players
 
@@ -139,7 +143,7 @@ function FiverStore() {
         )
       })
       .map((p, i) => {
-        p.team = teamPick[i]
+        p.team = pickAlgorithm[i]
         return p
       })
 
