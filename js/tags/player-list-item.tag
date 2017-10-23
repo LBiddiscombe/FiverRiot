@@ -23,7 +23,7 @@
           <i class="fa fa-2x fa-chevron-circle-right"></i>
         </span>
       </a>
-      <a show="{ !player.id && parent.opts.filter != 'subs'  }" onclick="{ sub }">
+      <a show="{ tbc }" onclick="{ sub }">
         <span class="icon is-large anim">
           <i class="fa fa-3x fa-chevron-circle-right"></i>
         </span>
@@ -109,8 +109,9 @@
     var self = this
 
     self.selected = false
-    self.show = true
     self.tbc = (!self.player.id && self.parent.opts.filter != 'subs')
+    self.show = !self.tbc || self.parent.opts.filter != 'all'
+
 
     setTeamColours() {
       self.team1 = (self.parent.opts.filter == "teams" && self.i < 5 && self.player.id != 0) || self.parent.opts.filter == "all" || self.parent.opts.filter == "subs"

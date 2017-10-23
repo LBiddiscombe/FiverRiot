@@ -128,7 +128,10 @@ function FiverStore() {
   self.on('pick_teams', () => {
     const pickAlgorithm = [1, 2, 2, 1, 2, 1, 1, 2, 1, 2]
 
-    if (self.fiver.games[self.fiver.gameIndex].locked) {
+    if (
+      self.fiver.games[self.fiver.gameIndex].locked ||
+      window.location.hash != ''
+    ) {
       return
     }
 

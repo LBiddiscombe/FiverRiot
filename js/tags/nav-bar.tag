@@ -4,9 +4,9 @@
     <div class="navitem navleft" onclick={ toggleMenu }>
       <i class="fa fa-bars "></i>
     </div>
-    <a class="navitem navcenter " href="# ">
+    <div class="navitem navcenter ">
       Fiver
-    </a>
+    </div>
     <div class="navitem navright " onclick={ onPick }>
       <i class="fa fa-random "></i>
     </div>
