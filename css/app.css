@@ -23,7 +23,7 @@ body {
 
 .page-header {
   background-color: var(--header-bg-color);
-  min-height: 3.25rem;
+  min-height: 6.6rem;
   width: 100vw;
   max-width: 768px;
   color: var(--text-color);
