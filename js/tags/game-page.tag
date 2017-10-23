@@ -1,4 +1,5 @@
 <game-page>
+  <div class="page-header"></div>
   <nav class="weeks">
 
     <a class="prev is-active" id="previous-game" onclick={ onPrev }>
@@ -25,6 +26,10 @@
 
   <style>
     nav {
+      position: fixed;
+      top: 3.25rem;
+      width: 100vw;
+      max-width: 768px;
       display: flex;
       align-items: center;
       background-color: var(--header-bg-color);
