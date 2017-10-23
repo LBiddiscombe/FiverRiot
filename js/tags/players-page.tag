@@ -1,5 +1,6 @@
 <players-page>
 
+  <div class="page-header"></div>
   <player-list filter="all"></player-list>
 
   <style>

@@ -27,7 +27,7 @@
     nav {
       display: flex;
       align-items: center;
-      background-color: var(--game-nav-bg-color);
+      background-color: var(--header-bg-color);
       color: var(--text-color);
       -webkit-tap-highlight-color: transparent;
       box-shadow: 0 3px 5px rgba(10, 10, 10, 0.1);
