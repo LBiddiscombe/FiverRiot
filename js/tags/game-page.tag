@@ -1,5 +1,4 @@
 <game-page>
-  <div class="page-header"></div>
   <nav class="weeks">
 
     <a class="prev is-active" id="previous-game" onclick={ onPrev }>
@@ -39,7 +38,7 @@
       margin-top: -4px;
       margin-bottom: 0.3rem;
       min-height: 3.25rem;
-      z-index: 0 !important;
+      z-index: 9;
     }
 
     .prev,

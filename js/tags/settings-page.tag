@@ -1,6 +1,5 @@
 <settings-page>
 
-  <div class="page-header"></div>
   <p>Settings Page</p>
 
   <style>

@@ -1,4 +1,6 @@
 <fiver-app>
+  <div class="page-header"></div>
+  <div class="page-title"></div>
   <nav-bar></nav-bar>
 
   <div id="main">

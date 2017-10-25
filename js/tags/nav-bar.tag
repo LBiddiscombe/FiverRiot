@@ -38,7 +38,7 @@
       position: fixed;
       top: 0;
       -webkit-tap-highlight-color: transparent;
-      z-index: 100;
+      z-index: 10;
     }
 
     .navitem {
@@ -80,7 +80,7 @@
       background-color: var(--nav-bg-color);
       width: 100vw;
       max-width: 768px;
-      z-index: 999;
+      z-index: 10;
     }
 
     .navmenuitem {
