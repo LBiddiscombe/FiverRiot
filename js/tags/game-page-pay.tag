@@ -58,8 +58,7 @@
 
   <script>
     var self = this
-    self.open = true
-    self.allowPayment = false
+    self.open = false
 
     //Helpers
     toDecimal(value, decimals) {
@@ -99,17 +98,19 @@
       self.onClose()
     }
 
-    onClose() {
-      self.open = false
-      route('/')
-      RiotControl.trigger('clear_swaps')
+    show(idx, val) {
+      self.refs.inputMoney.value = self.toDecimal(val || 0, 2).toFixed(2)
+      self.allowPayment = false
+      self.playerIdx = idx
+      self.open = true
     }
 
-    // Tag Lifecycle events
-    self.on('route', (idx) => {
-      self.playerIdx = idx
-      self.update()
-    })
+    onClose() {
+      self.open = false
+      RiotControl.trigger('clear_swaps')
+      RiotControl.trigger('clear_selected')
+    }
+
   </script>
 
 </game-page-pay>

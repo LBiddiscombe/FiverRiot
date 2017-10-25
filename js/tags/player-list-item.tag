@@ -150,7 +150,7 @@
     }
 
     pay() {
-      RiotControl.trigger('show_payment', self.i)
+      RiotControl.trigger('show_payment', self.i, self.player.paid)
     }
 
     sub(e) {

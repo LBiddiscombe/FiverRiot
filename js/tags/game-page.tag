@@ -22,6 +22,7 @@
 
   </nav>
   <player-list filter="teams" locked={ locked }></player-list>
+  <game-page-pay ref="payModal"></game-page-pay>
 
   <style>
     nav {
@@ -90,12 +91,19 @@
       self.update()
     }
 
+    onShowPayment(playerIdx, val) {
+      self.refs.payModal.show(playerIdx, val)
+      self.update()
+    }
+
     self.on('before-mount', () => {
       RiotControl.on('game_changed', self.onGameChanged)
+      RiotControl.on('show_payment', self.onShowPayment)
     })
 
     self.on('unmount', () => {
       RiotControl.off('game_changed', self.onGameChanged)
+      RiotControl.off('show_payment', self.onShowPayment)
     })
   </script>
 

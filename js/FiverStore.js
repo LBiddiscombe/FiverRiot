@@ -161,10 +161,6 @@ function FiverStore() {
     )
   })
 
-  self.on('show_payment', (index, value) => {
-    route('/pay/' + index.toString())
-  })
-
   self.on('add_payment', (index, value) => {
     self.fiver.games[self.fiver.gameIndex].players[index].paid = value
 
