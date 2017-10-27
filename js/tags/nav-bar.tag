@@ -44,7 +44,7 @@
     .navitem {
       font-size: 2rem;
       flex: 1;
-      color: var(--text-color);
+      color: var(--header-text-color);
     }
 
     .navleft {
@@ -77,7 +77,7 @@
       justify-content: space-around;
       position: fixed;
       top: 3.25rem;
-      background-color: var(--nav-bg-color);
+      background-color: var(--header-bg-color);
       background-image: url('images/fiver-banner-768.jpg');
       background-position: 0px -56px;
       background-size: cover;
@@ -90,9 +90,9 @@
     .navmenuitem {
       flex: 1;
       margin: .5rem 2rem;
-      border-top: 1px solid var(--nav-accent-color);
+      border-top: 1px solid var(--header-accent-color);
       padding-top: 0.5rem;
-      color: var(--text-color);
+      color: var(--header-text-color);
       font-size: 1.5rem;
       font-weight: 200;
     }

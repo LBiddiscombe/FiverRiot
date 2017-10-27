@@ -33,7 +33,7 @@
       display: flex;
       align-items: center;
       background-color: transparent;
-      color: var(--text-color);
+      color: var(--header-text-color);
       -webkit-tap-highlight-color: transparent;
       margin-top: -4px;
       margin-bottom: 0.3rem;
@@ -54,7 +54,7 @@
 
     a,
     a.is-active {
-      color: var(--text-color);
+      color: var(--header-text-color);
       -webkit-tap-highlight-color: transparent;
     }
   </style>

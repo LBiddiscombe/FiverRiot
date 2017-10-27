@@ -37,7 +37,7 @@
       flex-flow: row no-wrap;
       position: relative;
       height: 80px;
-      background-image: linear-gradient( 45deg, var(--playerbox-bg-color) 10%, var(--playerbox-bg-color) 100%);
+      background-color: var(--playerbox-bg-color);
       position: relative;
       margin: 0.1rem;
       border-radius: 0px;

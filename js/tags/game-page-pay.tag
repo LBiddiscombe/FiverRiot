@@ -47,7 +47,7 @@
     }
 
     .modal-card-title {
-      color: var(--nav-bg-color);
+      color: var(--header-text-color);
     }
 
     .modal-card-body {
