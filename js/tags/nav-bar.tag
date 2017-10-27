@@ -28,9 +28,9 @@
 
   <style>
     .navbar {
-      background-color: var(--nav-bg-color);
+      background-color: transparent;
       min-height: 3.25rem;
-      width: 100vw;
+      width: 100%;
       max-width: 768px;
       display: flex;
       justify-content: space-between;
@@ -38,7 +38,7 @@
       position: fixed;
       top: 0;
       -webkit-tap-highlight-color: transparent;
-      z-index: 10;
+      z-index: 2;
     }
 
     .navitem {
@@ -78,6 +78,10 @@
       position: fixed;
       top: 3.25rem;
       background-color: var(--nav-bg-color);
+      background-image: url('images/fiver-banner-768.jpg');
+      background-position: 0px -56px;
+      background-size: cover;
+      background-blend-mode: overlay;
       width: 100vw;
       max-width: 768px;
       z-index: 10;
@@ -86,7 +90,7 @@
     .navmenuitem {
       flex: 1;
       margin: .5rem;
-      border-bottom: 1px solid #f44336;
+      border-top: 1px solid var(--nav-accent-color);
       padding-bottom: 0.75rem;
       color: var(--text-color);
       font-size: 1.5rem;

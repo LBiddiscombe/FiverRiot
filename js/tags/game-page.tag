@@ -28,18 +28,17 @@
     nav {
       position: fixed;
       top: 3.25rem;
-      width: 100vw;
+      width: 100%;
       max-width: 768px;
       display: flex;
       align-items: center;
-      background-color: var(--header-bg-color);
+      background-color: transparent;
       color: var(--text-color);
       -webkit-tap-highlight-color: transparent;
-      box-shadow: 0 3px 5px rgba(10, 10, 10, 0.1);
       margin-top: -4px;
       margin-bottom: 0.3rem;
       min-height: 3.25rem;
-      z-index: 9;
+      z-index: 1;
     }
 
     .prev,
