@@ -89,12 +89,16 @@
 
     .navmenuitem {
       flex: 1;
-      margin: .5rem;
+      margin: .5rem 2rem;
       border-top: 1px solid var(--nav-accent-color);
-      padding-bottom: 0.75rem;
+      padding-top: 0.5rem;
       color: var(--text-color);
       font-size: 1.5rem;
       font-weight: 200;
+    }
+
+    .navmenuitem:last-child {
+      padding-bottom: 0.5rem;
     }
 
     .navmenuitem i {
