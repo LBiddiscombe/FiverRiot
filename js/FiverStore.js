@@ -11,7 +11,7 @@ function FiverStore() {
     .then(res => {
       self.fiver = res
       setTimeout(function() {
-        self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
+        riot.mount('fiver-app')
       }, 0)
     })
 

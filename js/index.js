@@ -1,13 +1,12 @@
 /*
 TODO List
 
-Copy current live datat to JSONBin / 
+Copy current live datat to JSONBin /
 
 */
 
 var fiverStore = new FiverStore()
 RiotControl.addStore(fiverStore)
-riot.mount('fiver-app')
 
 /*
 //DELETE
@@ -29,5 +28,3 @@ fetch('https://jsonbin.org/me/urls', {
   console.log(res);
 });
 */
-
-
