@@ -78,7 +78,7 @@
       position: fixed;
       top: 3.25rem;
       background-color: var(--header-bg-color);
-      background-image: url('images/fiver-banner-768.jpg');
+      background-image: var(--header-image);
       background-position: 0px -56px;
       background-size: cover;
       background-blend-mode: overlay;
@@ -89,7 +89,7 @@
 
     .navmenuitem {
       flex: 1;
-      margin: .5rem 2rem;
+      margin: .5rem 1rem;
       border-top: 1px solid var(--header-accent-color);
       padding-top: 0.5rem;
       color: var(--header-text-color);

@@ -24,7 +24,7 @@
 
   <style>
     .page-header {
-      background-image: url('images/fiver-banner-768.jpg');
+      background-image: var(--header-image);
       background-size: cover;
       background-color: var(--header-bg-color);
       background-blend-mode: overlay;
