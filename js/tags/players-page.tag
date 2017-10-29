@@ -1,7 +1,10 @@
 <players-page>
 
-  <player-list players={players} filter="all"></player-list>
+  <div class="pagename">
+    Players
+  </div>
 
+  <player-list players={players} filter="all"></player-list>
   <style>
   </style>
 

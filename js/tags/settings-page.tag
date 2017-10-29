@@ -1,6 +1,8 @@
 <settings-page>
 
-  <p>Settings Page</p>
+  <div class="pagename">
+    Settings
+  </div>
 
   <style>
   </style>

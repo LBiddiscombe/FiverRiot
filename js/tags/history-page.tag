@@ -1,6 +1,8 @@
 <history-page>
 
-  <p>History Page</p>
+  <div class="pagename">
+    History
+  </div>
 
   <style>
   </style>

@@ -4,7 +4,7 @@
     <div class="player-box-left">
       <img show={!selected && team1} src="images\shirt-red.png">
       <img show={!selected && team2} src="images\shirt-white.png">
-      <img show={!selected && tbc} src="images\shirt-black.png">
+      <img show={!selected && (tbc || team0)} src="images\shirt-black.png">
       <a show={ selected } onclick="{ pay }">
         <span class="selected icon is-large anim">
           <i class="fa fa-3x fa-gbp"></i>
@@ -105,8 +105,9 @@
 
 
     setTeamColours() {
-      self.team1 = (self.parent.opts.filter == "teams" && self.i < 5 && self.player.id != 0) || self.parent.opts.filter == "all" || self.parent.opts.filter == "subs"
+      self.team1 = (self.parent.opts.filter == "teams" && self.i < 5 && self.player.id != 0)
       self.team2 = self.parent.opts.filter == "teams" && self.i >= 5
+      self.team0 = self.parent.opts.filter == "all" || self.parent.opts.filter == "subs"
     }
     self.setTeamColours()
 

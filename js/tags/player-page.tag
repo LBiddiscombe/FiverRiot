@@ -51,7 +51,17 @@
 
   <style>
     form {
-      margin: 2rem;
+      margin: 0 0.3rem;
+    }
+
+    .field:not(:last-child) {
+      margin-bottom: 0.3rem;
+    }
+
+    .input,
+    .box {
+      border-radius: 0;
+      box-shadow: none;
     }
   </style>
 
