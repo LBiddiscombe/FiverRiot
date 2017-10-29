@@ -21,8 +21,9 @@
     </a>
 
   </nav>
-  <player-list filter="teams" locked={ locked }></player-list>
+  <player-list players={players} filter="teams" locked={ locked }></player-list>
   <game-page-pay ref="payModal"></game-page-pay>
+  <game-page-subs players={subs} ref="subsModal"></game-page-subs>
 
   <style>
     nav {
@@ -85,24 +86,30 @@
         day: 'numeric'
       }
       self.gameDate = newDate.toLocaleString('en-us', options)
+      self.players = game.players || []
+      self.subs = game.subs || []
       self.locked = game.locked
-      RiotControl.trigger('get_players', "teams")
       self.update()
     }
 
     onShowPayment(playerIdx, val) {
       self.refs.payModal.show(playerIdx, val)
-      self.update()
+    }
+
+    onShowSubs() {
+      self.refs.subsModal.show()
     }
 
     self.on('before-mount', () => {
       RiotControl.on('game_changed', self.onGameChanged)
       RiotControl.on('show_payment', self.onShowPayment)
+      RiotControl.on('show_subs', self.onShowSubs)
     })
 
     self.on('unmount', () => {
       RiotControl.off('game_changed', self.onGameChanged)
       RiotControl.off('show_payment', self.onShowPayment)
+      RiotControl.off('show_subs', self.onShowSubs)
     })
   </script>
 

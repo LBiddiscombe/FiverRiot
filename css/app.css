@@ -6,8 +6,7 @@
   --header-height: 6.6rem;
   --main-bg-color: #e1e2e1;
   --playerbox-bg-color: white;
-  --team1-color: #f44336;
-  --team2-color: white;
+  --shirt-image: url('images/shirt.png');
 }
 
 html {

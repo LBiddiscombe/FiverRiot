@@ -2,10 +2,9 @@
 
   <div if={ show } class="player-box {selected: selected, paid: player.paid > 0, anim: tbc }">
     <div class="player-box-left">
-      <span show={ !selected } class="icon fa-stack fa-lg is-large">
-        <i class="fa fa-user fa-stack-2x { team1 : team1, team2: team2, fa-exclamation: tbc, anim: tbc }"></i>
-        <i class="fa fa-user-o fa-stack-2x"></i>
-      </span>
+      <img show={!selected && team1} src="images\shirt-red.png">
+      <img show={!selected && team2} src="images\shirt-white.png">
+      <img show={!selected && tbc} src="images\shirt-black.png">
       <a show={ selected } onclick="{ pay }">
         <span class="selected icon is-large anim">
           <i class="fa fa-3x fa-gbp"></i>
@@ -25,7 +24,7 @@
       </a>
       <a show="{ tbc }" onclick="{ sub }">
         <span class="icon is-large anim">
-          <i class="fa fa-3x fa-chevron-circle-right"></i>
+          <i class="fa fa-2x fa-chevron-circle-right"></i>
         </span>
       </a>
     </div>
@@ -74,14 +73,6 @@
 
     .fa-user-o {
       color: #5f5f5f;
-    }
-
-    .fa-user.team1 {
-      color: var(--team1-color)
-    }
-
-    .fa-user.team2 {
-      color: var(--team2-color);
     }
 
     .player-box-left a {
@@ -153,8 +144,8 @@
       RiotControl.trigger('show_payment', self.i, self.player.paid)
     }
 
-    sub(e) {
-      RiotControl.trigger('sub_player', self.i)
+    sub() {
+      RiotControl.trigger('show_subs')
     }
 
     onClearSelected() {

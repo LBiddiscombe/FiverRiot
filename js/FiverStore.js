@@ -10,39 +10,28 @@ function FiverStore() {
     .then(res => res.json())
     .then(res => {
       self.fiver = res
+      updateSubs()
       setTimeout(function() {
         riot.mount('fiver-app')
       }, 0)
     })
+
+  var updateSubs = function() {
+    self.fiver.games[self.fiver.gameCount - 1].subs = self.fiver.players.filter(
+      p =>
+        !self.fiver.games[self.fiver.gameIndex].players
+          .map(p2 => p2.id)
+          .includes(p.id)
+    )
+  }
 
   //#region Games
   self.on('init_game_page', () => {
     self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
   })
 
-  self.on('get_players', mode => {
-    switch (mode) {
-      case 'teams':
-        self.trigger(
-          'players_changed',
-          self.fiver.games[self.fiver.gameIndex].players
-        )
-        break
-      case 'subs':
-        self.trigger(
-          'players_changed',
-          self.fiver.players.filter(
-            p =>
-              !self.fiver.games[self.fiver.gameIndex].players
-                .map(p2 => p2.id)
-                .includes(p.id)
-          )
-        )
-        break
-      default:
-        self.trigger('players_changed', self.fiver.players)
-        break
-    }
+  self.on('get_all_players', () => {
+    self.trigger('players_changed', self.fiver.players)
   })
 
   self.on('prev_week', () => {
@@ -90,11 +79,13 @@ function FiverStore() {
         }
       }
 
+      updateSubs()
       self.swapList = []
       self.trigger(
         'players_changed',
         self.fiver.games[self.fiver.gameIndex].players
       )
+      self.trigger('subs_changed', self.fiver.games[self.fiver.gameIndex].subs)
       return
     }
 
@@ -168,10 +159,6 @@ function FiverStore() {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
-  })
-
-  self.on('sub_player', index => {
-    route('/subs/' + self.fiver.games[self.fiver.gameIndex].players[index].name)
   })
 
   self.on('clear_swaps', () => {

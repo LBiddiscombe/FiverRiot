@@ -3,12 +3,12 @@
     <div class="modal-background" onclick={ onClose }></div>
     <div class="modal-card">
       <header>
-        <p class="modal-card-title has-text-centered">Replacing { playerOutName }</p>
+        <p class="modal-card-title has-text-centered">Pick Replacement</p>
         <br>
       </header>
       <section class="modal-card-body">
 
-        <player-list filter="subs"></player-list>
+        <player-list players={subs} filter="subs"></player-list>
       </section>
     </div>
   </div>
@@ -35,22 +35,36 @@
 
   <script>
     var self = this
-    self.open = true
+    self.open = false
+
+    onPlayerSelected(subs) {
+      self.subs = subs
+      self.onClose()
+    }
+
+    show() {
+      self.open = true
+      self.update()
+    }
 
     onClose() {
       self.open = false
-      route('/')
       RiotControl.trigger('clear_swaps')
+      RiotControl.trigger('clear_selected')
+      riot.update()
     }
 
-    // Tag Lifecycle events
-    self.on('route', (name) => {
-      self.playerOutName = name
-      self.update()
+    self.on('before-mount', () => {
+      RiotControl.on('subs_changed', self.onPlayerSelected)
     })
 
     self.on('mount', () => {
-      RiotControl.trigger('get_players', "subs")
+      self.subs = opts.players
+      self.update()
+    })
+
+    self.on('unmount', () => {
+      RiotControl.off('subs_changed', self.onPlayerSelected)
     })
 
   </script>

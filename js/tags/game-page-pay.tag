@@ -103,6 +103,7 @@
       self.allowPayment = false
       self.playerIdx = idx
       self.open = true
+      self.update()
     }
 
     onClose() {

@@ -22,6 +22,7 @@
     self.players = []
 
     var updateFlip = function () {
+      if (!this.refs.person) { return }
       flip = new FLIP.group(
         this.refs.person.map(function (person) {
           return {
@@ -39,10 +40,10 @@
     }.bind(self)
 
     onPlayersChanged(players) {
-      self.players = players
+
       self.empty = []
 
-      if (self.players.length < 10) {
+      if (self.players.length > 0 && self.players.length < 10) {
         const missing = 10 - self.players.length
         for (i = 0; i < missing; i++) {
           self.empty.push({
@@ -59,22 +60,30 @@
     }
 
     self.on('update', () => {
-      updateFlip()
-      flip.first()
+      if (flip) {
+        updateFlip()
+        flip.first()
+      }
     })
 
     self.on('updated', () => {
-      flip.last()
-      flip.invert()
-      flip.play()
+      if (flip) {
+        flip.last()
+        flip.invert()
+        flip.play()
+      }
+      if (opts.players) { self.players = opts.players }
     })
 
     self.on('before-mount', () => {
+
       RiotControl.on('players_changed', self.onPlayersChanged)
 
     })
 
     self.on('mount', () => {
+      self.players = opts.players
+      self.update()
       updateFlip()
 
       // on the teams screen set the column height when even number of players
