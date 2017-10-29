@@ -10,6 +10,9 @@
       <route path="/subs/*">
         <game-page-subs></game-page-subs>
       </route>
+      <route path="/players/*">
+        <player-page></player-page>
+      </route>
       <route path="/players">
         <players-page></players-page>
       </route>

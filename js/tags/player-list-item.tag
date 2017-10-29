@@ -126,6 +126,7 @@
       // player list logic goes here
       switch (self.parent.opts.filter) {
         case "all":
+          route('/players/' + self.player.id)
           break
         case "subs":
           route('/')

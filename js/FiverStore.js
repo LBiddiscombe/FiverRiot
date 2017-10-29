@@ -19,7 +19,7 @@ function FiverStore() {
   var updateSubs = function() {
     self.fiver.games[self.fiver.gameCount - 1].subs = self.fiver.players.filter(
       p =>
-        !self.fiver.games[self.fiver.gameIndex].players
+        !self.fiver.games[self.fiver.gameCount - 1].players
           .map(p2 => p2.id)
           .includes(p.id)
     )
@@ -50,6 +50,20 @@ function FiverStore() {
   //endregion
 
   //#region Player Logic
+  self.on('save_player', player => {
+    gamePlayerIdx = self.fiver.games[
+      self.fiver.gameCount - 1
+    ].players.findIndex(p => p.id == player.id)
+    if (gamePlayerIdx) {
+      console.log(gamePlayerIdx)
+      self.fiver.games[self.fiver.gameCount - 1].players[gamePlayerIdx] = player
+    }
+    self.trigger(
+      'players_changed',
+      self.fiver.games[self.fiver.gameIndex].players
+    )
+  })
+
   self.on('player_selected', (idx, playerId) => {
     // same player selected
     if (idx === self.swapList[0] && playerId === -1) {
