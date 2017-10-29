@@ -98,7 +98,7 @@
       self.player.weighting = Number(self.refs.playerWeighting.value)
       self.player.balance = Number(self.refs.playerBalance.value)
 
-      route('/')
+      route('/players')
 
       RiotControl.trigger('save_player', self.player)
     }
