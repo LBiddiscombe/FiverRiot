@@ -11,17 +11,17 @@
   <script>
     var self = this
 
-    onPlayersChanged(players) {
+    onGotPlayers(players) {
       self.players = players
       self.update()
     }
 
     self.on('before-mount', () => {
-      RiotControl.on('players_changed', self.onPlayersChanged)
+      RiotControl.on('got_all_players', self.onGotPlayers)
     })
 
     self.on('unmount', () => {
-      RiotControl.off('players_changed', self.onPlayersChanged)
+      RiotControl.off('got_all_players', self.onGotPlayers)
     })
 
     self.on('mount', () => {

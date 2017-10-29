@@ -30,8 +30,8 @@ function FiverStore() {
     self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
   })
 
-  self.on('get_all_players', () => {
-    self.trigger('players_changed', self.fiver.players)
+  self.on('get_all_games', () => {
+    self.trigger('got_all_games', self.fiver.games)
   })
 
   self.on('prev_week', () => {
@@ -50,6 +50,10 @@ function FiverStore() {
   //endregion
 
   //#region Player Logic
+  self.on('get_all_players', () => {
+    self.trigger('got_all_players', self.fiver.players)
+  })
+
   self.on('save_player', player => {
     gamePlayerIdx = self.fiver.games[
       self.fiver.gameCount - 1
