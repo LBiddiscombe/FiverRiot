@@ -51,6 +51,7 @@
     .gameweek {
       flex: 1;
       text-align: center;
+      font-weight: 300;
     }
 
     a,

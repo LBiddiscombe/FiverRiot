@@ -30,7 +30,7 @@
       background-image: var(--header-image);
       background-size: cover;
       background-color: var(--header-bg-color);
-      background-blend-mode: overlay;
+      background-blend-mode: multiply;
       min-height: var(--header-height);
       width: 100vw;
       max-width: 768px;

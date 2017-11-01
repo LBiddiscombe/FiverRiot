@@ -5,7 +5,7 @@
       <i class="fa fa-bars "></i>
     </div>
     <div class="navitem navcenter ">
-      Fiver
+      Thursday Night Footy
     </div>
     <div class="navitem navright " onclick={ onPick }>
       <i class="fa fa-random "></i>
@@ -81,7 +81,7 @@
       background-image: var(--header-image);
       background-position: 0px -56px;
       background-size: cover;
-      background-blend-mode: overlay;
+      background-blend-mode: multiply;
       width: 100vw;
       max-width: 768px;
       z-index: 10;

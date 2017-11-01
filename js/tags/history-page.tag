@@ -12,18 +12,22 @@
       </select>
     </span>
 
-    <table class="table is-narrow is-striped">
+    <table class="table is-narrow">
       <thead>
         <tr>
           <th>Date</th>
           <th>Name</th>
+          <th>Balance</th>
           <th>Paid</th>
         </tr>
       </thead>
       <tbody>
-        <tr each="{ gamePlayer in gamePlayers }">
-          <td>{gamePlayer.gameDate}</td>
+        <tr each="{ gamePlayer in gamePlayers }" class={showdate: gamePlayer.showDate}>
+          <td>
+            <div show={gamePlayer.showDate}>{gamePlayer.gameDate}</div>
+          </td>
           <td>{gamePlayer.name}</td>
+          <td>{asMoney(gamePlayer.balance)}</td>
           <td>{asMoney(gamePlayer.paid)}</td>
         </tr>
       </tbody>
@@ -38,6 +42,19 @@
     table {
       margin-top: 0.3rem;
       width: 100%;
+
+    }
+
+    table {
+      font-size: 1rem;
+    }
+
+    .table td {
+      border-color: white;
+    }
+
+    .showdate:not(:first-child) {
+      border-top: 2px solid var(--main-bg-color);
     }
   </style>
 
@@ -54,9 +71,25 @@
     }
 
     filterPlayers() {
+
+      let shownGames = []
+
       self.gamePlayers = self.allRows.filter(r => {
         return self.refs.playerFilter.value == 'All Players' || self.refs.playerFilter.value == r.name
       })
+
+      // When viewing all players mark the first occurrence of a date to break up the list
+
+      self.gamePlayers.forEach((p) => {
+        if (shownGames.indexOf(p.gameDate) != -1 && self.refs.playerFilter.value == 'All Players') {
+          p.showDate = false
+        }
+        else {
+          p.showDate = true
+          shownGames.push(p.gameDate)
+        }
+      })
+
       self.update()
     }
 
@@ -74,10 +107,11 @@
         })]
       }, [])
 
-      self.gamePlayers = [...self.allRows]
+      self.allRows.sort((a, b) => {
+        return new Date(b.gameDate) - new Date(a.gameDate)
+      })
 
-      self.update()
-
+      self.filterPlayers()
     }
 
     self.on('before-mount', () => {
