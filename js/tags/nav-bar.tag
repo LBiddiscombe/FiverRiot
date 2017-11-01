@@ -107,16 +107,18 @@
   </style>
 
   <script>
-    this.isActive = false
+    self = this
+    self.isActive = false
 
     toggleMenu() {
-      this.isActive = !this.isActive
+      self.isActive = !self.isActive
     }
 
     onPick() {
-      this.isActive = false
+      self.isActive = false
       RiotControl.trigger('pick_teams')
     }
+
   </script>
 
 </nav-bar>

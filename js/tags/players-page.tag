@@ -1,11 +1,15 @@
 <players-page>
 
   <div class="pagename">
-    Players
+    <i class="fa fa-users "></i>Players
   </div>
 
   <player-list players={players} filter="all"></player-list>
+
   <style>
+    .pagename i {
+      margin-right: 0.5rem;
+    }
   </style>
 
   <script>

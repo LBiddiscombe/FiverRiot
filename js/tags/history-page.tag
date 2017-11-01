@@ -1,7 +1,7 @@
 <history-page>
 
   <div class="pagename">
-    History
+    <i class="fa fa-history "></i>History
   </div>
 
   <div class="wrap">
@@ -55,6 +55,10 @@
 
     .showdate:not(:first-child) {
       border-top: 2px solid var(--main-bg-color);
+    }
+
+    .pagename i {
+      margin-right: 0.5rem;
     }
   </style>
 
