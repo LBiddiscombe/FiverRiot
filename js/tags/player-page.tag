@@ -67,22 +67,11 @@
 
   <script>
     var self = this
-    self.player = {}
-
-    //Helpers
-    toDecimal(value, decimals) {
-      val = parseFloat(value);
-      return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
-    }
-
-    maskMoney(e) {
-      var val = e.target.value.replace(".", "");
-      if (val == "") {
-        return;
-      }
-
-      val = val / 100;
-      e.target.value = val === 0 ? "" : self.toDecimal(val, 2).toFixed(2);
+    self.mixin('moneyMixin')
+    self.player = {
+      "name": '',
+      "weighting": 3,
+      "balance": 0.00
     }
 
     togglePosNeg(e) {
@@ -114,9 +103,11 @@
     }
 
     self.on('route', id => {
-      self.player = fiverStore.fiver.players[id]
-      self.refs.playerBalance.value = self.toDecimal(self.player.balance || 0, 2).toFixed(2)
-      console.log(self.refs.playerBalance.value)
+      if (fiverStore.fiver.players[id]) {
+        self.player = fiverStore.fiver.players[id]
+        self.refs.playerBalance.value = self.toDecimal(self.player.balance || 0, 2).toFixed(2)
+        console.log(self.refs.playerBalance.value)
+      }
       self.allowSave = false
     })
   </script>

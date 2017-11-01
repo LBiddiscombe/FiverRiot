@@ -7,7 +7,7 @@
       <section class="modal-card-body">
         <div class="field has-addons level-item">
           <p class="control">
-            <a class="button is-primary is-large" onClick={ togglePosNeg }>
+            <a class="button is-light is-large" onClick={ togglePosNeg }>
               +/-
             </a>
           </p>
@@ -42,7 +42,7 @@
 
   <style>
     .modal-card {
-      margin: 0 40px 160px;
+      margin: 0 20px 160px;
       min-width: 18em;
     }
 
@@ -54,27 +54,18 @@
       background-color: transparent !important;
       overflow-x: hidden;
     }
+
+    .input,
+    .box {
+      border-radius: 0;
+      box-shadow: none;
+    }
   </style>
 
   <script>
     var self = this
     self.open = false
-
-    //Helpers
-    toDecimal(value, decimals) {
-      val = parseFloat(value);
-      return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
-    }
-
-    maskMoney(e) {
-      var val = e.target.value.replace(".", "");
-      if (val == "") {
-        return;
-      }
-
-      val = val / 100;
-      e.target.value = val === 0 ? "" : self.toDecimal(val, 2).toFixed(2);
-    }
+    self.mixin('moneyMixin')
 
     togglePosNeg(e) {
 

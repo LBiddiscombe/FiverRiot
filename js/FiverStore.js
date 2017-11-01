@@ -58,10 +58,20 @@ function FiverStore() {
     gamePlayerIdx = self.fiver.games[
       self.fiver.gameCount - 1
     ].players.findIndex(p => p.id == player.id)
-    if (gamePlayerIdx) {
+
+    // update existing player
+    if (gamePlayerIdx != -1) {
       console.log(gamePlayerIdx)
       self.fiver.games[self.fiver.gameCount - 1].players[gamePlayerIdx] = player
+
+      // create new player
+    } else {
+      player.id = self.fiver.players.length
+      self.fiver.players.push(player)
+      console.log(self.fiver.players)
+      updateSubs()
     }
+
     self.trigger(
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players

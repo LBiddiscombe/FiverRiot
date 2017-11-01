@@ -65,14 +65,7 @@
   <script>
     var self = this
     self.gamePlayers = []
-
-    asMoney(value) {
-      if (!value || value === "NaN") {
-        return "£0.00"
-      }
-      let money = Math.round(value * Math.pow(10, 2)) / Math.pow(10, 2)
-      return "£" + money.toFixed(2)
-    }
+    self.mixin('moneyMixin')
 
     filterPlayers() {
 

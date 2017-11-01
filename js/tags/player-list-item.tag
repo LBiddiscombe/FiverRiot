@@ -98,11 +98,11 @@
 
   <script>
     var self = this
+    self.mixin('moneyMixin')
 
     self.selected = false
     self.tbc = (!self.player.id && self.parent.opts.filter != 'subs')
     self.show = !self.tbc || self.parent.opts.filter != 'all'
-
 
     setTeamColours() {
       self.team1 = (self.parent.opts.filter == "teams" && self.i < 5 && self.player.id != 0)
@@ -110,15 +110,6 @@
       self.team0 = self.parent.opts.filter == "all" || self.parent.opts.filter == "subs"
     }
     self.setTeamColours()
-
-
-    asMoney(value) {
-      if (!value || value === "NaN") {
-        return "£0.00"
-      }
-      let money = Math.round(value * Math.pow(10, 2)) / Math.pow(10, 2)
-      return "£" + money.toFixed(2)
-    }
 
     handleSelected() {
 

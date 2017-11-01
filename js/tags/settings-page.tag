@@ -22,6 +22,9 @@
     var self = this
     const style = getComputedStyle(document.body)
     var curHSL = style.getPropertyValue('--header-bg-color')
+
+    console.log(curHSL.substr(1, 3))
+
     if (curHSL.substr(1, 3) == 'hsl') {
       var regExp = /\(([^)]+)\)/;
       var matches = regExp.exec(curHSL);
@@ -32,7 +35,7 @@
     onInput() {
       self.hue = self.refs.hueslider.value
       hslTemplate[0] = self.hue
-      newHSL = "hsl(" + hslTemplate[0] + "," + hslTemplate[1] + "," + hslTemplate[2] + ")"
+      newHSL = " hsl(" + hslTemplate[0] + "," + hslTemplate[1] + "," + hslTemplate[2] + ")"
       document.documentElement.style.setProperty('--header-bg-color', newHSL)
     }
 
