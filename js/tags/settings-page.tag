@@ -23,8 +23,6 @@
     const style = getComputedStyle(document.body)
     var curHSL = style.getPropertyValue('--header-bg-color')
 
-    console.log(curHSL.substr(1, 3))
-
     if (curHSL.substr(1, 3) == 'hsl') {
       var regExp = /\(([^)]+)\)/;
       var matches = regExp.exec(curHSL);

@@ -106,7 +106,6 @@
       if (fiverStore.fiver.players[id]) {
         self.player = fiverStore.fiver.players[id]
         self.refs.playerBalance.value = self.toDecimal(self.player.balance || 0, 2).toFixed(2)
-        console.log(self.refs.playerBalance.value)
       }
       self.allowSave = false
     })
