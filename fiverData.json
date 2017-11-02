@@ -1,4 +1,11 @@
 {
+  "settings": {
+    "clubName": "Thursday Night Footy",
+    "teamSize": 5,
+    "gameFrequency": 7,
+    "gameFee": 6.0,
+    "pitchFee": 61.2
+  },
   "gameIndex": 15,
   "gameCount": 16,
   "players": [

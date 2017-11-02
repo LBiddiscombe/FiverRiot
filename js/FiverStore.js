@@ -5,6 +5,33 @@ function FiverStore() {
   var fiver = {}
   self.swapList = []
 
+  var moneyMixin = {
+    asMoney: function(value) {
+      if (!value || value === 'NaN') {
+        return '£0.00'
+      }
+      let money = Math.round(value * Math.pow(10, 2)) / Math.pow(10, 2)
+      return '£' + money.toFixed(2)
+    },
+
+    toDecimal: function(value, decimals) {
+      val = parseFloat(value)
+      return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals)
+    },
+
+    maskMoney: function(e) {
+      var val = e.target.value.replace('.', '')
+      if (val == '') {
+        return
+      }
+
+      val = val / 100
+      e.target.value = val === 0 ? '' : this.toDecimal(val, 2).toFixed(2)
+    }
+  }
+
+  riot.mixin('moneyMixin', moneyMixin)
+
   //temp data load from project JSON file, move to JSONBIN for release
   fetch('fiverData.json')
     .then(res => res.json())
@@ -23,6 +50,30 @@ function FiverStore() {
           .map(p2 => p2.id)
           .includes(p.id)
     )
+  }
+
+  var copyGame = function(prevGame, dt) {
+    prevGame.players.forEach(function(p) {
+      if (p.id != 0) {
+        var player = self.fiver.players.find(player => player.id == p.id)
+        p.balance =
+          moneyMixin.toDecimal(p.balance, 2) -
+          moneyMixin.toDecimal(self.fiver.settings.gameFee, 2)
+        player.balance = moneyMixin.toDecimal(p.balance, 2)
+      }
+    })
+
+    const newGame = JSON.parse(JSON.stringify(prevGame))
+    newGame.gameDate = dt
+
+    // remove payments on copy
+    newGame.players.forEach(function(player) {
+      delete player.paid
+    })
+
+    prevGame.locked = true
+    self.fiver.games.push(newGame)
+    gameCount = self.fiver.games.length
   }
 
   //#region Games
@@ -44,9 +95,27 @@ function FiverStore() {
   self.on('next_week', () => {
     if (self.fiver.gameIndex < self.fiver.games.length - 1) {
       self.fiver.gameIndex++
+      self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
+    } else {
+      // trigger new game dialog here
+      dt = new Date(self.fiver.games[self.fiver.gameIndex].gameDate)
+      dt = dt.setDate(dt.getDate() + self.fiver.settings.gameFrequency)
+      dt = new Date(dt).toISOString().split('T')[0]
+      self.trigger('show_add_game', dt)
     }
-    self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
   })
+
+  self.on('add_game', dt => {
+    copyGame(self.fiver.games[self.fiver.gameIndex], dt)
+    self.fiver.gameIndex++
+    console.log(self.fiver.games[self.fiver.gameIndex])
+    self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
+    self.trigger(
+      'players_changed',
+      self.fiver.games[self.fiver.gameIndex].players
+    )
+  })
+
   //endregion
 
   //#region Player Logic
@@ -182,6 +251,7 @@ function FiverStore() {
 
   self.on('add_payment', (index, value) => {
     self.fiver.games[self.fiver.gameIndex].players[index].paid = value
+    self.fiver.games[self.fiver.gameIndex].players[index].balance += value
 
     self.trigger(
       'players_changed',

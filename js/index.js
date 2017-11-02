@@ -5,34 +5,8 @@ Copy current live datat to JSONBin /
 
 */
 
-var moneyMixin = {
-  asMoney: function(value) {
-    if (!value || value === 'NaN') {
-      return '£0.00'
-    }
-    let money = Math.round(value * Math.pow(10, 2)) / Math.pow(10, 2)
-    return '£' + money.toFixed(2)
-  },
-
-  toDecimal: function(value, decimals) {
-    val = parseFloat(value)
-    return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals)
-  },
-
-  maskMoney: function(e) {
-    var val = e.target.value.replace('.', '')
-    if (val == '') {
-      return
-    }
-
-    val = val / 100
-    e.target.value = val === 0 ? '' : this.toDecimal(val, 2).toFixed(2)
-  }
-}
-
 var fiverStore = new FiverStore()
 RiotControl.addStore(fiverStore)
-riot.mixin('moneyMixin', moneyMixin)
 
 /*
 //DELETE

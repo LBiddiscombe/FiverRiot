@@ -22,6 +22,7 @@
 
   </nav>
   <player-list players={players} filter="teams" locked={ locked }></player-list>
+  <game-page-add ref="addGameModal"></game-page-add>
   <game-page-pay ref="payModal"></game-page-pay>
   <game-page-subs players={subs} ref="subsModal"></game-page-subs>
 
@@ -101,16 +102,22 @@
       self.refs.subsModal.show()
     }
 
+    onShowAdd(dt) {
+      self.refs.addGameModal.show(dt)
+    }
+
     self.on('before-mount', () => {
       RiotControl.on('game_changed', self.onGameChanged)
       RiotControl.on('show_payment', self.onShowPayment)
       RiotControl.on('show_subs', self.onShowSubs)
+      RiotControl.on('show_add_game', self.onShowAdd)
     })
 
     self.on('unmount', () => {
       RiotControl.off('game_changed', self.onGameChanged)
       RiotControl.off('show_payment', self.onShowPayment)
       RiotControl.off('show_subs', self.onShowSubs)
+      RiotControl.off('show_add_game', self.onShowAdd)
     })
   </script>
 
