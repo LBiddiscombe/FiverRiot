@@ -66,12 +66,14 @@ function FiverStore() {
     const newGame = JSON.parse(JSON.stringify(prevGame))
     newGame.gameDate = dt
 
+    //remove subs list from previous game as irrelevant for save
+    prevGame.locked = true
+    delete prevGame.subs
+
     // remove payments on copy
     newGame.players.forEach(function(player) {
       delete player.paid
     })
-
-    prevGame.locked = true
     self.fiver.games.push(newGame)
     gameCount = self.fiver.games.length
   }
@@ -108,7 +110,6 @@ function FiverStore() {
   self.on('add_game', dt => {
     copyGame(self.fiver.games[self.fiver.gameIndex], dt)
     self.fiver.gameIndex++
-    console.log(self.fiver.games[self.fiver.gameIndex])
     self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
     self.trigger(
       'players_changed',
@@ -130,14 +131,12 @@ function FiverStore() {
 
     // update existing player
     if (gamePlayerIdx != -1) {
-      console.log(gamePlayerIdx)
       self.fiver.games[self.fiver.gameCount - 1].players[gamePlayerIdx] = player
 
       // create new player
     } else {
       player.id = self.fiver.players.length
       self.fiver.players.push(player)
-      console.log(self.fiver.players)
       updateSubs()
     }
 
