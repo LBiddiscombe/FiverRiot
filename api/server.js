@@ -8,17 +8,25 @@ var fiverDB = require(dbFile)
 
 http
   .createServer(function(req, res) {
-    fiverDB.lastUpdate = Date()
+    if (req.method == 'POST') {
+      var body = ''
+      req.on('data', function(data) {
+        body += data
+      })
+      req.on('end', function() {
+        fs.writeFile(dbFile, body, 'utf8', function(err) {
+          if (err) {
+            console.log(err)
+          }
+        })
+      })
+    }
 
-    const content = JSON.stringify(fiverDB, null, 2)
-    fs.writeFile(dbFile, content, 'utf8', function(err) {
-      if (err) {
-        res.writeHead(200, { 'Content-Type': 'text/html' })
-        res.end(req.url + ' - ' + err)
-      }
-
+    if (req.method == 'GET') {
+      fiverDB = require(dbFile)
       res.writeHead(200, { 'Content-Type': 'text/html' })
-      res.end(req.url + ' - ' + JSON.stringify(fiverDB.players, null, 2))
-    })
-  })
+      res.end(JSON.stringify(fiverDB, null, 2))
+    }
+
+  }
   .listen(process.env.PORT)

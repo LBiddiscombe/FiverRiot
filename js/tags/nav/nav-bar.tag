@@ -2,7 +2,7 @@
 
   <div class="navbar">
     <div class="navitem navleft" onclick={ toggleMenu }>
-      <i class="fa fa-bars "></i>
+      <i class="fa fa-bars"></i>
     </div>
     <div class="navitem navcenter ">
       Thursday Night Footy
