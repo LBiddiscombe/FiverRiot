@@ -33,6 +33,7 @@ function FiverStore() {
   riot.mixin('moneyMixin', moneyMixin)
 
   //temp data load from project JSON file, move to JSONBIN for release
+  /*
   fetch('fiverData.json')
     .then(res => res.json())
     .then(res => {
@@ -42,6 +43,30 @@ function FiverStore() {
         riot.mount('fiver-app')
       }, 0)
     })
+    */
+
+  var endpoint = 'http://fiver.azurewebsites.net/api'
+  fetch(endpoint)
+    .then(blob => blob.json())
+    .then(data => {
+      self.fiver = data
+      updateSubs()
+      setTimeout(function() {
+        riot.mount('fiver-app')
+      }, 0)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+  var saveData = function() {
+    fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify(self.fiver)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
 
   var updateSubs = function() {
     self.fiver.games[self.fiver.gameCount - 1].subs = self.fiver.players.filter(
@@ -241,6 +266,8 @@ function FiverStore() {
     teams.sort((a, b) => {
       return a.team - b.team || a.name.localeCompare(b.name)
     })
+
+    //saveData()
 
     self.trigger(
       'players_changed',
