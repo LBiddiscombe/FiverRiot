@@ -7,13 +7,13 @@
           <span class="icon is-large">
             <i class="fa {fa-square-o: !allowSave, fa-check-square-o: allowSave}"></i>
           </span>
-          <span>{toggleLabel}</span>
+          <span>{ toggleLabel }</span>
         </a>
         <br>
 
-        <input type="button" value="Create Game" class="button is-large is-success is-fullwidth" id="pay-button" data-amount=0 disabled={
-          !allowSave } onClick={ parent.save }>
-        <small>{toggleHelp}</small>
+        <input type="button" value={buttonLabel} class="button is-large is-success is-fullwidth" id="pay-button" data-amount=0 disabled={
+          !allowSave } onClick={ onSave }>
+        <small>{helpText}</small>
       </p>
     </div>
   </div>
@@ -23,16 +23,29 @@
 
   <script>
     var self = this
-    self.toggleLabel = opts.toggleLabel
-    self.toggleHelp = opts.toggleHelp
 
     toggleSaveButton() {
       self.allowSave = !self.allowSave
     }
 
-    onSave() {
-      self.parent.save()
+    open(toggleLabel, buttonLabel, helpText) {
+      self.toggleLabel = toggleLabel
+      self.buttonLabel = buttonLabel
+      self.helpText = helpText
+      self.allowSave = false
+      self.update()
     }
+
+    onSave() {
+      self.parent.onSave()
+    }
+
+/*
+    self.on('update', () => {
+      console.log("update", self.toggleLabel)
+    })
+    */
+
   </script>
 
 </save-panel>

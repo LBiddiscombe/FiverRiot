@@ -33,20 +33,7 @@
         </span>
       </p>
     </div>
-
-    <div class="field box">
-      <p class="control">
-        <a class="button is-medium is-white is-fullwidth" onClick={ toggleSaveButton }>
-          <span class="icon is-large">
-            <i class="fa {fa-square-o: !allowSave, fa-check-square-o: allowSave}"></i>
-          </span>
-          <span> Confirm Changes</span>
-        </a>
-        <br>
-        <input type="button" value="Save" class="button is-large has-text-centered is-success is-fullwidth is-disabled" disabled={
-          !allowSave } onClick={ onSave }>
-      </p>
-    </div>
+    <save-panel ref="savePanel"></save-panel>
   </form>
 
   <style>
@@ -87,10 +74,6 @@
 
     }
 
-    toggleSaveButton() {
-      self.allowSave = !self.allowSave
-    }
-
     onSave() {
 
       self.player.name = self.refs.playerName.value
@@ -107,7 +90,7 @@
         self.player = fiverStore.fiver.players[id]
         self.refs.playerBalance.value = self.toDecimal(self.player.balance || 0, 2).toFixed(2)
       }
-      self.allowSave = false
+      self.refs.savePanel.open('Confirm Changes', 'Save', '')
     })
   </script>
 

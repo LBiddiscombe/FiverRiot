@@ -7,7 +7,6 @@
         <br>
       </header>
       <section class="modal-card-body">
-
         <player-list players={subs} filter="subs"></player-list>
       </section>
     </div>

@@ -18,24 +18,8 @@
               <i class="fa fa-gbp"></i>
             </span>
           </p>
-
         </div>
-        <div class="box">
-          <div class="field">
-            <p class="control">
-              <a class="button is-medium is-white is-fullwidth" onClick={ togglePayButton }>
-                <span class="icon is-large">
-                  <i class="fa {fa-square-o: !allowPayment, fa-check-square-o: allowPayment}"></i>
-                </span>
-                <span> Confirm Amount</span>
-              </a>
-              <br>
-
-              <input type="button" value="Pay" class="button is-large is-success is-fullwidth" id="pay-button" data-amount=0 disabled={
-                !allowPayment } onClick={ addPayment }>
-            </p>
-          </div>
-        </div>
+        <save-panel ref="savePanel"></save-panel>
       </section>
     </div>
   </div>
@@ -84,7 +68,7 @@
       self.allowPayment = !self.allowPayment
     }
 
-    addPayment() {
+    onSave() {
       RiotControl.trigger('add_payment', self.playerIdx, Number(self.refs.inputMoney.value))
       self.onClose()
     }
@@ -94,11 +78,13 @@
       self.allowPayment = false
       self.playerIdx = idx
       self.open = true
+      self.refs.savePanel.open('Confirm Amount', 'Pay', '')
       self.update()
     }
 
     onClose() {
       self.open = false
+      self.update()
       RiotControl.trigger('clear_swaps')
       RiotControl.trigger('clear_selected')
     }
