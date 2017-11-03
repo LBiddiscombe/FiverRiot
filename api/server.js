@@ -24,7 +24,7 @@ http
 
     if (req.method == 'GET') {
       fiverDB = require(dbFile)
-      res.writeHead(200, { 'Content-Type': 'text/html' })
+      res.writeHead(200, { 'Content-Type': 'application/json' })
       res.end(JSON.stringify(fiverDB, null, 2))
     }
   })
