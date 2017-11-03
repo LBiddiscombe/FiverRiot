@@ -6,6 +6,7 @@
   --header-text-color: #f6f7fc;
   --header-height: 6.6rem;
   --main-bg-color: #e1e2e1;
+  --main-bg-color: hsl(92, 10%, 90%);
   --playerbox-bg-color: white;
   --shirt-image: url('images/shirt.png');
 }
