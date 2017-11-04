@@ -32,36 +32,38 @@ function FiverStore() {
 
   riot.mixin('moneyMixin', moneyMixin)
 
-  //temp data load from project JSON file, move to JSONBIN for release
-  fetch('fiverData.json')
-    .then(res => res.json())
-    .then(res => {
-      self.fiver = res
-      updateSubs()
-      setTimeout(function() {
-        riot.mount('fiver-app')
-      }, 0)
-    })
-
   /*
-  var endpoint = 'http://fiver.azurewebsites.net/api'
-  fetch(endpoint)
-    .then(blob => blob.json())
-    .then(data => {
-      self.fiver = data
-      updateSubs()
-      setTimeout(function() {
-        riot.mount('fiver-app')
-      }, 0)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    */
+    TODO: When published update CORS settings for fiverfunctions
+    Allow -
+    https://functions.azure.com
+    https://functions-staging.azure.com
+    https://functions-next.azure.com
+    http://fiver.azurewebsites.net
+  */
+
+  var endpoint = 'https://fiverfunctions.azurewebsites.net/api/clubs/1'
+  var loadData = (function() {
+    fetch(endpoint)
+      .then(blob => blob.json())
+      .then(data => {
+        self.fiver = data[0]
+        updateSubs()
+        setTimeout(function() {
+          riot.mount('fiver-app')
+        }, 0)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  })()
 
   var saveData = function() {
+    var headers = new Headers()
+    headers.append('content-type', 'application/json')
+    headers.append('cache-control', 'no-cache')
     fetch(endpoint, {
       method: 'POST',
+      headers: headers,
       body: JSON.stringify(self.fiver)
     }).catch(err => {
       console.log(err)
@@ -267,7 +269,7 @@ function FiverStore() {
       return a.team - b.team || a.name.localeCompare(b.name)
     })
 
-    //saveData()
+    saveData()
 
     self.trigger(
       'players_changed',
