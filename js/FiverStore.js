@@ -5,7 +5,7 @@ function FiverStore() {
   var fiver = {}
   self.swapList = []
 
-  var moneyMixin = {
+  var fiverMixin = {
     asMoney: function(value) {
       if (!value || value === 'NaN') {
         return '£0.00'
@@ -30,7 +30,7 @@ function FiverStore() {
     }
   }
 
-  riot.mixin('moneyMixin', moneyMixin)
+  riot.mixin('fiverMixin', fiverMixin)
 
   /*
     TODO: When published update CORS settings for fiverfunctions
@@ -84,9 +84,9 @@ function FiverStore() {
       if (p.id != 0) {
         var player = self.fiver.players.find(player => player.id == p.id)
         p.balance =
-          moneyMixin.toDecimal(p.balance, 2) -
-          moneyMixin.toDecimal(self.fiver.settings.gameFee, 2)
-        player.balance = moneyMixin.toDecimal(p.balance, 2)
+          fiverMixin.toDecimal(p.balance, 2) -
+          fiverMixin.toDecimal(self.fiver.settings.gameFee, 2)
+        player.balance = fiverMixin.toDecimal(p.balance, 2)
       }
     })
 
@@ -105,9 +105,35 @@ function FiverStore() {
     gameCount = self.fiver.games.length
   }
 
+  var updateHue = function(hue) {
+    const style = getComputedStyle(document.body)
+    var curHSL = style.getPropertyValue('--header-bg-color')
+
+    if (curHSL.substr(1, 3) == 'hsl') {
+      var regExp = /\(([^)]+)\)/
+      var matches = regExp.exec(curHSL)
+      hsl = matches[1].split(',')
+      hsl[0] = hue
+      let newHeadHSL = ' hsl(' + hsl[0] + ',' + hsl[1] + ',' + hsl[2] + ')'
+      let newMainHSL = ' hsl(' + hsl[0] + ', 15%, 90%)'
+      document.documentElement.style.setProperty(
+        '--header-bg-color',
+        newHeadHSL
+      )
+      document.documentElement.style.setProperty('--main-bg-color', newMainHSL)
+    }
+  }
+
   //#region Games
+  self.on('save_settings', newSettings => {
+    self.fiver.settings.hue = newSettings.hueslider
+    updateHue(self.fiver.settings.hue)
+    saveData()
+  })
+
   self.on('init_game_page', () => {
     self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
+    updateHue(self.fiver.settings.hue)
   })
 
   self.on('get_all_games', () => {

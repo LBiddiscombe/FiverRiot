@@ -9,6 +9,8 @@
   --main-bg-color: hsl(92, 10%, 90%);
   --playerbox-bg-color: white;
   --shirt-image: url('images/shirt.png');
+  --top-color: hsl(92, 48%, 42%);
+  --bottom-color: hsl(92, 10%, 90%);
 }
 
 html {

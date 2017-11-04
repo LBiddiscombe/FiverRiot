@@ -44,17 +44,11 @@
     .field:not(:last-child) {
       margin-bottom: 0.3rem;
     }
-
-    .input,
-    .box {
-      border-radius: 0;
-      box-shadow: none;
-    }
   </style>
 
   <script>
     var self = this
-    self.mixin('moneyMixin')
+    self.mixin('fiverMixin')
     self.player = {
       "name": '',
       "weighting": 3,

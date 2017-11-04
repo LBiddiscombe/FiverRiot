@@ -32,12 +32,6 @@
       background-color: transparent !important;
       overflow-x: hidden;
     }
-
-    .input,
-    .box {
-      border-radius: 0;
-      box-shadow: none;
-    }
   </style>
 
   <script>

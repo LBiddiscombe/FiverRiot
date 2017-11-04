@@ -98,7 +98,7 @@
 
   <script>
     var self = this
-    self.mixin('moneyMixin')
+    self.mixin('fiverMixin')
 
     self.selected = false
     self.tbc = (!self.player.id && self.parent.opts.filter != 'subs')

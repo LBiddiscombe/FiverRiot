@@ -38,18 +38,12 @@
       background-color: transparent !important;
       overflow-x: hidden;
     }
-
-    .input,
-    .box {
-      border-radius: 0;
-      box-shadow: none;
-    }
   </style>
 
   <script>
     var self = this
     self.open = false
-    self.mixin('moneyMixin')
+    self.mixin('fiverMixin')
 
     togglePosNeg(e) {
 

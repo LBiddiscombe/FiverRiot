@@ -65,7 +65,7 @@
   <script>
     var self = this
     self.gamePlayers = []
-    self.mixin('moneyMixin')
+    self.mixin('fiverMixin')
 
     filterPlayers() {
 
