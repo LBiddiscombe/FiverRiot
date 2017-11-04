@@ -15,7 +15,9 @@ http
       })
       req.on('end', function() {
         fiverDB = body
-        fs.writeFile(dbFile, body, 'utf8', function(err) {
+        fs.writeFile('/local/AppData/fiverTest.json', body, 'utf8', function(
+          err
+        ) {
           if (err) {
             console.log(err)
           }

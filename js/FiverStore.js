@@ -49,7 +49,7 @@ function FiverStore() {
   fetch(endpoint)
     .then(blob => blob.json())
     .then(data => {
-      self.fiver = data
+      self.fiver = JSON.parse(data)
       updateSubs()
       setTimeout(function() {
         riot.mount('fiver-app')
@@ -267,7 +267,7 @@ function FiverStore() {
       return a.team - b.team || a.name.localeCompare(b.name)
     })
 
-    //saveData()
+    saveData()
 
     self.trigger(
       'players_changed',
