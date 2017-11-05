@@ -22,6 +22,9 @@
       <route path="/settings">
         <settings-page></settings-page>
       </route>
+      <route path="/about">
+        <about-page></about-page>
+      </route>
     </router>
   </div>
 
@@ -52,7 +55,9 @@
   <script>
     var self = this
 
-    document.querySelector('.loader').classList.remove('loader')
+    document.querySelector('.loader').style.display = 'none'
+    document.querySelector('.loadertop').style.display = 'none'
+    document.querySelector('.loadertext').style.display = 'none'
 
   </script>
 

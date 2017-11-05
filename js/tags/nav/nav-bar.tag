@@ -12,16 +12,19 @@
     </div>
     <div class="navmenu {show: isActive} ">
       <a class="navmenuitem " href="# " onclick={ toggleMenu }>
-        <i class="fa fa-futbol-o "></i>Game
+        <i class="fa fa-futbol-o "></i>GAME
       </a>
       <a class="navmenuitem " href="#players " onclick={ toggleMenu }>
-        <i class="fa fa-users "></i>Players
+        <i class="fa fa-users "></i>PLAYERS
       </a>
       <a class="navmenuitem " href="#history " onclick={ toggleMenu }>
-        <i class="fa fa-history "></i>History
+        <i class="fa fa-history "></i>HISTORY
       </a>
       <a class="navmenuitem " href="#settings " onclick={ toggleMenu }>
-        <i class="fa fa-cog "></i>Settings
+        <i class="fa fa-cog "></i>SETTINGS
+      </a>
+      <a class="navmenuitem " href="#about " onclick={ toggleMenu }>
+        <i class="fa fa-info-circle "></i>ABOUT
       </a>
     </div>
   </div>
@@ -89,12 +92,24 @@
 
     .navmenuitem {
       flex: 1;
-      margin: .5rem 1rem;
+      display: flex;
+      margin: .5rem 0.5rem;
       border-top: 1px solid var(--header-accent-color);
       padding-top: 0.5rem;
       color: var(--header-text-color);
       font-size: 1.5rem;
-      font-weight: 200;
+      font-weight: 300;
+      align-items: center;
+    }
+
+    .navmenuitem:before,
+    .navmenuitem:after {
+      background: rgba(255, 255, 255, 0.5);
+      display: block;
+      height: 1px;
+      width: 100%;
+      content: '';
+      margin: 0 1rem;
     }
 
     .navmenuitem:last-child {

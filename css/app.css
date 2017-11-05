@@ -58,6 +58,31 @@ body {
   }
 }
 
+.loadertop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 6.6rem;
+  width: 100%;
+  max-width: 768px;
+  text-align: center;
+  background-color: var(--header-bg-color);
+  color: var(--header-text-color);
+  z-index: 999;
+  margin-top: 0.25rem;
+  font-size: 1.5rem;
+}
+
+.loadertext {
+  position: fixed;
+  top: 50vh;
+  width: 100%;
+  max-width: 768px;
+  text-align: center;
+  z-index: 999;
+}
+
 .loader,
 .loader:before,
 .loader:after {
