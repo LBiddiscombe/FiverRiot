@@ -51,6 +51,9 @@
 
   <script>
     var self = this
+
+    document.querySelector('.loader').classList.remove('loader')
+
   </script>
 
 </fiver-app>
