@@ -39,6 +39,10 @@
       )
     }.bind(self)
 
+    onGameChanged() {
+      self.onPlayersChanged(self.players)
+    }
+
     onPlayersChanged(players) {
 
       self.empty = []
@@ -76,9 +80,8 @@
     })
 
     self.on('before-mount', () => {
-
       RiotControl.on('players_changed', self.onPlayersChanged)
-
+      RiotControl.on('game_changed', self.onGameChanged)
     })
 
     self.on('mount', () => {
@@ -93,6 +96,7 @@
 
     self.on('unmount', () => {
       RiotControl.off('players_changed', self.onPlayersChanged)
+      RiotControl.off('game_changed', self.onGameChanged)
     })
   </script>
 
