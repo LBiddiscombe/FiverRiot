@@ -83,6 +83,7 @@
 
     self.on('mount', () => {
       self.players = opts.players
+      self.onPlayersChanged(self.players)
       self.update()
       updateFlip()
 
