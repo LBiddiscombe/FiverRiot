@@ -41,23 +41,47 @@ function FiverStore() {
     http://fiver.azurewebsites.net
   */
 
+  //temp data load from project JSON file, move to JSONBIN for release
   var endpoint = 'https://fiverfunctions.azurewebsites.net/api/clubs/1'
   var loadData = (function() {
-    fetch(endpoint)
-      .then(blob => blob.json())
-      .then(data => {
-        self.fiver = data[0]
-        updateSubs()
-        setTimeout(function() {
-          riot.mount('fiver-app')
-        }, 0)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    if (
+      location.hostname === 'localhost' ||
+      location.hostname === '127.0.0.1' ||
+      location.hostname === ''
+    ) {
+      fetch('fiverData.json')
+        .then(res => res.json())
+        .then(res => {
+          self.fiver = res
+          updateSubs()
+          setTimeout(function() {
+            riot.mount('fiver-app')
+          }, 0)
+        })
+    } else {
+      fetch(endpoint)
+        .then(blob => blob.json())
+        .then(data => {
+          self.fiver = data[0]
+          updateSubs()
+          setTimeout(function() {
+            riot.mount('fiver-app')
+          }, 0)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
   })()
 
   var saveData = function() {
+    if (
+      location.hostname === 'localhost' ||
+      location.hostname === '127.0.0.1' ||
+      location.hostname === ''
+    ) {
+      return
+    }
     var headers = new Headers()
     headers.append('content-type', 'application/json')
     headers.append('cache-control', 'no-cache')

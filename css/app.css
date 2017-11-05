@@ -70,7 +70,6 @@ body {
   background-color: var(--header-bg-color);
   color: var(--header-text-color);
   z-index: 999;
-  margin-top: 0.25rem;
   font-size: 1.5rem;
 }
 
