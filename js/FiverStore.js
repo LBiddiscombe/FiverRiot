@@ -49,15 +49,17 @@ function FiverStore() {
       location.hostname === '127.0.0.1' ||
       location.hostname === ''
     ) {
-      fetch('fiverData.json')
-        .then(res => res.json())
-        .then(res => {
-          self.fiver = res
-          updateSubs()
-          setTimeout(function() {
-            riot.mount('fiver-app')
-          }, 0)
-        })
+      setTimeout(function() {
+        fetch('fiverData.json')
+          .then(res => res.json())
+          .then(res => {
+            self.fiver = res
+            updateSubs()
+            setTimeout(function() {
+              riot.mount('fiver-app')
+            }, 0)
+          })
+      }, 2000)
     } else {
       fetch(endpoint)
         .then(blob => blob.json())

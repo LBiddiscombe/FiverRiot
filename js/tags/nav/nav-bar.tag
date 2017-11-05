@@ -12,19 +12,19 @@
     </div>
     <div class="navmenu {show: isActive} ">
       <a class="navmenuitem " href="# " onclick={ toggleMenu }>
-        <i class="fa fa-futbol-o "></i>GAME
+        <i class="fa fa-futbol-o "></i>Game
       </a>
       <a class="navmenuitem " href="#players " onclick={ toggleMenu }>
-        <i class="fa fa-users "></i>PLAYERS
+        <i class="fa fa-users "></i>Players
       </a>
       <a class="navmenuitem " href="#history " onclick={ toggleMenu }>
-        <i class="fa fa-history "></i>HISTORY
+        <i class="fa fa-history "></i>History
       </a>
       <a class="navmenuitem " href="#settings " onclick={ toggleMenu }>
-        <i class="fa fa-cog "></i>SETTINGS
+        <i class="fa fa-cog "></i>Settings
       </a>
       <a class="navmenuitem " href="#about " onclick={ toggleMenu }>
-        <i class="fa fa-info-circle "></i>ABOUT
+        <i class="fa fa-info-circle "></i>About
       </a>
     </div>
   </div>

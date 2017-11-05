@@ -7,7 +7,7 @@
       <section class="modal-card-body">
         <div class="field has-addons level-item">
           <p class="control">
-            <a class="button is-light is-large" onClick={ togglePosNeg }>
+            <a class="button is-info is-large" onClick={ togglePosNeg }>
               +/-
             </a>
           </p>
@@ -35,7 +35,7 @@
     }
 
     .modal-card-body {
-      background-color: transparent !important;
+      background-color: transparent;
       overflow-x: hidden;
     }
   </style>
