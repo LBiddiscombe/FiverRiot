@@ -41,7 +41,7 @@
       position: fixed;
       top: 0;
       -webkit-tap-highlight-color: transparent;
-      z-index: 2;
+      z-index: 19;
     }
 
     .navitem {

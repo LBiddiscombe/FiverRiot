@@ -7,37 +7,37 @@
   <div class="wrap">
     <p>
       Fiver is used to run a weekly social five-a-side, written by
-      <a href="mailto:lee.biddiscombe@btinternet.com">Lee Biddiscombe</a> with the help of the following amazing resources
+      <a href="mailto:lee.biddiscombe@btinternet.com?subject=Fiver">Lee Biddiscombe</a> with the help of the following amazing resources
     </p>
     <hr>
     <p>
-      <a href="http://riotjs.com/">
+      <a href="http://riotjs.com/ ">
         <strong>Riot.js</strong>
       </a>Simple and elegant component-based UI library
     </p>
     <p>
-      <a href="https://github.com/jimsparkman/RiotControl">
+      <a href="https://github.com/jimsparkman/RiotControl ">
         <strong>Riot Control</strong>
       </a>Event controller / dispatcher For RiotJS, inspired By Flux by Jim Sparkman
     </p>
     <p>
-      <a href="https://bulma.io/">
+      <a href="https://bulma.io/ ">
         <strong>Bulma.io</strong>
       </a>Free and open source CSS framework based on Flexbox
     </p>
     <p>
-      <a href="http://fontawesome.io/">
+      <a href="http://fontawesome.io/ ">
         <strong>Font Awesome</strong>
       </a>The iconic font and CSS toolkit
     </p>
     <p>
-      <a href="https://github.com/googlearchive/flipjs">
+      <a href="https://github.com/googlearchive/flipjs ">
         <strong>FLIP.js</strong>
       </a>A helper library for FLIP animations by Paul Lewis
     </p>
   </div>
   <p>
-    <button class="button is-info is-fullwidth is-large" onclick={back}>Back to Game Page</button>
+    <button class="button is-info is-fullwidth is-large " onclick={back}>Back to Game Page</button>
   </p>
 
   <style>
