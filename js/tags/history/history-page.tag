@@ -4,41 +4,54 @@
     <i class="fa fa-history "></i>History
   </div>
 
-  <div class="wrap">
-    <span class="select is-fullwidth">
-      <select ref="playerFilter" onchange={filterPlayers}>
-        <option>All Players</option>
-        <option each="{ player, i in players }">{player.name}</option>
-      </select>
-    </span>
+  <table class="table is-narrow tablehead">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th class="has-text-right">Balance</th>
+        <th class="has-text-right">Fee</th>
+        <th class="has-text-right">Paid</th>
+      </tr>
+    </thead>
+  </table>
 
-    <table class="table is-narrow">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Name</th>
-          <th class="has-text-right">Balance</th>
-          <th class="has-text-right">Fee</th>
-          <th class="has-text-right">Paid</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr each="{ gamePlayer in gamePlayers }" class={showdate: gamePlayer.showDate}>
-          <td>
-            <div show={gamePlayer.showDate}>{gamePlayer.gameDate.substring(5)}</div>
-          </td>
-          <td>{gamePlayer.name}</td>
-          <td class="has-text-right">{asMoney(gamePlayer.balance)}</td>
-          <td class="has-text-right">{asMoney(settings.gameFee * -1)}</td>
-          <td class="has-text-right">{asMoney(gamePlayer.paid)}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="wrap"></div>
+
+  <span class="select is-fullwidth">
+    <select ref="playerFilter" onchange={filterPlayers}>
+      <option>All Players</option>
+      <option each="{ player, i in players }">{player.name}</option>
+    </select>
+  </span>
+
+  <table class="table is-narrow">
+    <tbody>
+      <tr each="{ gamePlayer in gamePlayers }" class={showdate: gamePlayer.showDate}>
+        <td>
+          <div show={gamePlayer.showDate}>{gamePlayer.gameDate.substring(5)}</div>
+        </td>
+        <td>{gamePlayer.name}</td>
+        <td class="has-text-right">{asMoney(gamePlayer.balance)}</td>
+        <td class="has-text-right">{asMoney(settings.gameFee * -1)}</td>
+        <td class="has-text-right">{asMoney(gamePlayer.paid)}</td>
+      </tr>
+    </tbody>
+  </table>
   </div>
 
   <style>
     .wrap {
-      margin: 0.2rem;
+      margin: 2rem;
+    }
+
+    .tablehead {
+      margin-bottom: 0.3rem;
+      position: fixed;
+      top: 6rem;
+      width: 100%;
+      max-width: 768px;
+      z-index: 10;
     }
 
     table {
