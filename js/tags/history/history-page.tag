@@ -17,8 +17,8 @@
         <tr>
           <th>Date</th>
           <th>Name</th>
-          <th>Balance</th>
-          <th>Paid</th>
+          <th class="has-text-right">Balance</th>
+          <th class="has-text-right">Paid</th>
         </tr>
       </thead>
       <tbody>
@@ -27,8 +27,8 @@
             <div show={gamePlayer.showDate}>{gamePlayer.gameDate}</div>
           </td>
           <td>{gamePlayer.name}</td>
-          <td>{asMoney(gamePlayer.balance)}</td>
-          <td>{asMoney(gamePlayer.paid)}</td>
+          <td class="has-text-right">{asMoney(gamePlayer.balance)}</td>
+          <td class="has-text-right">{asMoney(gamePlayer.paid)}</td>
         </tr>
       </tbody>
     </table>
