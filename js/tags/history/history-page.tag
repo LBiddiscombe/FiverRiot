@@ -18,16 +18,18 @@
           <th>Date</th>
           <th>Name</th>
           <th class="has-text-right">Balance</th>
+          <th class="has-text-right">Fee</th>
           <th class="has-text-right">Paid</th>
         </tr>
       </thead>
       <tbody>
         <tr each="{ gamePlayer in gamePlayers }" class={showdate: gamePlayer.showDate}>
           <td>
-            <div show={gamePlayer.showDate}>{gamePlayer.gameDate}</div>
+            <div show={gamePlayer.showDate}>{gamePlayer.gameDate.substring(5)}</div>
           </td>
           <td>{gamePlayer.name}</td>
           <td class="has-text-right">{asMoney(gamePlayer.balance)}</td>
+          <td class="has-text-right">{asMoney(settings.gameFee * -1)}</td>
           <td class="has-text-right">{asMoney(gamePlayer.paid)}</td>
         </tr>
       </tbody>
@@ -66,6 +68,7 @@
     var self = this
     self.gamePlayers = []
     self.mixin('fiverMixin')
+    self.settings = self.getSettings()
 
     filterPlayers() {
 

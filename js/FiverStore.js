@@ -15,6 +15,7 @@ function FiverStore() {
     },
 
     toDecimal: function(value, decimals) {
+      if (!value) value = 0
       val = parseFloat(value)
       return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals)
     },
@@ -112,11 +113,11 @@ function FiverStore() {
   var copyGame = function(prevGame, dt) {
     prevGame.players.forEach(function(p) {
       if (p.id != 0) {
-        var player = self.fiver.players.find(player => player.id == p.id)
-        p.balance =
-          fiverMixin.toDecimal(p.balance, 2) -
-          fiverMixin.toDecimal(self.fiver.settings.gameFee, 2)
-        player.balance = fiverMixin.toDecimal(p.balance, 2)
+        let player = self.fiver.players.find(player => player.id == p.id)
+        player.balance =
+          fiverMixin.toDecimal(player.balance, 2) -
+          fiverMixin.toDecimal(self.fiver.settings.gameFee, 2) +
+          fiverMixin.toDecimal(p.paid, 2)
       }
     })
 
@@ -128,8 +129,10 @@ function FiverStore() {
     delete prevGame.subs
 
     // remove payments on copy
-    newGame.players.forEach(function(player) {
-      delete player.paid
+    newGame.players.forEach(function(p) {
+      let player = self.fiver.players.find(player => player.id == p.id)
+      delete p.paid
+      p.balance = player.balance
     })
     self.fiver.games.push(newGame)
     gameCount = self.fiver.games.length
@@ -327,7 +330,6 @@ function FiverStore() {
 
   self.on('add_payment', (index, value) => {
     self.fiver.games[self.fiver.gameIndex].players[index].paid = value
-    self.fiver.games[self.fiver.gameIndex].players[index].balance += value
 
     self.trigger(
       'players_changed',
