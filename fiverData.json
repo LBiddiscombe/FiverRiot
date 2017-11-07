@@ -5,7 +5,7 @@
     "gameFrequency": 7,
     "gameFee": 6.0,
     "pitchFee": 61.2,
-    "hue": 92
+    "hsl": [92, 48, 42]
   },
   "gameIndex": 15,
   "gameCount": 16,

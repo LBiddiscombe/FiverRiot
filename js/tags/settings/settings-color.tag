@@ -43,28 +43,21 @@
   <script>
     var self = this
     self.mixin('fiverMixin')
-
-    const style = getComputedStyle(document.body)
-    var curHSL = style.getPropertyValue('--top-color')
-
-    if (curHSL.substr(1, 3) == 'hsl') {
-      var regExp = /\(([^)]+)\)/;
-      var matches = regExp.exec(curHSL);
-      hslTemplate = matches[1].split(',')
-      self.hue = Number(hslTemplate[0])
-    }
+    self.settings = self.getSettings()
 
     onInput() {
+      let hsl = self.settings.hsl
       self.hue = self.refs.hueslider.value
-      hslTemplate[0] = self.hue
-      let newHeadHSL = " hsl(" + hslTemplate[0] + "," + hslTemplate[1] + "," + hslTemplate[2] + ")"
-      let newMainHSL = " hsl(" + hslTemplate[0] + ", 15%, 92%)"
+      hsl[0] = self.hue
+      let newHeadHSL = ` hsl(${hsl[0]},${hsl[1]}%,${hsl[2]}%)`
+      let newMainHSL = ` hsl(${hsl[0]},15%,92%)`
+
       document.documentElement.style.setProperty('--top-color', newHeadHSL)
       document.documentElement.style.setProperty('--bottom-color', newMainHSL)
     }
 
     self.on('mount', () => {
-      if (self.hue) { self.refs.hueslider.value = self.hue }
+      self.refs.hueslider.value = self.settings.hsl[0]
     })
 
   </script>

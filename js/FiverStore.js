@@ -27,6 +27,10 @@ function FiverStore() {
 
       val = val / 100
       e.target.value = val === 0 ? '' : this.toDecimal(val, 2).toFixed(2)
+    },
+
+    getSettings: function() {
+      return self.fiver.settings
     }
   }
 
@@ -132,34 +136,26 @@ function FiverStore() {
   }
 
   var updateHue = function(hue) {
-    const style = getComputedStyle(document.body)
-    var curHSL = style.getPropertyValue('--header-bg-color')
+    let hsl = self.fiver.settings.hsl
 
-    if (curHSL.substr(1, 3) == 'hsl') {
-      var regExp = /\(([^)]+)\)/
-      var matches = regExp.exec(curHSL)
-      hsl = matches[1].split(',')
-      hsl[0] = hue
-      let newHeadHSL = ' hsl(' + hsl[0] + ',' + hsl[1] + ',' + hsl[2] + ')'
-      let newMainHSL = ' hsl(' + hsl[0] + ', 15%, 92%)'
-      document.documentElement.style.setProperty(
-        '--header-bg-color',
-        newHeadHSL
-      )
-      document.documentElement.style.setProperty('--main-bg-color', newMainHSL)
-    }
+    hsl[0] = hue
+    let newHeadHSL = ` hsl(${hsl[0]},${hsl[1]}%,${hsl[2]}%)`
+    let newMainHSL = ` hsl(${hsl[0]},15%,92%)`
+
+    document.documentElement.style.setProperty('--header-bg-color', newHeadHSL)
+    document.documentElement.style.setProperty('----main-bg-color', newMainHSL)
   }
 
   //#region Games
   self.on('save_settings', newSettings => {
-    self.fiver.settings.hue = newSettings.hueslider
-    updateHue(self.fiver.settings.hue)
+    self.fiver.settings.hsl[0] = newSettings.hueslider
+    updateHue(self.fiver.settings.hsl[0])
     saveData()
   })
 
   self.on('init_game_page', () => {
     self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
-    updateHue(self.fiver.settings.hue)
+    updateHue(self.fiver.settings.hsl[0])
   })
 
   self.on('get_all_games', () => {
