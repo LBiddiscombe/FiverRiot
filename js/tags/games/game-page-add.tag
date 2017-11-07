@@ -20,7 +20,7 @@
 
   <style>
     .modal-card {
-      margin: 0 20px 160px;
+      margin: 0 0px 160px;
       min-width: 18em;
     }
 

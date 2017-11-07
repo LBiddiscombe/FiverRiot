@@ -14,7 +14,9 @@
 
           <input type="button" value={buttonLabel} class="button is-large is-success is-fullwidth" id="pay-button" data-amount=0 disabled={
             !allowSave } onClick={ onSave }>
-          <small>{helpText}</small>
+          <div class="has-text-centered">
+            <small>{helpText}</small>
+          </div>
         </p>
       </div>
     </div>
