@@ -38,8 +38,9 @@
       height: 80px;
       background-color: var(--playerbox-bg-color);
       position: relative;
-      margin: 0.1rem;
+      margin: 0.2rem;
       border-radius: 0px;
+      box-shadow: var(--shadow);
     }
 
     .player-box-left {
@@ -84,11 +85,11 @@
     }
 
     .player-box.selected {
-      box-shadow: inset 0px 0px 0px 3px;
+      box-shadow: var(--shadow), inset 0px 0px 0px 3px;
     }
 
     .player-box.paid {
-      box-shadow: inset 0px -3px 0px 0px limegreen;
+      box-shadow: var(--shadow), inset 0px -3px 0px 0px limegreen;
     }
 
     .anim {

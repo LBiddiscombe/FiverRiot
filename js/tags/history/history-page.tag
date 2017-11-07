@@ -36,7 +36,7 @@
 
   <style>
     .wrap {
-      margin: 0.3rem;
+      margin: 0.2rem;
     }
 
     table {
@@ -54,7 +54,7 @@
     }
 
     .showdate:not(:first-child) {
-      border-top: 2px solid var(--main-bg-color);
+      border-top: 0.3rem solid var(--main-bg-color);
     }
 
     .pagename i {

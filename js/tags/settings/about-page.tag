@@ -36,9 +36,6 @@
       </a>A helper library for FLIP animations by Paul Lewis
     </p>
   </div>
-  <p>
-    <button class="button is-info is-fullwidth is-large " onclick={back}>Back to Game Page</button>
-  </p>
 
   <style>
     .pagename i {
@@ -48,7 +45,7 @@
     .wrap {
       margin: 0rem 0.3rem;
       padding: 1rem;
-      background-color: var(--playerbox-bg-color)
+      background-color: transparent;
     }
 
     p {
@@ -58,10 +55,6 @@
 
   <script>
     var self = this
-
-    back() {
-      route('/')
-    }
 
   </script>
 

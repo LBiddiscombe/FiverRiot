@@ -6,11 +6,12 @@
   --header-text-color: #f6f7fc;
   --header-height: 6.6rem;
   --main-bg-color: #e1e2e1;
-  --main-bg-color: hsl(92, 10%, 90%);
+  --main-bg-color: hsl(92, 10%, 92%);
   --playerbox-bg-color: white;
   --shirt-image: url('images/shirt.png');
   --top-color: hsl(92, 48%, 42%);
-  --bottom-color: hsl(92, 10%, 90%);
+  --bottom-color: hsl(92, 10%, 92%);
+  --shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 html {
@@ -63,7 +64,7 @@ body {
   justify-content: center;
   align-items: center;
   position: fixed;
-  height: 6.6rem;
+  height: 6.3rem;
   width: 100%;
   max-width: 768px;
   text-align: center;
@@ -71,6 +72,7 @@ body {
   color: var(--header-text-color);
   z-index: 999;
   font-size: 1.5rem;
+  box-shadow: var(--shadow);
 }
 
 .loadertext {

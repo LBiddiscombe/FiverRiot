@@ -141,7 +141,7 @@ function FiverStore() {
       hsl = matches[1].split(',')
       hsl[0] = hue
       let newHeadHSL = ' hsl(' + hsl[0] + ',' + hsl[1] + ',' + hsl[2] + ')'
-      let newMainHSL = ' hsl(' + hsl[0] + ', 15%, 90%)'
+      let newMainHSL = ' hsl(' + hsl[0] + ', 15%, 92%)'
       document.documentElement.style.setProperty(
         '--header-bg-color',
         newHeadHSL

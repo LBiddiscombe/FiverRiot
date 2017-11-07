@@ -17,6 +17,9 @@
       background-color: var(--playerbox-bg-color);
       font-size: 1.5rem;
       font-weight: 300;
+      box-shadow: var(--shadow);
+      margin-bottom: 0.5rem;
+      ;
     }
 
     .setHue label {
@@ -55,7 +58,7 @@
       self.hue = self.refs.hueslider.value
       hslTemplate[0] = self.hue
       let newHeadHSL = " hsl(" + hslTemplate[0] + "," + hslTemplate[1] + "," + hslTemplate[2] + ")"
-      let newMainHSL = " hsl(" + hslTemplate[0] + ", 15%, 90%)"
+      let newMainHSL = " hsl(" + hslTemplate[0] + ", 15%, 92%)"
       document.documentElement.style.setProperty('--top-color', newHeadHSL)
       document.documentElement.style.setProperty('--bottom-color', newMainHSL)
     }

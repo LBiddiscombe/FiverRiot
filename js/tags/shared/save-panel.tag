@@ -24,7 +24,7 @@
     .input,
     .box {
       border-radius: 0;
-      box-shadow: none;
+      box-shadow: var(--shadow);
     }
   </style>
 

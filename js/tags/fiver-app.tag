@@ -39,7 +39,7 @@
       max-width: 768px;
       color: var(--header-text-color);
       -webkit-tap-highlight-color: transparent;
-      box-shadow: 0 3px 5px rgba(10, 10, 10, 0.1);
+      box-shadow: var(--shadow);
       margin-top: -4px;
       margin-bottom: 0.3rem;
       position: fixed;

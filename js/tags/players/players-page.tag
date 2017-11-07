@@ -19,11 +19,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0.1rem 0.4rem 0.1rem;
+      margin: 0.2rem 0.5rem 0.2rem;
       background-color: var(--playerbox-bg-color);
       height: 80px;
       font-size: 1.5rem;
       font-weight: 300;
+      box-shadow: var(--shadow);
     }
 
     .addplayer i {
