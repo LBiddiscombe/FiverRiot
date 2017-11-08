@@ -3,6 +3,7 @@ function FiverStore() {
 
   var self = this
   var fiver = {}
+  var timedSave = null
   self.swapList = []
 
   var fiverMixin = {
@@ -82,11 +83,13 @@ function FiverStore() {
   })()
 
   var saveData = function() {
+    self.trigger('change_save_state', 'fa-refresh fa-spin')
     if (
       location.hostname === 'localhost' ||
       location.hostname === '127.0.0.1' ||
       location.hostname === ''
     ) {
+      self.trigger('change_save_state', 'fa-check')
       return
     }
     var headers = new Headers()
@@ -99,6 +102,17 @@ function FiverStore() {
     }).catch(err => {
       console.log(err)
     })
+    self.trigger('change_save_state', 'fa-check')
+  }
+
+  var queueSave = function() {
+    if (timedSave) {
+      clearTimeout(timedSave)
+    }
+    self.trigger('change_save_state', 'fa-pencil')
+    timedSave = setTimeout(function() {
+      saveData()
+    }, 10000)
   }
 
   var updateSubs = function() {
@@ -161,7 +175,7 @@ function FiverStore() {
     self.fiver.settings.pitchFee = fiverMixin.toDecimal(newSettings.pitchFee, 2)
     self.fiver.settings.teamSize = fiverMixin.toDecimal(newSettings.teamSize, 0)
     updateHue(self.fiver.settings.hsl[0])
-    saveData()
+    queueSave()
     route('/')
     self.trigger('settings_changed')
   })
@@ -203,6 +217,7 @@ function FiverStore() {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
+    queueSave()
   })
 
   //endregion
@@ -232,6 +247,7 @@ function FiverStore() {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
+    queueSave()
   })
 
   self.on('player_selected', (idx, playerId) => {
@@ -270,6 +286,7 @@ function FiverStore() {
         self.fiver.games[self.fiver.gameIndex].players
       )
       self.trigger('subs_changed', self.fiver.games[self.fiver.gameIndex].subs)
+      queueSave()
       return
     }
 
@@ -298,6 +315,7 @@ function FiverStore() {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
+    queueSave()
   })
 
   self.on('pick_teams', () => {
@@ -330,12 +348,11 @@ function FiverStore() {
       return a.team - b.team || a.name.localeCompare(b.name)
     })
 
-    saveData()
-
     self.trigger(
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
+    queueSave()
   })
 
   self.on('add_payment', (index, value) => {
@@ -345,6 +362,7 @@ function FiverStore() {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
+    queueSave()
   })
 
   self.on('clear_swaps', () => {

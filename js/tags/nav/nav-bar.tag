@@ -28,6 +28,9 @@
       </a>
     </div>
   </div>
+  <div if={saveState !='' } class="savestate">
+    <i class="fa {saveState}"></i>
+  </div>
 
   <style>
     .navbar {
@@ -119,6 +122,17 @@
     .navmenuitem i {
       margin-right: 1rem;
     }
+
+    .savestate {
+      position: fixed;
+      top: 2.2rem;
+      width: 100%;
+      text-align: center;
+      max-width: 768px;
+      font-size: 1.25rem;
+      z-index: 99;
+      color: var(--header-text-color);
+    }
   </style>
 
   <script>
@@ -126,6 +140,8 @@
     self.isActive = false
     self.mixin('fiverMixin')
     self.settings = self.getSettings()
+    self.saveState = ''
+    self.fadeOut = false
 
     toggleMenu() {
       self.isActive = !self.isActive
@@ -141,12 +157,26 @@
       self.update()
     }
 
+    onSaveState(state) {
+      self.saveState = state
+      self.fadeOut = (state == 'fa-check')
+      if (self.fadeOut) {
+        setTimeout(function () {
+          self.saveState = ''
+          self.update()
+        }, 1000)
+      }
+      self.update()
+    }
+
     self.on('before-mount', () => {
       RiotControl.on('settings_changed', self.onSettingsChanged)
+      RiotControl.on('change_save_state', self.onSaveState)
     })
 
     self.on('unmount', () => {
       RiotControl.off('settings_changed', self.onSettingsChanged)
+      RiotControl.off('change_save_state', self.onSaveState)
     })
 
   </script>

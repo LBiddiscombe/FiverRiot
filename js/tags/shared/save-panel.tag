@@ -50,12 +50,6 @@
       self.parent.onSave()
     }
 
-/*
-    self.on('update', () => {
-      console.log("update", self.toggleLabel)
-    })
-    */
-
   </script>
 
 </save-panel>
