@@ -20,6 +20,8 @@
     var flip
     var self = this
     self.players = []
+    self.mixin('fiverMixin')
+    self.settings = self.getSettings()
 
     var updateFlip = function () {
       if (!this.refs.person) { return }
@@ -47,8 +49,8 @@
 
       self.empty = []
 
-      if (self.players.length > 0 && self.players.length < 10) {
-        const missing = 10 - self.players.length
+      if (self.players.length > 0 && self.players.length < self.settings.teamSize * 2) {
+        const missing = (self.settings.teamSize * 2) - self.players.length
         for (i = 0; i < missing; i++) {
           self.empty.push({
             "id": 0,
@@ -91,7 +93,11 @@
       updateFlip()
 
       // on the teams screen set the column height when even number of players
-      if (self.opts.filter == "teams") { document.getElementById('teams').style.height = "450px" }
+
+      if (self.opts.filter == "teams") {
+        const height = (self.settings.teamSize * 90) + "px"
+        document.getElementById('teams').style.height = height
+      }
     })
 
     self.on('unmount', () => {

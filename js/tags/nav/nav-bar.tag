@@ -5,7 +5,7 @@
       <i class="fa fa-bars"></i>
     </div>
     <div class="navitem navcenter ">
-      Thursday Night Footy
+      {settings.clubName}
     </div>
     <div class="navitem navright " onclick={ onPick }>
       <i class="fa fa-random "></i>
@@ -124,6 +124,8 @@
   <script>
     self = this
     self.isActive = false
+    self.mixin('fiverMixin')
+    self.settings = self.getSettings()
 
     toggleMenu() {
       self.isActive = !self.isActive

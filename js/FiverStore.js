@@ -311,7 +311,7 @@ function FiverStore() {
         )
       })
       .map((p, i) => {
-        p.team = pickAlgorithm[i]
+        p.team = pickAlgorithm[i % pickAlgorithm.length]
         return p
       })
 
