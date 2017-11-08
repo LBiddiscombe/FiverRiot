@@ -113,7 +113,9 @@
 
     onGotGames(games) {
 
-      self.allRows = games.reduce((prev, cur, i) => {
+      const gamesCopy = JSON.parse(JSON.stringify(games))
+
+      self.allRows = gamesCopy.reduce((prev, cur, i) => {
         return [...prev, ...cur.players.map(p => {
           p.gameDate = cur.gameDate
           return p
