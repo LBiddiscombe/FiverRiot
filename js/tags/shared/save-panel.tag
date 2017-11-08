@@ -12,8 +12,8 @@
           </a>
           <br>
 
-          <input type="button" value={buttonLabel} class="button is-large is-success is-fullwidth" id="pay-button" data-amount=0 disabled={
-            !allowSave } onClick={ onSave }>
+          <input type="button" value={buttonLabel} class="button is-large is-success is-fullwidth" data-amount=0 disabled={ !allowSave
+            } onClick={ onSave }>
           <div class="has-text-centered">
             <small>{helpText}</small>
           </div>
@@ -46,6 +46,7 @@
     }
 
     onSave() {
+      event.preventDefault()
       self.parent.onSave()
     }
 

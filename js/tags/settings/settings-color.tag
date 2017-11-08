@@ -1,42 +1,27 @@
 <settings-color>
 
-  <div class="setHue">
-    <div class="field">
-      <label class="label">Hue Slider</label>
-      <div class="control">
-        <input type="range" class="hueslider is-large" id="hueslider" ref="hueslider" min="0" max="360" oninput={ onInput }>
-      </div>
-      <p class="help">Set the main color and accent for this club</p>
+  <div class="field">
+    <label class="label">Hue Slider</label>
+    <div class="control">
+      <input type="range" class="hueslider is-large" id="hueSlider" ref="hueslider" min="0" max="360" oninput={ onInput }>
     </div>
   </div>
-
+  </div>
 
   <style>
-    .setHue {
-      padding: 1rem;
-      background-color: var(--playerbox-bg-color);
-      font-size: 1.5rem;
-      font-weight: 300;
-      box-shadow: var(--shadow);
-      margin-bottom: 0.5rem;
-      ;
-    }
-
     .setHue label {
       font-weight: 300;
       color: var(--header-text-color);
-    }
-
-    .field {
-      padding: 0.5rem;
     }
 
     .hueslider {
       width: 100%;
     }
 
-    .field {
-      background: linear-gradient(var(--top-color) 50%, var(--bottom-color) 50%);
+    .control {
+      background: linear-gradient(var(--top-color) 40%, var(--bottom-color) 40%);
+      min-height: 4rem;
+      line-height: 4rem;
     }
   </style>
 

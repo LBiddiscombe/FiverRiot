@@ -136,6 +136,19 @@
       RiotControl.trigger('pick_teams')
     }
 
+    onSettingsChanged() {
+      self.settings = self.getSettings()
+      self.update()
+    }
+
+    self.on('before-mount', () => {
+      RiotControl.on('settings_changed', self.onSettingsChanged)
+    })
+
+    self.on('unmount', () => {
+      RiotControl.off('settings_changed', self.onSettingsChanged)
+    })
+
   </script>
 
 </nav-bar>

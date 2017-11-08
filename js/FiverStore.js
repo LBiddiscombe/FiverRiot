@@ -151,9 +151,19 @@ function FiverStore() {
 
   //#region Games
   self.on('save_settings', newSettings => {
-    self.fiver.settings.hsl[0] = newSettings.hueslider
+    self.fiver.settings.hsl[0] = Number(newSettings.hueSlider)
+    self.fiver.settings.clubName = newSettings.clubName
+    self.fiver.settings.gameFee = fiverMixin.toDecimal(newSettings.gameFee, 2)
+    self.fiver.settings.gameFrequency = fiverMixin.toDecimal(
+      newSettings.gameFrequency,
+      0
+    )
+    self.fiver.settings.pitchFee = fiverMixin.toDecimal(newSettings.pitchFee, 2)
+    self.fiver.settings.teamSize = fiverMixin.toDecimal(newSettings.teamSize, 0)
     updateHue(self.fiver.settings.hsl[0])
     saveData()
+    route('/')
+    self.trigger('settings_changed')
   })
 
   self.on('init_game_page', () => {
