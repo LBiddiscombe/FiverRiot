@@ -5,6 +5,14 @@
     <div class="modal-card">
       <h1 class="modal-card-title has-text-centered">Take Monies</h1>
       <section class="modal-card-body">
+        <div class="field level-item">
+          <div class="buttons has-addons is-centered">
+            <span class="button is-large" data-amount=5 onclick={ addAmount }>£5</span>
+            <span class="button is-large" data-amount=6 onclick={ addAmount }>£6</span>
+            <span class="button is-large" data-amount=10 onclick={ addAmount }>£10</span>
+            <span class="button is-large" data-amount=20 onclick={ addAmount }>£20</span>
+          </div>
+        </div>
         <div class="field has-addons level-item">
           <p class="control">
             <a class="button is-info is-large" onClick={ togglePosNeg }>
@@ -44,6 +52,10 @@
     var self = this
     self.open = false
     self.mixin('fiverMixin')
+
+    addAmount(e) {
+      self.refs.inputMoney.value = self.toDecimal(e.target.dataset.amount, 2).toFixed(2)
+    }
 
     togglePosNeg(e) {
 
