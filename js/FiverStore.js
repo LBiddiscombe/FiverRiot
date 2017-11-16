@@ -128,10 +128,12 @@ function FiverStore() {
     prevGame.players.forEach(function(p) {
       if (p.id != 0) {
         let player = self.fiver.players.find(player => player.id == p.id)
-        player.balance =
+        player.balance = fiverMixin.toDecimal(
           fiverMixin.toDecimal(player.balance, 2) -
-          fiverMixin.toDecimal(self.fiver.settings.gameFee, 2) +
-          fiverMixin.toDecimal(p.paid, 2)
+            fiverMixin.toDecimal(self.fiver.settings.gameFee, 2) +
+            fiverMixin.toDecimal(p.paid, 2),
+          2
+        )
       }
     })
 
@@ -228,6 +230,14 @@ function FiverStore() {
   })
 
   self.on('save_player', player => {
+    // create a new player record if this is an add
+    if (!player.id) {
+      player.id = self.fiver.players.length
+      self.fiver.players.push(player)
+      updateSubs()
+    }
+
+    // Now update player info for the open week, if they are playing
     gamePlayerIdx = self.fiver.games[
       self.fiver.gameCount - 1
     ].players.findIndex(p => p.id == player.id)
@@ -235,12 +245,6 @@ function FiverStore() {
     // update existing player
     if (gamePlayerIdx != -1) {
       self.fiver.games[self.fiver.gameCount - 1].players[gamePlayerIdx] = player
-
-      // create new player
-    } else {
-      player.id = self.fiver.players.length
-      self.fiver.players.push(player)
-      updateSubs()
     }
 
     self.trigger(
@@ -356,7 +360,9 @@ function FiverStore() {
   })
 
   self.on('add_payment', (index, value) => {
-    self.fiver.games[self.fiver.gameIndex].players[index].paid = value
+    self.fiver.games[self.fiver.gameIndex].players[
+      index
+    ].paid = fiverMixin.toDecimal(value, 2)
 
     self.trigger(
       'players_changed',

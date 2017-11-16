@@ -72,7 +72,7 @@
 
       self.player.name = self.refs.playerName.value
       self.player.weighting = Number(self.refs.playerWeighting.value)
-      self.player.balance = Number(self.refs.playerBalance.value)
+      self.player.balance = self.toDecimal(self.refs.playerBalance.value, 2)
 
       route('/players')
 
