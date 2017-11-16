@@ -112,7 +112,7 @@ function FiverStore() {
     self.trigger('change_save_state', 'fa-pencil')
     timedSave = setTimeout(function() {
       saveData()
-    }, 10000)
+    }, 5000)
   }
 
   var updateSubs = function() {
