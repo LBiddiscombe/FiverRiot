@@ -148,6 +148,7 @@ function FiverStore() {
     newGame.players.forEach(function(p) {
       let player = self.fiver.players.find(player => player.id == p.id)
       delete p.paid
+      delete p.team
       p.balance = player.balance
     })
     self.fiver.games.push(newGame)
