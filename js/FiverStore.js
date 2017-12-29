@@ -325,6 +325,38 @@ function FiverStore() {
         queueSave()
     })
 
+    var swapPositions = function(swaps) {
+        var p1 = self.fiver.games[self.fiver.gameIndex].players[swaps[0]]
+        var p2 = self.fiver.games[self.fiver.gameIndex].players[swaps[1]]
+
+        self.fiver.games[self.fiver.gameIndex].players[swaps[0]] = p2
+        self.fiver.games[self.fiver.gameIndex].players[swaps[1]] = p1
+    }
+
+    self.on('swap_teams', () => {
+
+        if (
+            self.fiver.games[self.fiver.gameIndex].locked ||
+            window.location.hash != ''
+        ) {
+            return
+        }
+
+        swapPositions([0, 5])
+        swapPositions([1, 6])
+        swapPositions([2, 7])
+        swapPositions([3, 8])
+        swapPositions([4, 9])
+
+        self.trigger(
+            'players_changed',
+            self.fiver.games[self.fiver.gameIndex].players
+        )
+        queueSave()
+
+
+    })
+
     self.on('pick_teams', () => {
         const pickAlgorithm = [1, 2, 2, 1, 2, 1, 1, 2, 1, 2]
 
@@ -337,9 +369,8 @@ function FiverStore() {
 
         var teams = self.fiver.games[self.fiver.gameIndex].players
 
-        teams
         // sort players by ability + a random factor
-            .sort((a, b) => {
+        teams.sort((a, b) => {
                 return (
                     parseFloat(a.weighting + Math.random()) -
                     parseFloat(b.weighting + Math.random())
