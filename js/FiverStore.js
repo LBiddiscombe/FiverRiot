@@ -214,8 +214,8 @@ function FiverStore() {
 
     self.on('add_game', (dt, team1Score, team2Score) => {
         copyGame(self.fiver.games[self.fiver.gameIndex], dt)
-        self.fiver.games[self.fiver.gameIndex].team1Score = parseInt(team1Score)
-        self.fiver.games[self.fiver.gameIndex].team2Score = parseInt(team2Score)
+        self.fiver.games[self.fiver.gameIndex].team1Score = parseInt(team1Score) || 0
+        self.fiver.games[self.fiver.gameIndex].team2Score = parseInt(team2Score) || 0
         self.fiver.gameIndex++
             self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
         self.trigger(
