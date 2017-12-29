@@ -1,60 +1,60 @@
 <players-page>
 
-  <div class="pagename">
-    <i class="fa fa-users "></i>Players
-  </div>
+    <div class="pagename">
+        <i class="fa fa-users "></i>Players
+    </div>
 
-  <div class="addplayer" onclick={ addPlayer }>
-    Add Player
-  </div>
+    <div class="addplayer" onclick={ addPlayer }>
+        <i class="fa fa-2x fa-plus-circle" aria-hidden="true"></i>Add Player
+    </div>
 
-  <player-list players={players} filter="all"></player-list>
+    <player-list players={players} filter="all"></player-list>
 
-  <style>
-    .pagename i {
-      margin: 0 0.5rem;
-    }
+    <style>
+        .pagename i {
+            margin: 0 0.5rem;
+        }
+        
+        .addplayer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 0.2rem 0.5rem 0.2rem;
+            background-color: var(--playerbox-bg-color);
+            height: 80px;
+            font-size: 1.5rem;
+            font-weight: 300;
+            box-shadow: var(--shadow);
+        }
+        
+        .addplayer i {
+            margin: 0.5rem;
+        }
+    </style>
 
-    .addplayer {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0.2rem 0.5rem 0.2rem;
-      background-color: var(--playerbox-bg-color);
-      height: 80px;
-      font-size: 1.5rem;
-      font-weight: 300;
-      box-shadow: var(--shadow);
-    }
+    <script>
+        var self = this
 
-    .addplayer i {
-      margin-right: 0.5rem;
-    }
-  </style>
+        onGotPlayers(players) {
+            self.players = players
+            self.update()
+        }
 
-  <script>
-    var self = this
+        addPlayer() {
+            route('players/-1')
+        }
 
-    onGotPlayers(players) {
-      self.players = players
-      self.update()
-    }
+        self.on('before-mount', () => {
+            RiotControl.on('got_all_players', self.onGotPlayers)
+        })
 
-    addPlayer() {
-      route('players/-1')
-    }
+        self.on('unmount', () => {
+            RiotControl.off('got_all_players', self.onGotPlayers)
+        })
 
-    self.on('before-mount', () => {
-      RiotControl.on('got_all_players', self.onGotPlayers)
-    })
-
-    self.on('unmount', () => {
-      RiotControl.off('got_all_players', self.onGotPlayers)
-    })
-
-    self.on('mount', () => {
-      RiotControl.trigger('get_all_players')
-    })
-  </script>
+        self.on('mount', () => {
+            RiotControl.trigger('get_all_players')
+        })
+    </script>
 
 </players-page>
