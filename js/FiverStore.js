@@ -93,7 +93,7 @@ function FiverStore() {
     })
 
     //override tbc date to 0000-00-00
-    self.fiver.players[0].lastPlayed = '0001-01-01'
+    self.fiver.players[0].lastPlayed = '2017-01-01'
 
     updateSubs()
   }
@@ -177,6 +177,8 @@ function FiverStore() {
     })
     self.fiver.games.push(newGame)
     gameCount = self.fiver.games.length
+
+    self.fiver.allRows = getAllGameRows(self.fiver.games)
   }
 
   var updateHue = function(hue) {

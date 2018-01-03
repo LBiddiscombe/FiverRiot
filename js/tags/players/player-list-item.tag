@@ -15,7 +15,7 @@
       <p class="player-name">{player.name}</p>
       <p if={parent.opts.filter=="teams" } class="player-monies">Paid: { asMoney(player.paid) }</p>
       <p class="player-monies">Balance: { asMoney(player.balance) }</p>
-      <p if={ parent.opts.filter!="teams" } class="player-monies">Played: { player.lastPlayed }</p>
+      <p if={ parent.opts.filter!="teams" } class="player-monies">{ moment(player.lastPlayed, "YYYY-MM-DD").fromNow() }</p>
     </div>
     <div class="player-box-right">
       <a show="{ selected }" onclick="{ sub }">
