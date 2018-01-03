@@ -13,8 +13,9 @@
     </div>
     <div class="player-box-centre" onclick="{ handleSelected }">
       <p class="player-name">{player.name}</p>
-      <p class="player-monies {hidePaid}">Paid: { asMoney(player.paid) }</p>
+      <p if={parent.opts.filter=="teams" } class="player-monies">Paid: { asMoney(player.paid) }</p>
       <p class="player-monies">Balance: { asMoney(player.balance) }</p>
+      <p if={ parent.opts.filter!="teams" } class="player-monies">Played: { player.lastPlayed }</p>
     </div>
     <div class="player-box-right">
       <a show="{ selected }" onclick="{ sub }">

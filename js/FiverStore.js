@@ -60,8 +60,7 @@ function FiverStore() {
           .then(res => res.json())
           .then(res => {
             self.fiver = res
-            self.fiver.allRows = getAllGameRows(self.fiver.games)
-            updateSubs()
+            initFiverData()
             setTimeout(function() {
               riot.mount('fiver-app')
             }, 0)
@@ -72,8 +71,7 @@ function FiverStore() {
         .then(blob => blob.json())
         .then(data => {
           self.fiver = data[0]
-          self.fiver.allRows = getAllGameRows(self.fiver.games)
-          updateSubs()
+          initFiverData()
           setTimeout(function() {
             riot.mount('fiver-app')
           }, 0)
@@ -83,6 +81,22 @@ function FiverStore() {
         })
     }
   })()
+
+  var initFiverData = function() {
+    // get a list of all players and game dates
+    self.fiver.allRows = getAllGameRows(self.fiver.games)
+
+    // recalc last played date for all players
+    self.fiver.players.map(p => {
+      let lastPlayed = self.fiver.allRows.filter(r => p.name == r.name)
+      p.lastPlayed = lastPlayed[0] ? lastPlayed[0].gameDate : '2017-01-01'
+    })
+
+    //override tbc date to 0000-00-00
+    self.fiver.players[0].lastPlayed = '0001-01-01'
+
+    updateSubs()
+  }
 
   var saveData = function() {
     var saveData = JSON.parse(JSON.stringify(self.fiver))
@@ -121,12 +135,16 @@ function FiverStore() {
   }
 
   var updateSubs = function() {
-    self.fiver.games[self.fiver.gameCount - 1].subs = self.fiver.players.filter(
-      p =>
-        !self.fiver.games[self.fiver.gameCount - 1].players
-          .map(p2 => p2.id)
-          .includes(p.id)
-    )
+    self.fiver.games[self.fiver.gameCount - 1].subs = self.fiver.players
+      .filter(
+        p =>
+          !self.fiver.games[self.fiver.gameCount - 1].players
+            .map(p2 => p2.id)
+            .includes(p.id)
+      )
+      .sort((a, b) => {
+        return new Date(a.lastPlayed) - new Date(b.lastPlayed)
+      })
   }
 
   var copyGame = function(prevGame, dt) {
@@ -139,6 +157,7 @@ function FiverStore() {
             fiverMixin.toDecimal(p.paid, 2),
           2
         )
+        player.lastPlayed = prevGame.gameDate
       }
     })
 
@@ -189,8 +208,11 @@ function FiverStore() {
   })
 
   var getAllGameRows = function(games) {
-    const gamesCopy = JSON.parse(JSON.stringify(games))
     var allRows = []
+    // take a copy of all the gamee
+    const gamesCopy = JSON.parse(JSON.stringify(games))
+    // but exclude the current open game
+    delete gamesCopy[gamesCopy.length - 1]
 
     allRows = gamesCopy.reduce((prev, cur, i) => {
       return [
@@ -202,6 +224,7 @@ function FiverStore() {
       ]
     }, [])
 
+    // sort in descending date order
     allRows.sort((a, b) => {
       return new Date(b.gameDate) - new Date(a.gameDate)
     })
@@ -215,6 +238,7 @@ function FiverStore() {
   })
 
   self.on('get_all_game_rows', () => {
+    self.fiver.allRows = getAllGameRows(self.fiver.games)
     self.trigger('got_all_game_rows', self.fiver.allRows)
   })
 
