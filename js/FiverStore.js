@@ -60,6 +60,7 @@ function FiverStore() {
           .then(res => res.json())
           .then(res => {
             self.fiver = res
+            self.fiver.allRows = getAllGameRows(self.fiver.games)
             updateSubs()
             setTimeout(function() {
               riot.mount('fiver-app')
@@ -71,6 +72,7 @@ function FiverStore() {
         .then(blob => blob.json())
         .then(data => {
           self.fiver = data[0]
+          self.fiver.allRows = getAllGameRows(self.fiver.games)
           updateSubs()
           setTimeout(function() {
             riot.mount('fiver-app')
@@ -83,6 +85,9 @@ function FiverStore() {
   })()
 
   var saveData = function() {
+    var saveData = JSON.parse(JSON.stringify(self.fiver))
+    delete saveData.allRows
+
     self.trigger('change_save_state', 'fa-refresh fa-spin')
     if (
       location.hostname === 'localhost' ||
@@ -98,7 +103,7 @@ function FiverStore() {
     fetch(endpoint, {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify(self.fiver)
+      body: JSON.stringify(saveData)
     }).catch(err => {
       console.log(err)
     })
@@ -183,13 +188,34 @@ function FiverStore() {
     self.trigger('settings_changed')
   })
 
+  var getAllGameRows = function(games) {
+    const gamesCopy = JSON.parse(JSON.stringify(games))
+    var allRows = []
+
+    allRows = gamesCopy.reduce((prev, cur, i) => {
+      return [
+        ...prev,
+        ...cur.players.map(p => {
+          p.gameDate = cur.gameDate
+          return p
+        })
+      ]
+    }, [])
+
+    allRows.sort((a, b) => {
+      return new Date(b.gameDate) - new Date(a.gameDate)
+    })
+
+    return allRows
+  }
+
   self.on('init_game_page', () => {
     self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
     updateHue(self.fiver.settings.hsl[0])
   })
 
-  self.on('get_all_games', () => {
-    self.trigger('got_all_games', self.fiver.games)
+  self.on('get_all_game_rows', () => {
+    self.trigger('got_all_game_rows', self.fiver.allRows)
   })
 
   self.on('prev_week', () => {

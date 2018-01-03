@@ -92,7 +92,6 @@
       })
 
       // When viewing all players mark the first occurrence of a date to break up the list
-
       self.gamePlayers.forEach((p) => {
         if (shownGames.indexOf(p.gameDate) != -1 && self.refs.playerFilter.value == 'All Players') {
           p.showDate = false
@@ -111,37 +110,24 @@
       self.update()
     }
 
-    onGotGames(games) {
-
-      const gamesCopy = JSON.parse(JSON.stringify(games))
-
-      self.allRows = gamesCopy.reduce((prev, cur, i) => {
-        return [...prev, ...cur.players.map(p => {
-          p.gameDate = cur.gameDate
-          return p
-        })]
-      }, [])
-
-      self.allRows.sort((a, b) => {
-        return new Date(b.gameDate) - new Date(a.gameDate)
-      })
-
+    onGotGameRows(allRows) {
+      self.allRows = allRows
       self.filterPlayers()
     }
 
     self.on('before-mount', () => {
       RiotControl.on('got_all_players', self.onGotPlayers)
-      RiotControl.on('got_all_games', self.onGotGames)
+      RiotControl.on('got_all_game_rows', self.onGotGameRows)
     })
 
     self.on('unmount', () => {
       RiotControl.off('got_all_players', self.onGotPlayers)
-      RiotControl.off('got_all_games', self.onGotGames)
+      RiotControl.off('got_all_game_rows', self.onGotGameRows)
     })
 
     self.on('mount', () => {
       RiotControl.trigger('get_all_players')
-      RiotControl.trigger('get_all_games')
+      RiotControl.trigger('get_all_game_rows')
     })
 
   </script>
