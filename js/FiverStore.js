@@ -71,8 +71,8 @@ function FiverStore() {
         .then(blob => blob.json())
         .then(data => {
           self.fiver = data[0]
-          initFiverData()
           setTimeout(function() {
+            initFiverData()
             riot.mount('fiver-app')
           }, 0)
         })
@@ -92,7 +92,7 @@ function FiverStore() {
       p.lastPlayed = lastPlayed[0] ? lastPlayed[0].gameDate : '2017-01-01'
     })
 
-    //override tbc date to 0000-00-00
+    //override tbc date to 2017-01-01
     self.fiver.players[0].lastPlayed = '2017-01-01'
 
     updateSubs()
