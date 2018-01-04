@@ -135,10 +135,12 @@ function FiverStore() {
   }
 
   var updateSubs = function() {
-    self.fiver.games[self.fiver.gameCount - 1].subs = self.fiver.players
+    self.fiver.games[
+      self.fiver.games.length - 1
+    ].subs = self.fiver.players
       .filter(
         p =>
-          !self.fiver.games[self.fiver.gameCount - 1].players
+          !self.fiver.games[self.fiver.games.length - 1].players
             .map(p2 => p2.id)
             .includes(p.id)
       )
@@ -176,7 +178,6 @@ function FiverStore() {
       p.balance = player.balance
     })
     self.fiver.games.push(newGame)
-    gameCount = self.fiver.games.length
 
     self.fiver.allRows = getAllGameRows(self.fiver.games)
   }
@@ -296,12 +297,14 @@ function FiverStore() {
 
     // Now update player info for the open week, if they are playing
     gamePlayerIdx = self.fiver.games[
-      self.fiver.gameCount - 1
+      self.fiver.games.length - 1
     ].players.findIndex(p => p.id == player.id)
 
     // update existing player
     if (gamePlayerIdx != -1) {
-      self.fiver.games[self.fiver.gameCount - 1].players[gamePlayerIdx] = player
+      self.fiver.games[self.fiver.games.length - 1].players[
+        gamePlayerIdx
+      ] = player
     }
 
     self.trigger(
