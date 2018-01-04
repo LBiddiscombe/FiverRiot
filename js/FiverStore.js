@@ -88,8 +88,8 @@ function FiverStore() {
 
     // recalc last played date for all players
     self.fiver.players.map(p => {
-      let lastPlayed = self.fiver.allRows.filter(r => p.name == r.name)
-      p.lastPlayed = lastPlayed[0] ? lastPlayed[0].gameDate : '2017-01-01'
+      let lastPlayed = self.fiver.allRows.find(r => p.id == r.id)
+      p.lastPlayed = lastPlayed ? lastPlayed.gameDate : '2017-01-01'
     })
 
     //override tbc date to 2017-01-01
