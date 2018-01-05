@@ -23,6 +23,9 @@
             <a class="navmenuitem " href="#settings " onclick={ toggleMenu }>
                 <i class="fa fa-cog "></i>Settings
             </a>
+            <a class="navmenuitem " href="#clubs " onclick={ toggleMenu }>
+                <i class="fa fa-th-large "></i>Clubs
+            </a>
             <a class="navmenuitem " href="#about " onclick={ toggleMenu }>
                 <i class="fa fa-info-circle "></i>About
             </a>
@@ -46,37 +49,37 @@
             -webkit-tap-highlight-color: transparent;
             z-index: 19;
         }
-        
+
         .navitem {
             font-size: 2rem;
             flex: 1;
             color: var(--header-text-color);
         }
-        
+
         .navleft {
             font-size: 2rem;
             text-align: left;
             flex-grow: 0;
             margin-left: 10px;
         }
-        
+
         .navcenter {
             text-align: center;
             font-size: 1.5rem;
             margin-left: 0.5rem;
         }
-        
+
         .navright {
             font-size: 2rem;
             flex-grow: 0;
             text-align: right;
             margin-right: 10px;
         }
-        
+
         .navmenu {
             display: none;
         }
-        
+
         .navmenu.show {
             display: flex;
             flex-direction: column;
@@ -92,7 +95,7 @@
             max-width: 768px;
             z-index: 10;
         }
-        
+
         .navmenuitem {
             flex: 1;
             display: flex;
@@ -104,7 +107,7 @@
             font-weight: 300;
             align-items: center;
         }
-        
+
         .navmenuitem:before,
         .navmenuitem:after {
             background: rgba(255, 255, 255, 0.5);
@@ -114,15 +117,15 @@
             content: '';
             margin: 0 1rem;
         }
-        
+
         .navmenuitem:last-child {
             padding-bottom: 0.5rem;
         }
-        
+
         .navmenuitem i {
             margin-right: 1rem;
         }
-        
+
         .savestate {
             position: fixed;
             top: 2.2rem;
@@ -149,7 +152,7 @@
 
         // press and hold swap button to swap team 1 with team 2
         onPickStart() {
-            self.pickSwap = setTimeout(function() {
+            self.pickSwap = setTimeout(function () {
                 RiotControl.trigger('swap_teams')
             }, 2000)
         }
@@ -173,7 +176,7 @@
             self.saveState = state
             self.fadeOut = (state == 'fa-check')
             if (self.fadeOut) {
-                setTimeout(function() {
+                setTimeout(function () {
                     self.saveState = ''
                     self.update()
                 }, 1000)

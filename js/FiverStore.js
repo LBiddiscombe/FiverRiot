@@ -47,8 +47,10 @@ function FiverStore() {
       http://fiver.azurewebsites.net
     */
 
-  //temp data load from project JSON file, move to JSONBIN for release
-  var endpoint = 'https://fiverfunctions.azurewebsites.net/api/clubs/1'
+  var apiClubs = 'https://fiverfunctions.azurewebsites.net/api/clubs'
+  var clubId = localStorage.getItem('clubId') || '1'
+  var apiClub = 'https://fiverfunctions.azurewebsites.net/api/clubs/' + clubId
+
   var loadData = (function() {
     if (
       location.hostname === 'localhost' ||
@@ -56,10 +58,14 @@ function FiverStore() {
       location.hostname === ''
     ) {
       setTimeout(function() {
-        fetch('fiverData.json')
+        fetch('fiverData' + clubId + '.json')
           .then(res => res.json())
           .then(res => {
             self.fiver = res
+            self.fiver.settings.clubs = [
+              { id: '1', clubName: 'Thursday Night Footy' },
+              { id: '2', clubName: 'Monday Night Footy' }
+            ]
             initFiverData()
             setTimeout(function() {
               riot.mount('fiver-app')
@@ -67,7 +73,8 @@ function FiverStore() {
           })
       }, 2000)
     } else {
-      fetch(endpoint)
+      // get the currently managed club data
+      fetch(apiClub)
         .then(blob => blob.json())
         .then(data => {
           self.fiver = data[0]
@@ -75,6 +82,16 @@ function FiverStore() {
             initFiverData()
             riot.mount('fiver-app')
           }, 0)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+
+      // get list of all clubs available
+      fetch(apiClubs)
+        .then(blob => blob.json())
+        .then(data => {
+          self.fiver.settings.clubs = data
         })
         .catch(err => {
           console.log(err)
@@ -114,7 +131,7 @@ function FiverStore() {
     var headers = new Headers()
     headers.append('content-type', 'application/json')
     headers.append('cache-control', 'no-cache')
-    fetch(endpoint, {
+    fetch(apiClub, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify(saveData)
@@ -208,6 +225,13 @@ function FiverStore() {
     queueSave()
     route('/')
     self.trigger('settings_changed')
+  })
+
+  self.on('change_club', newSettings => {
+    clubId = newSettings.clubId
+    localStorage.setItem('clubId', clubId)
+    route('/')
+    location.reload()
   })
 
   var getAllGameRows = function(games) {

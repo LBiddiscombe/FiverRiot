@@ -1,0 +1,248 @@
+{
+  "id": "1",
+  "settings": {
+    "clubName": "Monday Night Footy",
+    "teamSize": 5,
+    "gameFrequency": 7,
+    "gameFee": 6.0,
+    "pitchFee": 61.2,
+    "hsl": [0, 48, 42]
+  },
+  "gameIndex": 0,
+  "players": [
+    {
+      "id": 0,
+      "name": "tbc",
+      "weighting": 0,
+      "balance": 0
+    },
+    {
+      "id": 1,
+      "name": "Lee",
+      "weighting": 3,
+      "balance": 0
+    },
+    {
+      "id": 2,
+      "name": "Auldrius",
+      "weighting": 4,
+      "balance": 24.2
+    },
+    {
+      "id": 3,
+      "name": "Paul",
+      "weighting": 3,
+      "balance": -38.2
+    },
+    {
+      "id": 4,
+      "name": "Liam",
+      "weighting": 5,
+      "balance": 13.7
+    },
+    {
+      "id": 5,
+      "name": "Brian",
+      "weighting": 2,
+      "balance": 4.5
+    },
+    {
+      "id": 6,
+      "name": "Adam",
+      "weighting": 2,
+      "balance": 8.9
+    },
+    {
+      "id": 7,
+      "name": "Jake",
+      "weighting": 3,
+      "balance": -6
+    },
+    {
+      "id": 8,
+      "name": "Mark",
+      "weighting": 5,
+      "balance": 0.2
+    },
+    {
+      "id": 9,
+      "name": "Rich V",
+      "weighting": 3,
+      "balance": 11.2
+    },
+    {
+      "id": 10,
+      "name": "Si",
+      "weighting": 4,
+      "balance": 6
+    },
+    {
+      "id": 11,
+      "name": "Dean",
+      "weighting": 2,
+      "balance": 6.7
+    },
+    {
+      "id": 12,
+      "name": "Aders",
+      "weighting": 3,
+      "balance": -8.4
+    },
+    {
+      "id": 13,
+      "name": "Jon",
+      "weighting": 3,
+      "balance": 19
+    },
+    {
+      "id": 14,
+      "name": "Joe",
+      "weighting": 5,
+      "balance": -3.5
+    },
+    {
+      "id": 15,
+      "name": "James",
+      "weighting": 3,
+      "balance": 0
+    },
+    {
+      "id": 16,
+      "name": "Russ",
+      "weighting": 2,
+      "balance": 0
+    },
+    {
+      "id": 17,
+      "name": "Mike",
+      "weighting": 3,
+      "balance": 17.3
+    },
+    {
+      "id": 18,
+      "name": "Rich M",
+      "weighting": 3,
+      "balance": 9.23
+    },
+    {
+      "id": 19,
+      "name": "Josh",
+      "weighting": 3,
+      "balance": 0
+    },
+    {
+      "id": 20,
+      "name": "Elliott (Adz)",
+      "weighting": 2,
+      "balance": 0
+    },
+    {
+      "id": 21,
+      "name": "Steve H",
+      "weighting": 3,
+      "balance": -6
+    },
+    {
+      "id": 22,
+      "name": "Lee (via...)",
+      "weighting": 3,
+      "balance": -6
+    },
+    {
+      "id": 23,
+      "name": "Charlie",
+      "weighting": 3,
+      "balance": 8
+    },
+    {
+      "id": 24,
+      "name": "Paul T2",
+      "weighting": 3,
+      "balance": -1
+    },
+    {
+      "id": 25,
+      "name": "Tom",
+      "weighting": 2,
+      "balance": 0
+    }
+  ],
+  "games": [
+    {
+      "gameDate": "2017-11-09",
+      "locked": false,
+      "players": [
+        {
+          "id": 23,
+          "name": "Charlie",
+          "weighting": 3,
+          "balance": 8,
+          "listidx": 0
+        },
+        {
+          "id": 11,
+          "name": "Dean",
+          "weighting": 2,
+          "balance": 6.7,
+          "listidx": 1
+        },
+        {
+          "id": 13,
+          "name": "Jon",
+          "weighting": 3,
+          "balance": 19,
+          "listidx": 2
+        },
+        {
+          "id": 4,
+          "name": "Liam",
+          "weighting": 5,
+          "balance": 13.7,
+          "listidx": 3
+        },
+        {
+          "id": 25,
+          "name": "Tom",
+          "weighting": 2,
+          "balance": 0,
+          "listidx": 4
+        },
+        {
+          "id": 6,
+          "name": "Adam",
+          "weighting": 2,
+          "balance": 8.9,
+          "listidx": 5
+        },
+        {
+          "id": 5,
+          "name": "Brian",
+          "weighting": 2,
+          "balance": 4.5,
+          "listidx": 6
+        },
+        {
+          "id": 7,
+          "name": "Jake",
+          "weighting": 3,
+          "balance": -6,
+          "listidx": 7
+        },
+        {
+          "id": 1,
+          "name": "Lee",
+          "weighting": 3,
+          "balance": 0,
+          "listidx": 8
+        },
+        {
+          "id": 16,
+          "name": "Russ",
+          "weighting": 2,
+          "balance": 0,
+          "listidx": 9
+        }
+      ]
+    }
+  ]
+}

@@ -22,6 +22,9 @@
       <route path="/settings">
         <settings-page></settings-page>
       </route>
+      <route path="/clubs">
+        <change-club></change-club>
+      </route>
       <route path="/about">
         <about-page></about-page>
       </route>
