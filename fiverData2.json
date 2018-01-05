@@ -6,11 +6,7 @@
     "gameFrequency": 7,
     "gameFee": 4,
     "pitchFee": 40,
-    "hsl": [
-      120,
-      48,
-      42
-    ],
+    "hsl": [120, 48, 42],
     "clubs": [
       {
         "id": "1",
@@ -176,22 +172,7 @@
     {
       "gameDate": "2017-10-05",
       "locked": false,
-      "players": [
-        {
-          "id": 1,
-          "name": "Lee",
-          "weighting": 3,
-          "balance": 0,
-          "team": 1
-        },
-        {
-          "id": 10,
-          "name": "Si",
-          "weighting": 4,
-          "balance": 4,
-          "team": 2
-        }
-      ],
+      "players": [],
       "subs": [
         {
           "id": 0,

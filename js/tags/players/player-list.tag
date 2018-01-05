@@ -49,7 +49,7 @@
 
       self.empty = []
 
-      if (self.players.length > 0 && self.players.length < self.settings.teamSize * 2) {
+      if (self.players.length < self.settings.teamSize * 2) {
         const missing = (self.settings.teamSize * 2) - self.players.length
         for (i = 0; i < missing; i++) {
           self.empty.push({
