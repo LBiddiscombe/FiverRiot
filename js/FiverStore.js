@@ -83,15 +83,16 @@ function FiverStore() {
             riot.mount('fiver-app')
           }, 0)
         })
-        .catch(err => {
-          console.log(err)
-        })
-
-      // get list of all clubs available
-      fetch(apiClubs)
-        .then(blob => blob.json())
-        .then(data => {
-          self.fiver.settings.clubs = data
+        .then(() => {
+          // get list of all clubs available
+          fetch(apiClubs)
+            .then(blob => blob.json())
+            .then(data => {
+              self.fiver.settings.clubs = data
+            })
+            .catch(err => {
+              console.log(err)
+            })
         })
         .catch(err => {
           console.log(err)
