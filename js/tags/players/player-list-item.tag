@@ -101,14 +101,15 @@
   <script>
     var self = this
     self.mixin('fiverMixin')
+    self.settings = self.getSettings()
 
     self.selected = false
     self.tbc = (!self.player.id && self.parent.opts.filter != 'subs')
     self.show = !self.tbc || self.parent.opts.filter != 'all'
 
     setTeamColours() {
-      self.team1 = (self.parent.opts.filter == "teams" && self.i < 5 && self.player.id != 0)
-      self.team2 = self.parent.opts.filter == "teams" && self.i >= 5
+      self.team1 = (self.parent.opts.filter == "teams" && self.i < self.settings.teamSize && self.player.id != 0)
+      self.team2 = self.parent.opts.filter == "teams" && self.i >= self.settings.teamSize && self.player.id != 0
       self.team0 = self.parent.opts.filter == "all" || self.parent.opts.filter == "subs"
     }
     self.setTeamColours()
