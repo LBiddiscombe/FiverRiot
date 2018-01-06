@@ -92,11 +92,10 @@
             min-height: var(--header-height);
             width: 100vw;
             max-width: 768px;
+            background-position: 0px -56px;
             color: var(--header-text-color);
             -webkit-tap-highlight-color: transparent;
             box-shadow: var(--shadow);
-            margin-top: -4px;
-            margin-bottom: 0.3rem;
             position: fixed;
             z-index: 10;
         }
