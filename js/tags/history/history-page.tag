@@ -4,7 +4,14 @@
     <i class="fa fa-history "></i>History
   </div>
 
-  <table class="table is-narrow tablehead">
+  <span class="select is-fullwidth">
+    <select ref="playerFilter" onchange={filterPlayers}>
+      <option>All Players</option>
+      <option each="{ player, i in players }">{player.name}</option>
+    </select>
+  </span>
+
+  <table class="table is-narrow">
     <thead>
       <tr>
         <th>Date</th>
@@ -14,18 +21,6 @@
         <th class="has-text-right">Paid</th>
       </tr>
     </thead>
-  </table>
-
-  <div class="wrap"></div>
-
-  <span class="select is-fullwidth">
-    <select ref="playerFilter" onchange={filterPlayers}>
-      <option>All Players</option>
-      <option each="{ player, i in players }">{player.name}</option>
-    </select>
-  </span>
-
-  <table class="table is-narrow">
     <tbody>
       <tr each="{ gamePlayer in gamePlayers }" class={showdate: gamePlayer.showDate}>
         <td>
@@ -45,23 +40,20 @@
       margin: 2rem;
     }
 
-    .tablehead {
-      margin-bottom: 0.3rem;
-      position: fixed;
-      top: 6rem;
-      width: 100%;
-      max-width: 768px;
-      z-index: 10;
-    }
-
     table {
       margin-top: 0.3rem;
       width: 100%;
-
+      font-size: 1rem;
     }
 
-    table {
-      font-size: 1rem;
+    thead {
+      position: -webkit-sticky;
+      position: -moz-sticky;
+      position: -ms-sticky;
+      position: -o-sticky;
+      position: sticky;
+      top: 100px;
+      background-color: white;
     }
 
     .table td {
