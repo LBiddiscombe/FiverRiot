@@ -208,7 +208,7 @@ function FiverStore() {
     let newMainHSL = ` hsl(${hsl[0]},15%,92%)`
 
     document.documentElement.style.setProperty('--header-bg-color', newHeadHSL)
-    document.documentElement.style.setProperty('----main-bg-color', newMainHSL)
+    document.documentElement.style.setProperty('--main-bg-color', newMainHSL)
   }
 
   //#region Games
