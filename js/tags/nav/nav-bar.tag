@@ -86,13 +86,13 @@
             justify-content: space-around;
             top: 3.25rem;
             background-image: var(--header-image);
+            background-position: 0px -56px;
             background-size: cover;
             background-color: var(--header-bg-color);
             background-blend-mode: multiply;
             min-height: var(--header-height);
             width: 100vw;
             max-width: 768px;
-            background-position: 0px -56px;
             color: var(--header-text-color);
             -webkit-tap-highlight-color: transparent;
             box-shadow: var(--shadow);
