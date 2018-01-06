@@ -87,6 +87,7 @@
             top: 3.25rem;
             background-image: var(--header-image);
             background-position: 0px -56px;
+            background-repeat: no-repeat;
             background-size: cover;
             background-color: var(--header-bg-color);
             background-blend-mode: multiply;
