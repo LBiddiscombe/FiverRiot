@@ -34,11 +34,10 @@
       let hsl = self.settings.hsl
       self.hue = self.refs.hueslider.value
       hsl[0] = self.hue
-      let newHeadHSL = ` hsl(${hsl[0]},${hsl[1]}%,${hsl[2]}%)`
-      let newMainHSL = ` hsl(${hsl[0]},15%,92%)`
 
-      document.documentElement.style.setProperty('--top-color', newHeadHSL)
-      document.documentElement.style.setProperty('--bottom-color', newMainHSL)
+      newHSL = self.asHSL(hsl)
+      document.documentElement.style.setProperty('--top-color', newHSL.headHSL)
+      document.documentElement.style.setProperty('--bottom-color', newHSL.mainHSL)
     }
 
     self.on('mount', () => {

@@ -6,7 +6,19 @@
     "gameFrequency": 7,
     "gameFee": 6.0,
     "pitchFee": 61.2,
-    "hsl": [92, 48, 42]
+    "hsl": [92, 48, 42],
+    "clubs": [
+      {
+        "id": "1",
+        "clubName": "Thursday Night Footy",
+        "hsl": [92, 48, 42]
+      },
+      {
+        "id": "2",
+        "clubName": "Monday Night Footy",
+        "hsl": [300, 48, 42]
+      }
+    ]
   },
   "gameIndex": 20,
   "players": [

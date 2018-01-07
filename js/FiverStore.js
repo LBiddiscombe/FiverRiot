@@ -31,6 +31,12 @@ function FiverStore() {
       e.target.value = val === 0 ? '' : this.toDecimal(val, 2).toFixed(2)
     },
 
+    asHSL: function(hsl) {
+      let headHSL = ` hsl(${hsl[0]},${hsl[1]}%,${hsl[2]}%)`
+      let mainHSL = ` hsl(${hsl[0]},15%,92%)`
+      return { headHSL, mainHSL }
+    },
+
     getSettings: function() {
       return self.fiver.settings
     }
@@ -62,10 +68,6 @@ function FiverStore() {
           .then(res => res.json())
           .then(res => {
             self.fiver = res
-            self.fiver.settings.clubs = [
-              { id: '1', clubName: 'Thursday Night Footy' },
-              { id: '2', clubName: 'Monday Night Footy' }
-            ]
             initFiverData()
             setTimeout(function() {
               riot.mount('fiver-app')
@@ -204,11 +206,16 @@ function FiverStore() {
     let hsl = self.fiver.settings.hsl
 
     hsl[0] = hue
-    let newHeadHSL = ` hsl(${hsl[0]},${hsl[1]}%,${hsl[2]}%)`
-    let newMainHSL = ` hsl(${hsl[0]},15%,92%)`
+    let newHSL = fiverMixin.asHSL(hsl)
 
-    document.documentElement.style.setProperty('--header-bg-color', newHeadHSL)
-    document.documentElement.style.setProperty('--main-bg-color', newMainHSL)
+    document.documentElement.style.setProperty(
+      '--header-bg-color',
+      newHSL.headHSL
+    )
+    document.documentElement.style.setProperty(
+      '--main-bg-color',
+      newHSL.mainHSL
+    )
   }
 
   //#region Games
@@ -226,13 +233,6 @@ function FiverStore() {
     queueSave()
     route('/')
     self.trigger('settings_changed')
-  })
-
-  self.on('change_club', newSettings => {
-    clubId = newSettings.clubId
-    localStorage.setItem('clubId', clubId)
-    route('/')
-    location.reload()
   })
 
   var getAllGameRows = function(games) {

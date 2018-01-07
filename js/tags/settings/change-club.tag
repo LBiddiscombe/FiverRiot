@@ -5,18 +5,11 @@
   </div>
 
   <form id="settings">
-    <div class="field wrap">
+    <div class="field wrap ">
       <label class="label">Select Club</label>
-      <p class="control">
-        <span class="select is-fullwidth is-large">
-          <select ref="clubId" id="clubId">
-            <option each="{ club, i in settings.clubs }" value={club.id} selected={ settings.clubName==club.clubName }>{ club.id } - { club.clubName }</option>
-          </select>
-        </span>
+      <p class="control wrap" each="{ club, i in settings.clubs }">
+        <a class="button is-large is-fullwidth" value={club.id} onclick={onClick}>{ club.clubName }</a>
       </p>
-    </div>
-    <div class="wrap">
-      <save-panel ref="savePanel"></save-panel>
     </div>
   </form>
 
@@ -26,7 +19,7 @@
     }
 
     .wrap {
-      margin: 0.3rem 0.4rem 0.3rem;
+      margin: 0.3rem 0.4rem 0.7rem;
     }
   </style>
 
@@ -35,20 +28,21 @@
     self.mixin('fiverMixin')
     self.settings = self.getSettings()
 
-    onSave() {
-      var newSettings = {}
-      var formElements = document.getElementById("settings").elements
-      var elements = [...formElements]
-      elements.forEach(element => {
-        newSettings[element.id] = element.value
-      })
-
-      // save updates to Settings
-      RiotControl.trigger('change_club', newSettings)
+    onClick(e) {
+      localStorage.setItem('clubId', e.target.value)
+      route('/')
+      location.reload()
     }
 
     self.on('mount', () => {
-      self.refs.savePanel.open('Confirm Selection', 'Switch Clubs', '')
+      const clubButtons = [...document.getElementsByClassName('button')]
+      const hslList = self.settings.clubs.map(c => self.asHSL(c.hsl))
+
+      clubButtons.map((btn, i) => {
+        btn.style.background = hslList[i].headHSL
+        btn.style.color = hslList[i].mainHSL
+      })
+
     })
 
   </script>
