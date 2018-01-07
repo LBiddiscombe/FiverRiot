@@ -42,6 +42,7 @@
 
     self.on('mount', () => {
       self.refs.hueslider.value = self.settings.hsl[0]
+      self.onInput()
     })
 
   </script>
