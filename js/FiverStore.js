@@ -116,6 +116,7 @@ function FiverStore() {
     self.fiver.players[0].lastPlayed = '2017-01-01'
 
     updateSubs()
+    updateHue(self.fiver.settings.hsl[0])
   }
 
   var saveData = function() {
@@ -262,7 +263,6 @@ function FiverStore() {
 
   self.on('init_game_page', () => {
     self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
-    updateHue(self.fiver.settings.hsl[0])
   })
 
   self.on('get_all_game_rows', () => {
