@@ -35,7 +35,7 @@
       self.hue = self.refs.hueslider.value
       hsl[0] = self.hue
 
-      newHSL = self.asHSL(hsl)
+      let newHSL = self.asHSL(hsl)
       document.documentElement.style.setProperty('--top-color', newHSL.headHSL)
       document.documentElement.style.setProperty('--bottom-color', newHSL.mainHSL)
     }
