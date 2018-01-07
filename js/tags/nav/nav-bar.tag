@@ -11,22 +11,22 @@
             <i class="fa fa-random "></i>
         </div>
         <div class="navmenu {show: isActive} ">
-            <a class="navmenuitem " href="# " onclick={ toggleMenu }>
+            <a class="navmenuitem " href="#" onclick={ toggleMenu }>
                 <i class="fa fa-futbol-o "></i>Game
             </a>
-            <a class="navmenuitem " href="#players " onclick={ toggleMenu }>
+            <a class="navmenuitem " href="#players" onclick={ toggleMenu }>
                 <i class="fa fa-users "></i>Players
             </a>
-            <a class="navmenuitem " href="#history " onclick={ toggleMenu }>
+            <a class="navmenuitem " href="#history" onclick={ toggleMenu }>
                 <i class="fa fa-history "></i>History
             </a>
-            <a class="navmenuitem " href="#settings " onclick={ toggleMenu }>
+            <a class="navmenuitem " href="#settings" onclick={ toggleMenu }>
                 <i class="fa fa-cog "></i>Settings
             </a>
-            <a class="navmenuitem " href="#clubs " onclick={ toggleMenu }>
+            <a class="navmenuitem " href="#clubs" onclick={ toggleMenu }>
                 <i class="fa fa-th-large "></i>Clubs
             </a>
-            <a class="navmenuitem " href="#about " onclick={ toggleMenu }>
+            <a class="navmenuitem " href="#about" onclick={ toggleMenu }>
                 <i class="fa fa-info-circle "></i>About
             </a>
         </div>
