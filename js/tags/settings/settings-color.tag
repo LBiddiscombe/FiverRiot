@@ -18,9 +18,9 @@
     }
 
     .control {
-      background: linear-gradient(var(--top-color) 70%, var(--bottom-color) 70%);
+      background: linear-gradient(var(--top-color) 100%, var(--bottom-color) 100%);
       max-height: 4rem;
-      line-height: 6.5rem;
+      line-height: 4rem;
       text-align: center;
     }
   </style>

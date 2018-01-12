@@ -40,6 +40,7 @@
           <i class="fa fa-gbp"></i>
         </span>
       </p>
+      <p>&nbsp;</p>
       <p class="control has-icon is-expanded">
         <input class="input money is-large" id="pitchFee" type="number" pattern="[0-9]*" step="0.01" placeholder="Amount" value={settings.pitchFee.toFixed(2)}
           onKeyup={ maskMoney } ref="inputMoney">
