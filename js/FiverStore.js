@@ -321,7 +321,7 @@ function FiverStore() {
       p => fiverMixin.toDecimal(p.paid, 2).toFixed(2) || 0
     )
 
-    self.trigger('got_all_player_payments', payments.slice(qty * -1))
+    self.trigger('got_all_player_payments', payments.slice(0, qty).reverse())
   })
 
   self.on('save_player', player => {
