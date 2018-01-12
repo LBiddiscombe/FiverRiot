@@ -42,6 +42,7 @@
       margin: 0.2rem;
       border-radius: 0px;
       box-shadow: var(--shadow);
+      -webkit-user-select: none;
       user-select: none;
     }
 
