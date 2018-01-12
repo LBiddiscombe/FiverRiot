@@ -1,7 +1,12 @@
 <player-page>
 
   <div class="pagename">
-    <i class="fa fa-user "></i>Edit {player.name}
+    <i class="fa fa-user "></i>{player.name}
+  </div>
+
+
+  <div class="paytags">
+    <span each="{ payment, i in payments }" class="tag {is-success: payment > '0.00'}">£{payment}</span>
   </div>
 
   <form id="player-form">
@@ -43,6 +48,14 @@
   <style>
     .pagename i {
       margin: 0 0.5rem;
+    }
+
+    .paytags {
+      text-align: center;
+    }
+
+    .paytags>.tag {
+      margin: 0.5rem 0.2rem;
     }
 
     form {
@@ -87,13 +100,28 @@
       RiotControl.trigger('save_player', self.player)
     }
 
+    onGotPlayerPayments(payments) {
+      self.payments = payments
+      self.update()
+    }
+
     self.on('route', id => {
       if (fiverStore.fiver.players[id]) {
         self.player = fiverStore.fiver.players[id]
         self.refs.playerBalance.value = self.toDecimal(self.player.balance || 0, 2).toFixed(2)
       }
       self.refs.savePanel.open('Confirm Changes', 'Save', '')
+      RiotControl.trigger('get_all_player_payments', self.player, 6)
     })
+
+    self.on('before-mount', () => {
+      RiotControl.on('got_all_player_payments', self.onGotPlayerPayments)
+    })
+
+    self.on('unmount', () => {
+      RiotControl.off('got_all_player_payments', self.onGotPlayerPayments)
+    })
+
   </script>
 
 </player-page>

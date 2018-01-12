@@ -312,6 +312,18 @@ function FiverStore() {
     self.trigger('got_all_players', self.fiver.players)
   })
 
+  self.on('get_all_player_payments', (player, qty) => {
+    const playerRows = self.fiver.allRows.filter(r => {
+      return r.id == player.id
+    })
+
+    const payments = playerRows.map(
+      p => fiverMixin.toDecimal(p.paid, 2).toFixed(2) || 0
+    )
+
+    self.trigger('got_all_player_payments', payments.slice(qty * -1))
+  })
+
   self.on('save_player', player => {
     // create a new player record if this is an add
     if (!player.id) {
