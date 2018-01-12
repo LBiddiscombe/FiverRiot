@@ -4,7 +4,7 @@
     <i class="fa fa-history "></i>History
   </div>
 
-  <span class="select is-fullwidth">
+  <span class="select is-fullwidth is-large">
     <select ref="playerFilter" onchange={filterPlayers}>
       <option>All Players</option>
       <option each="{ player, i in players }">{player.name}</option>
