@@ -43,6 +43,8 @@
         btn.style.color = hslList[i].mainHSL
       })
 
+      //window.scrollTo(0, 0)
+
     })
 
   </script>

@@ -1,6 +1,6 @@
 <player-list-item>
 
-  <div if={ show } class="player-box {selected: selected, paid: player.paid > 0, anim: tbc }">
+  <div if={ show } class="player-box {selected: selected, paid: player.paid > 0}">
     <div class="player-box-left">
       <img show={!selected && team1} src="images\shirt-red.png">
       <img show={!selected && team2} src="images\shirt-white.png">
@@ -63,7 +63,6 @@
     .player-monies {
       font-size: 0.7rem;
       font-weight: 400;
-      width: 110px;
     }
 
     .player-box-right {

@@ -113,6 +113,10 @@
       RiotControl.on('show_add_game', self.onShowAdd)
     })
 
+    self.on('mount', () => {
+      window.scrollTo(0, 0)
+    })
+
     self.on('unmount', () => {
       RiotControl.off('game_changed', self.onGameChanged)
       RiotControl.off('show_payment', self.onShowPayment)
