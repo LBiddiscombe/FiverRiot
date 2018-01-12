@@ -6,7 +6,6 @@
 
   <form id="settings">
     <div class="field wrap ">
-      <label class="label">Select Club</label>
       <p class="control wrap" each="{ club, i in settings.clubs }">
         <a class="button is-large is-fullwidth" value={club.id} onclick={onClick}>{ club.clubName }</a>
       </p>

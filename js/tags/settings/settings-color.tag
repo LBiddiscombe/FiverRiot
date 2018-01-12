@@ -15,13 +15,14 @@
     }
 
     .hueslider {
-      width: 100%;
+      width: 75%;
     }
 
     .control {
-      background: linear-gradient(var(--top-color) 40%, var(--bottom-color) 40%);
-      min-height: 4rem;
-      line-height: 4rem;
+      background: linear-gradient(var(--top-color) 45%, var(--bottom-color) 45%);
+      min-height: 8rem;
+      line-height: 8rem;
+      text-align: center;
     }
   </style>
 
