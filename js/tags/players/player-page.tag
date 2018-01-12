@@ -1,5 +1,9 @@
 <player-page>
 
+  <div class="pagename">
+    <i class="fa fa-user "></i>Edit {player.name}
+  </div>
+
   <form id="player-form">
     <div class="field">
       <p class="control">
@@ -37,6 +41,10 @@
   </form>
 
   <style>
+    .pagename i {
+      margin: 0 0.5rem;
+    }
+
     form {
       margin: 0 0.3rem;
     }
