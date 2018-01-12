@@ -1,7 +1,6 @@
 <settings-color>
 
   <div class="field">
-    <label class="label">Hue Slider</label>
     <div class="control">
       <input type="range" class="hueslider is-large" id="hueSlider" ref="hueslider" min="0" max="360" oninput={ onInput }>
     </div>
@@ -19,9 +18,9 @@
     }
 
     .control {
-      background: linear-gradient(var(--top-color) 45%, var(--bottom-color) 45%);
-      min-height: 8rem;
-      line-height: 8rem;
+      background: linear-gradient(var(--top-color) 70%, var(--bottom-color) 70%);
+      max-height: 4rem;
+      line-height: 6.5rem;
       text-align: center;
     }
   </style>
