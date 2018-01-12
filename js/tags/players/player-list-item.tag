@@ -11,7 +11,7 @@
         </span>
       </a>
     </div>
-    <div class="player-box-centre" onclick="{ handleSelected }">
+    <div class="player-box-centre" ontouchstart={ onViewStart} ontouchend={ onViewEnd } onclick="{ handleSelected }">
       <p class="player-name">{player.name}</p>
       <p if={parent.opts.filter=="teams" } class="player-monies">Paid: { asMoney(player.paid) }</p>
       <p class="player-monies">Balance: { asMoney(player.balance) }</p>
@@ -42,6 +42,7 @@
       margin: 0.2rem;
       border-radius: 0px;
       box-shadow: var(--shadow);
+      user-select: none;
     }
 
     .player-box-left {
@@ -141,6 +142,18 @@
 
     sub() {
       RiotControl.trigger('show_subs')
+    }
+
+    // press and hold to view player page
+    onViewStart() {
+      self.viewPlayer = setTimeout(function () {
+        route('players/' + self.player.id)
+      }, 2000)
+    }
+
+    // cancel the timeout if released early
+    onViewEnd() {
+      clearTimeout(self.viewPlayer)
     }
 
     onClearSelected() {

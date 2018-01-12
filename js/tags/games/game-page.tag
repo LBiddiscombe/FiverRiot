@@ -41,6 +41,7 @@
       margin-bottom: 0.3rem;
       min-height: 3.25rem;
       z-index: 1;
+      user-select: none;
     }
 
     .prev,
