@@ -58,7 +58,7 @@
   <script>
     var self = this
 
-    document.querySelector('.loader').style.display = 'none'
+    document.querySelector('.loaderwrap').style.display = 'none'
     document.querySelector('.loadertop').style.display = 'none'
     document.querySelector('.loadertext').style.display = 'none'
 

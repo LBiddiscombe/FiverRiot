@@ -35,11 +35,6 @@
         <strong>FLIP.js</strong>
       </a>A helper library for FLIP animations by Paul Lewis
     </p>
-    <p>
-      <a href="https://projects.lukehaas.me/css-loaders/">
-        <strong>Loader Animation</strong>
-      </a>Elegant single element CSS Spinners by Luke Haas
-    </p>
   </div>
 
   <style>
