@@ -498,3 +498,5 @@ function FiverStore() {
   })
   //endregion
 }
+
+export { FiverStore }
