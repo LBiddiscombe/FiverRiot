@@ -78,14 +78,14 @@
 
     togglePosNeg(e) {
 
-      var val = self.refs.playerBalance.value.replace(".", "");
+      var val = self.refs.playerBalance.value.replace(".", "")
 
       if (val == "") {
         return;
       }
 
       val = (val / 100) * -1;
-      self.refs.playerBalance.value = val === 0 ? "" : self.toDecimal(val, 2).toFixed(2);
+      self.refs.playerBalance.value = val === 0 ? "" : self.toDecimal(val, 2).toFixed(2)
 
     }
 
@@ -106,8 +106,10 @@
     }
 
     self.on('route', id => {
-      if (fiverStore.fiver.players[id]) {
-        self.player = fiverStore.fiver.players[id]
+      //TODO: had to replace fiverStore reference with RiotControl._stores[0] to fix issues after making fiverStore an es6 module
+      //      Possibly replace get_all_player_payments with get_player and return player and payments.  on gotPlayer update()
+      if (RiotControl._stores[0].fiver.players[id]) {
+        self.player = RiotControl._stores[0].fiver.players[id]
         self.refs.playerBalance.value = self.toDecimal(self.player.balance || 0, 2).toFixed(2)
       }
       self.refs.savePanel.open('Confirm Changes', 'Save', '')
