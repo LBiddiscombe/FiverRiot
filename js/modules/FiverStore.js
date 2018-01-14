@@ -1,12 +1,11 @@
 /*global riot route RiotControl */
 import { fiverMixin } from './fiverMixin.js'
+import { fiverApi } from './fiverApi.js'
 
 function FiverStore() {
   riot.observable(this)
 
   var self = this
-  var fiver = {}
-  var timedSave = null
   self.swapList = []
 
   riot.mixin('fiverMixin', fiverMixin)
@@ -20,56 +19,8 @@ function FiverStore() {
       http://fiver.azurewebsites.net
     */
 
-  var apiClubs = 'https://fiverfunctions.azurewebsites.net/api/clubs'
-  var clubId = localStorage.getItem('clubId') || '1'
-  var apiClub = 'https://fiverfunctions.azurewebsites.net/api/clubs/' + clubId
-
-  var loadData = (function() {
-    if (
-      location.hostname === 'localhost' ||
-      location.hostname === '127.0.0.1' ||
-      location.hostname === ''
-    ) {
-      setTimeout(function() {
-        fetch('fiverData' + clubId + '.json')
-          .then(res => res.json())
-          .then(res => {
-            self.fiver = res
-            initFiverData()
-            setTimeout(function() {
-              riot.mount('fiver-app')
-            }, 0)
-          })
-      }, 2000)
-    } else {
-      // get the currently managed club data
-      fetch(apiClub)
-        .then(blob => blob.json())
-        .then(data => {
-          self.fiver = data[0]
-          setTimeout(function() {
-            initFiverData()
-            riot.mount('fiver-app')
-          }, 0)
-        })
-        .then(() => {
-          // get list of all clubs available
-          fetch(apiClubs)
-            .then(blob => blob.json())
-            .then(data => {
-              self.fiver.settings.clubs = data
-            })
-            .catch(err => {
-              console.log(err)
-            })
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    }
-  })()
-
-  var initFiverData = function() {
+  fiverApi.loadData().then(data => {
+    self.fiver = data
     // get a list of all players and game dates
     self.fiver.allRows = getAllGameRows(self.fiver.games)
 
@@ -84,43 +35,11 @@ function FiverStore() {
 
     updateSubs()
     updateHue(self.fiver.settings.hsl[0])
-  }
 
-  var saveData = function() {
-    var saveData = JSON.parse(JSON.stringify(self.fiver))
-    delete saveData.allRows
-
-    self.trigger('change_save_state', 'fa-refresh fa-spin')
-    if (
-      location.hostname === 'localhost' ||
-      location.hostname === '127.0.0.1' ||
-      location.hostname === ''
-    ) {
-      self.trigger('change_save_state', 'fa-check')
-      return
-    }
-    var headers = new Headers()
-    headers.append('content-type', 'application/json')
-    headers.append('cache-control', 'no-cache')
-    fetch(apiClub, {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify(saveData)
-    }).catch(err => {
-      console.log(err)
-    })
-    self.trigger('change_save_state', 'fa-check')
-  }
-
-  var queueSave = function() {
-    if (timedSave) {
-      clearTimeout(timedSave)
-    }
-    self.trigger('change_save_state', 'fa-pencil')
-    timedSave = setTimeout(function() {
-      saveData()
-    }, 5000)
-  }
+    setTimeout(function() {
+      riot.mount('fiver-app')
+    }, 0)
+  })
 
   var updateSubs = function() {
     self.fiver.games[
@@ -135,6 +54,47 @@ function FiverStore() {
       .sort((a, b) => {
         return new Date(a.lastPlayed) - new Date(b.lastPlayed)
       })
+  }
+
+  var updateHue = function(hue) {
+    let hsl = self.fiver.settings.hsl
+
+    hsl[0] = hue
+    let newHSL = fiverMixin.asHSL(hsl)
+
+    document.documentElement.style.setProperty(
+      '--header-bg-color',
+      newHSL.headHSL
+    )
+    document.documentElement.style.setProperty(
+      '--main-bg-color',
+      newHSL.mainHSL
+    )
+  }
+
+  var getAllGameRows = function(games) {
+    var allRows = []
+    // take a copy of all the gamee
+    const gamesCopy = JSON.parse(JSON.stringify(games))
+    // but exclude the current open game
+    delete gamesCopy[gamesCopy.length - 1]
+
+    allRows = gamesCopy.reduce((prev, cur) => {
+      return [
+        ...prev,
+        ...cur.players.map(p => {
+          p.gameDate = cur.gameDate
+          return p
+        })
+      ]
+    }, [])
+
+    // sort in descending date order
+    allRows.sort((a, b) => {
+      return new Date(b.gameDate) - new Date(a.gameDate)
+    })
+
+    return allRows
   }
 
   var copyGame = function(prevGame, dt) {
@@ -170,23 +130,7 @@ function FiverStore() {
     self.fiver.allRows = getAllGameRows(self.fiver.games)
   }
 
-  var updateHue = function(hue) {
-    let hsl = self.fiver.settings.hsl
-
-    hsl[0] = hue
-    let newHSL = fiverMixin.asHSL(hsl)
-
-    document.documentElement.style.setProperty(
-      '--header-bg-color',
-      newHSL.headHSL
-    )
-    document.documentElement.style.setProperty(
-      '--main-bg-color',
-      newHSL.mainHSL
-    )
-  }
-
-  //#region Games
+  //#region Settings Events
   self.on('save_settings', newSettings => {
     self.fiver.settings.hsl[0] = Number(newSettings.hueSlider)
     self.fiver.settings.clubName = newSettings.clubName
@@ -198,36 +142,13 @@ function FiverStore() {
     self.fiver.settings.pitchFee = fiverMixin.toDecimal(newSettings.pitchFee, 2)
     self.fiver.settings.teamSize = fiverMixin.toDecimal(newSettings.teamSize, 0)
     updateHue(self.fiver.settings.hsl[0])
-    queueSave()
+    fiverApi.queueSave(self.fiver)
     route('/')
     self.trigger('settings_changed')
   })
+  //endregion
 
-  var getAllGameRows = function(games) {
-    var allRows = []
-    // take a copy of all the gamee
-    const gamesCopy = JSON.parse(JSON.stringify(games))
-    // but exclude the current open game
-    delete gamesCopy[gamesCopy.length - 1]
-
-    allRows = gamesCopy.reduce((prev, cur) => {
-      return [
-        ...prev,
-        ...cur.players.map(p => {
-          p.gameDate = cur.gameDate
-          return p
-        })
-      ]
-    }, [])
-
-    // sort in descending date order
-    allRows.sort((a, b) => {
-      return new Date(b.gameDate) - new Date(a.gameDate)
-    })
-
-    return allRows
-  }
-
+  //#region Game Events
   self.on('init_game_page', () => {
     self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
   })
@@ -269,12 +190,70 @@ function FiverStore() {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
-    queueSave()
+    fiverApi.queueSave(self.fiver)
+  })
+
+  self.on('swap_teams', () => {
+    if (
+      self.fiver.games[self.fiver.gameIndex].locked ||
+      window.location.hash != ''
+    ) {
+      return
+    }
+
+    swapPositions([0, 5])
+    swapPositions([1, 6])
+    swapPositions([2, 7])
+    swapPositions([3, 8])
+    swapPositions([4, 9])
+
+    self.trigger(
+      'players_changed',
+      self.fiver.games[self.fiver.gameIndex].players
+    )
+    fiverApi.queueSave(self.fiver)
+  })
+
+  self.on('pick_teams', () => {
+    const pickAlgorithm = [1, 2, 2, 1, 2, 1, 1, 2, 1, 2]
+
+    if (
+      self.fiver.games[self.fiver.gameIndex].locked ||
+      window.location.hash != ''
+    ) {
+      return
+    }
+
+    var teams = self.fiver.games[self.fiver.gameIndex].players
+
+    // sort players by ability + a random factor
+    teams
+      .sort((a, b) => {
+        return (
+          parseFloat(a.weighting + Math.random()) -
+          parseFloat(b.weighting + Math.random())
+        )
+      })
+      .map((p, i) => {
+        p.team = pickAlgorithm[i % pickAlgorithm.length]
+        return p
+      })
+
+    //sort by team then by name
+    teams.sort((a, b) => {
+      return a.team - b.team || a.name.localeCompare(b.name)
+    })
+
+    self.trigger(
+      'players_changed',
+      self.fiver.games[self.fiver.gameIndex].players
+    )
+    fiverApi.queueSave(self.fiver)
   })
 
   //endregion
 
-  //#region Player Logic
+  //#region Player Events
   self.on('get_all_players', () => {
     self.trigger('got_all_players', self.fiver.players)
   })
@@ -315,7 +294,7 @@ function FiverStore() {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
-    queueSave()
+    fiverApi.queueSave(self.fiver)
   })
 
   self.on('player_selected', (idx, playerId) => {
@@ -354,7 +333,7 @@ function FiverStore() {
         self.fiver.games[self.fiver.gameIndex].players
       )
       self.trigger('subs_changed', self.fiver.games[self.fiver.gameIndex].subs)
-      queueSave()
+      fiverApi.queueSave(self.fiver)
       return
     }
 
@@ -387,65 +366,7 @@ function FiverStore() {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
-    queueSave()
-  })
-
-  self.on('swap_teams', () => {
-    if (
-      self.fiver.games[self.fiver.gameIndex].locked ||
-      window.location.hash != ''
-    ) {
-      return
-    }
-
-    swapPositions([0, 5])
-    swapPositions([1, 6])
-    swapPositions([2, 7])
-    swapPositions([3, 8])
-    swapPositions([4, 9])
-
-    self.trigger(
-      'players_changed',
-      self.fiver.games[self.fiver.gameIndex].players
-    )
-    queueSave()
-  })
-
-  self.on('pick_teams', () => {
-    const pickAlgorithm = [1, 2, 2, 1, 2, 1, 1, 2, 1, 2]
-
-    if (
-      self.fiver.games[self.fiver.gameIndex].locked ||
-      window.location.hash != ''
-    ) {
-      return
-    }
-
-    var teams = self.fiver.games[self.fiver.gameIndex].players
-
-    // sort players by ability + a random factor
-    teams
-      .sort((a, b) => {
-        return (
-          parseFloat(a.weighting + Math.random()) -
-          parseFloat(b.weighting + Math.random())
-        )
-      })
-      .map((p, i) => {
-        p.team = pickAlgorithm[i % pickAlgorithm.length]
-        return p
-      })
-
-    //sort by team then by name
-    teams.sort((a, b) => {
-      return a.team - b.team || a.name.localeCompare(b.name)
-    })
-
-    self.trigger(
-      'players_changed',
-      self.fiver.games[self.fiver.gameIndex].players
-    )
-    queueSave()
+    fiverApi.queueSave(self.fiver)
   })
 
   self.on('add_payment', (index, value) => {
@@ -457,7 +378,7 @@ function FiverStore() {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
-    queueSave()
+    fiverApi.queueSave(self.fiver)
   })
 
   self.on('clear_swaps', () => {

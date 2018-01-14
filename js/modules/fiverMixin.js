@@ -1,3 +1,5 @@
+/*global RiotControl */
+
 var fiverMixin = {
   asMoney: function(value) {
     if (!value || value === 'NaN') {
@@ -10,7 +12,7 @@ var fiverMixin = {
   toDecimal: function(value, decimals) {
     if (!value) value = 0
     let val = parseFloat(value)
-    return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals)
+    return Math.round(val * Math.pow(10, decimals)) / Math.pow(10, decimals)
   },
 
   maskMoney: function(e) {
