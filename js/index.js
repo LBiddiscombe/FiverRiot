@@ -1,4 +1,4 @@
-import { FiverStore } from './FiverStore.js'
+import { FiverStore } from '/js/modules/FiverStore.js'
 
 var fiverStore = new FiverStore()
 RiotControl.addStore(fiverStore)
