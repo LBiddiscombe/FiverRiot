@@ -33,6 +33,7 @@ var fiverApi = {
               .then(blob => blob.json())
               .then(data => {
                 fiver.settings.clubs = data
+                resolve(fiver)
               })
               .catch(err => {
                 reject(err)
