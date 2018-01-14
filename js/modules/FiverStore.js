@@ -1,3 +1,4 @@
+/*global riot route RiotControl */
 import { fiverMixin } from './fiverMixin.js'
 
 function FiverStore() {
@@ -209,7 +210,7 @@ function FiverStore() {
     // but exclude the current open game
     delete gamesCopy[gamesCopy.length - 1]
 
-    allRows = gamesCopy.reduce((prev, cur, i) => {
+    allRows = gamesCopy.reduce((prev, cur) => {
       return [
         ...prev,
         ...cur.players.map(p => {
@@ -249,7 +250,7 @@ function FiverStore() {
       self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
     } else {
       // trigger new game dialog here
-      dt = new Date(self.fiver.games[self.fiver.gameIndex].gameDate)
+      let dt = new Date(self.fiver.games[self.fiver.gameIndex].gameDate)
       dt = dt.setDate(dt.getDate() + self.fiver.settings.gameFrequency)
       dt = new Date(dt).toISOString().split('T')[0]
       self.trigger('show_add_game', dt)
@@ -299,7 +300,7 @@ function FiverStore() {
     }
 
     // Now update player info for the open week, if they are playing
-    gamePlayerIdx = self.fiver.games[
+    let gamePlayerIdx = self.fiver.games[
       self.fiver.games.length - 1
     ].players.findIndex(p => p.id == player.id)
 
