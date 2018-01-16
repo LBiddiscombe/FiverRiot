@@ -21,17 +21,6 @@ function FiverStore() {
 
   fiverApi.loadData().then(data => {
     self.fiver = data
-    // get a list of all players and game dates
-    self.fiver.allRows = getAllGameRows(self.fiver.games)
-
-    // recalc last played date for all players
-    self.fiver.players.map(p => {
-      let lastPlayed = self.fiver.allRows.find(r => p.id == r.id)
-      p.lastPlayed = lastPlayed ? lastPlayed.gameDate : '2017-01-01'
-    })
-
-    //override tbc date to 2017-01-01
-    self.fiver.players[0].lastPlayed = '2017-01-01'
 
     updateSubs()
     updateHue(self.fiver.settings.hsl[0])
@@ -72,31 +61,6 @@ function FiverStore() {
     )
   }
 
-  var getAllGameRows = function(games) {
-    var allRows = []
-    // take a copy of all the gamee
-    const gamesCopy = JSON.parse(JSON.stringify(games))
-    // but exclude the current open game
-    delete gamesCopy[gamesCopy.length - 1]
-
-    allRows = gamesCopy.reduce((prev, cur) => {
-      return [
-        ...prev,
-        ...cur.players.map(p => {
-          p.gameDate = cur.gameDate
-          return p
-        })
-      ]
-    }, [])
-
-    // sort in descending date order
-    allRows.sort((a, b) => {
-      return new Date(b.gameDate) - new Date(a.gameDate)
-    })
-
-    return allRows
-  }
-
   var copyGame = function(prevGame, dt) {
     prevGame.players.forEach(function(p) {
       if (p.id != 0) {
@@ -127,7 +91,7 @@ function FiverStore() {
     })
     self.fiver.games.push(newGame)
 
-    self.fiver.allRows = getAllGameRows(self.fiver.games)
+    self.fiver.allRows = fiverApi.getAllGameRows(self.fiver.games)
   }
 
   //#region Settings Events
@@ -154,7 +118,7 @@ function FiverStore() {
   })
 
   self.on('get_all_game_rows', () => {
-    self.fiver.allRows = getAllGameRows(self.fiver.games)
+    self.fiver.allRows = fiverApi.getAllGameRows(self.fiver.games)
     self.trigger('got_all_game_rows', self.fiver.allRows)
   })
 

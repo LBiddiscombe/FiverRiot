@@ -25,7 +25,7 @@ var fiverApi = {
         fetch(apiClub)
           .then(blob => blob.json())
           .then(data => {
-            fiver = data[0]
+            fiver = fiverApi.initFiverAppData(data[0])
           })
           .then(() => {
             // get list of all clubs available
@@ -82,6 +82,44 @@ var fiverApi = {
     timedSave = setTimeout(function() {
       fiverApi.saveData(fiverData)
     }, 5000)
+  },
+
+  getAllGameRows: function(games) {
+    var allRows = []
+    // take a copy of all the gamee
+    const gamesCopy = JSON.parse(JSON.stringify(games))
+    // but exclude the current open game
+    delete gamesCopy[gamesCopy.length - 1]
+
+    allRows = gamesCopy.reduce((prev, cur) => {
+      return [
+        ...prev,
+        ...cur.players.map(p => {
+          p.gameDate = cur.gameDate
+          return p
+        })
+      ]
+    }, [])
+
+    // sort in descending date order
+    allRows.sort((a, b) => {
+      return new Date(b.gameDate) - new Date(a.gameDate)
+    })
+
+    return allRows
+  },
+
+  initFiverAppData: function(data) {
+    data.allRows = fiverApi.getAllGameRows(data.games)
+
+    // recalc last played date for all players
+    data.players.map(p => {
+      let lastPlayed = data.allRows.find(r => p.id == r.id)
+      p.lastPlayed = lastPlayed ? lastPlayed.gameDate : '2017-01-01'
+    })
+
+    //override tbc date to 2017-01-01
+    data.players[0].lastPlayed = '2017-01-01'
   }
 }
 
