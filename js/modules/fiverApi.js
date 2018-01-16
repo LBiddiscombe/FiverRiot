@@ -17,7 +17,8 @@ var fiverApi = {
           fetch('fiverData' + clubId + '.json')
             .then(res => res.json())
             .then(res => {
-              resolve(res)
+              fiver = fiverApi.initFiverAppData(res)
+              resolve(fiver)
             })
         }, 2000)
       } else {
@@ -120,6 +121,8 @@ var fiverApi = {
 
     //override tbc date to 2017-01-01
     data.players[0].lastPlayed = '2017-01-01'
+
+    return data
   }
 }
 
