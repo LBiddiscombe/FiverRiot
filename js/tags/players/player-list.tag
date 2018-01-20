@@ -1,18 +1,19 @@
 <player-list>
 
-  <div id="teams">
+  <div id="{ opts.filter }">
     <div data-is="player-list-item" ref="person" each="{ player, i in players }"></div>
     <div data-is="player-list-item" ref="empty" each="{ player, i in empty }"></div>
   </div>
 
   <style>
-    #teams {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      justify-content: flex-start;
+    #teams,
+    #subs,
+    #all {
+      display: grid;
+      grid-gap: 0.4rem;
+      grid-auto-flow: column;
       -webkit-tap-highlight-color: transparent;
-      margin: 0 .3rem;
+      margin: 0.4rem;
     }
   </style>
 
@@ -92,12 +93,18 @@
       self.update()
       updateFlip()
 
-      // on the teams screen set the column height when even number of players
-
+      // on the teams screen set the number of rows to the team size
       if (self.opts.filter == "teams") {
         const height = (self.settings.teamSize * 90) + "px"
-        document.getElementById('teams').style.height = height
+        //document.getElementById('teams').style.height = height
+        document.getElementById(self.opts.filter).style.gridTemplateRows = 'repeat(rows, 1fr)'.replace('rows', self.settings.teamSize)
+        document.getElementById(self.opts.filter).style.gridTemplateColumns = '1fr 1fr'
       }
+      else {
+        document.getElementById(self.opts.filter).style.gridTemplateRows = 'repeat(rows, 1fr)'.replace('rows', self.players.length + 1)
+        document.getElementById(self.opts.filter).style.gridTemplateColumns = '1fr'
+      }
+
     })
 
     self.on('unmount', () => {

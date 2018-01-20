@@ -51,7 +51,7 @@
     }
 
     .main {
-      padding-top: 6.6rem;
+      padding-top: 6.4rem;
     }
   </style>
 

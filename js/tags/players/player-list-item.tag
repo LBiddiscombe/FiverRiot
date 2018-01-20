@@ -33,27 +33,24 @@
 
   <style>
     .player-box {
-      display: flex;
-      flex-flow: row no-wrap;
-      position: relative;
+      display: grid;
+      grid-template-columns: 50px 1fr 50px;
+      align-items: center;
       height: 80px;
       background-color: var(--playerbox-bg-color);
-      position: relative;
-      margin: 0.2rem;
-      border-radius: 0px;
       box-shadow: var(--shadow);
       -webkit-user-select: none;
       user-select: none;
     }
 
     .player-box-left {
-      flex-shrink: 0;
-      align-self: center;
+      grid-row: 1;
+      grid-column: 1;
     }
 
     .player-box-centre {
-      flex: auto;
-      padding: 8px 0 0 !important;
+      grid-row: 1;
+      grid-column: 2 / span 2;
     }
 
     .player-name {
@@ -68,10 +65,8 @@
     }
 
     .player-box-right {
-      align-self: center;
-      position: absolute;
-      right: 0;
-      top: 15px;
+      grid-row: 1;
+      grid-column: 3;
     }
 
     .fa-user-o {
@@ -107,6 +102,9 @@
     self.selected = false
     self.tbc = (!self.player.id && self.parent.opts.filter != 'subs')
     self.show = !self.tbc || self.parent.opts.filter != 'all'
+    if (!self.show) {
+      self.root.hidden = true
+    }
 
     setTeamColours() {
       self.team1 = (self.parent.opts.filter == "teams" && self.i < self.settings.teamSize && self.player.id != 0)
