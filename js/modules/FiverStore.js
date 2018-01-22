@@ -238,6 +238,7 @@ function FiverStore() {
     // create a new player record if this is an add
     if (!player.id) {
       player.id = self.fiver.players.length
+      player.lastPlayed = '2017-01-01'
       self.fiver.players.push(player)
       updateSubs()
     }
