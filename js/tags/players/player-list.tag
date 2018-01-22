@@ -10,8 +10,8 @@
     #subs,
     #all {
       display: grid;
+      grid-template-columns: 1fr;
       grid-gap: 0.4rem;
-      grid-auto-flow: column;
       -webkit-tap-highlight-color: transparent;
       margin: 0.4rem;
     }
@@ -99,10 +99,7 @@
         //document.getElementById('teams').style.height = height
         document.getElementById(self.opts.filter).style.gridTemplateRows = 'repeat(rows, 1fr)'.replace('rows', self.settings.teamSize)
         document.getElementById(self.opts.filter).style.gridTemplateColumns = '1fr 1fr'
-      }
-      else {
-        document.getElementById(self.opts.filter).style.gridTemplateRows = 'repeat(rows, 1fr)'.replace('rows', self.players.length + 1)
-        document.getElementById(self.opts.filter).style.gridTemplateColumns = '1fr'
+        document.getElementById(self.opts.filter).style.gridAutoFlow = 'column'
       }
 
     })
