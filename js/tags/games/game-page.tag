@@ -117,6 +117,11 @@
 
     self.on('mount', () => {
       window.scrollTo(0, 0)
+
+      const user = fetch('https://fiver.azurewebsites.net/.auth/me', { method: 'GET', credentials: 'include', cache: 'no-cache' })
+        .then(blob => blob.json())
+        .then(data => { console.log(data) })
+
     })
 
     self.on('unmount', () => {
