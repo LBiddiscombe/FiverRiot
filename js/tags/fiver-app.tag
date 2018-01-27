@@ -7,6 +7,9 @@
       <route path="/">
         <game-page></game-page>
       </route>
+      <route path="/_=_">
+        <game-page></game-page>
+      </route>
       <route path="/subs/*">
         <game-page-subs></game-page-subs>
       </route>
