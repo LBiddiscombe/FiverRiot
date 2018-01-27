@@ -25,6 +25,27 @@ function FiverStore() {
     updateSubs()
     updateHue(self.fiver.settings.hsl[0])
 
+    if (
+      location.hostname === 'localhost' ||
+      location.hostname === '127.0.0.1' ||
+      location.hostname === ''
+    ) {
+      self.fiver.settings.user = 'lee.biddiscombe@btinternet.com'
+    } else {
+      self.fiver.settings.user = fetch(
+        'https://fiver.azurewebsites.net/.auth/me',
+        {
+          method: 'GET',
+          credentials: 'include',
+          cache: 'no-cache'
+        }
+      )
+        .then(blob => blob.json())
+        .then(data => {
+          return data[0].user_id
+        })
+    }
+
     setTimeout(function() {
       riot.mount('fiver-app')
     }, 0)
