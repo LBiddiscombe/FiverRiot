@@ -1598,6 +1598,7 @@
     },
     {
       "gameDate": "2017-11-02",
+      "gameFee": 7.5,
       "locked": true,
       "players": [
         {
@@ -1682,6 +1683,7 @@
     },
     {
       "gameDate": "2017-11-09",
+      "gameFee": 7.5,
       "locked": false,
       "players": [
         {

@@ -28,7 +28,7 @@
         </td>
         <td>{gamePlayer.name}</td>
         <td class="has-text-right">{asMoney(gamePlayer.balance)}</td>
-        <td class="has-text-right">{asMoney(settings.gameFee * -1)}</td>
+        <td class="has-text-right">{asMoney(gamePlayer.gameFee * -1)}</td>
         <td class="has-text-right">{asMoney(gamePlayer.paid)}</td>
       </tr>
     </tbody>

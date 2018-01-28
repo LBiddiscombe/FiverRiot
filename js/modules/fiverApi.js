@@ -97,6 +97,7 @@ var fiverApi = {
         ...prev,
         ...cur.players.map(p => {
           p.gameDate = cur.gameDate
+          p.gameFee = cur.gameFee || 6.0
           return p
         })
       ]
