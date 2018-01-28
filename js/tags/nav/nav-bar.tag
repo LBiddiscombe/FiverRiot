@@ -1,203 +1,208 @@
 <nav-bar>
 
-    <div class="navbar">
-        <div class="navitem navleft" onclick={ toggleMenu }>
-            <i class="fa fa-bars"></i>
-        </div>
-        <div class="navitem navcenter ">
-            {settings.clubName}
-        </div>
-        <div class="navitem navright " ontouchstart={ onPickStart} ontouchend={ onPickEnd } onclick={ onPick }>
-            <i class="fa fa-random "></i>
-        </div>
-        <div class="navmenu {show: isActive} ">
-            <a class="navmenuitem " href="#" onclick={ toggleMenu }>
-                <i class="fa fa-futbol-o "></i>Game
-            </a>
-            <a class="navmenuitem " href="#players" onclick={ toggleMenu }>
-                <i class="fa fa-users "></i>Players
-            </a>
-            <a class="navmenuitem " href="#history" onclick={ toggleMenu }>
-                <i class="fa fa-history "></i>History
-            </a>
-            <a class="navmenuitem " href="#settings" onclick={ toggleMenu }>
-                <i class="fa fa-cog "></i>Settings
-            </a>
-            <a class="navmenuitem " href="#clubs" onclick={ toggleMenu }>
-                <i class="fa fa-th-large "></i>Clubs
-            </a>
-            <a class="navmenuitem " href="#about" onclick={ toggleMenu }>
-                <i class="fa fa-info-circle "></i>About
-            </a>
-        </div>
+  <div class="navbar">
+    <div class="navitem navleft" onclick={ toggleMenu }>
+      <i class="fa fa-bars"></i>
     </div>
-    <div if={saveState !='' } class="savestate">
-        <i class="fa {saveState}"></i>
+    <div class="navitem navcenter ">
+      {settings.clubName}
     </div>
+    <div class="navitem navright {hidden: !isAdmin()}" ontouchstart={ onPickStart} ontouchend={ onPickEnd } onclick={ onPick
+      }>
+      <i class="fa fa-random "></i>
+    </div>
+    <div class="navmenu {show: isActive} ">
+      <a class="navmenuitem " href="#" onclick={ toggleMenu }>
+        <i class="fa fa-futbol-o "></i>Game
+      </a>
+      <a class="navmenuitem " href="#players" onclick={ toggleMenu }>
+        <i class="fa fa-users "></i>Players
+      </a>
+      <a class="navmenuitem " href="#history" onclick={ toggleMenu }>
+        <i class="fa fa-history "></i>History
+      </a>
+      <a if={isAdmin()} class="navmenuitem " href="#settings" onclick={ toggleMenu }>
+        <i class="fa fa-cog "></i>Settings
+      </a>
+      <a class="navmenuitem " href="#clubs" onclick={ toggleMenu }>
+        <i class="fa fa-th-large "></i>Clubs
+      </a>
+      <a class="navmenuitem " href="#about" onclick={ toggleMenu }>
+        <i class="fa fa-info-circle "></i>About
+      </a>
+    </div>
+  </div>
+  <div if={saveState !='' } class="savestate">
+    <i class="fa {saveState}"></i>
+  </div>
 
-    <style>
-        .navbar {
-            background-color: transparent;
-            min-height: 3.25rem;
-            width: 100%;
-            max-width: 768px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            -webkit-tap-highlight-color: transparent;
-            z-index: 19;
-        }
+  <style>
+    .hidden {
+      visibility: hidden;
+    }
 
-        .navitem {
-            font-size: 2rem;
-            flex: 1;
-            color: var(--header-text-color);
-        }
+    .navbar {
+      background-color: transparent;
+      min-height: 3.25rem;
+      width: 100%;
+      max-width: 768px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      -webkit-tap-highlight-color: transparent;
+      z-index: 19;
+    }
 
-        .navleft {
-            font-size: 2rem;
-            text-align: left;
-            flex-grow: 0;
-            margin-left: 10px;
-        }
+    .navitem {
+      font-size: 2rem;
+      flex: 1;
+      color: var(--header-text-color);
+    }
 
-        .navcenter {
-            text-align: center;
-            font-size: 1.5rem;
-            margin-left: 0.5rem;
-        }
+    .navleft {
+      font-size: 2rem;
+      text-align: left;
+      flex-grow: 0;
+      margin-left: 10px;
+    }
 
-        .navright {
-            font-size: 2rem;
-            flex-grow: 0;
-            text-align: right;
-            margin-right: 10px;
-        }
+    .navcenter {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-left: 0.5rem;
+    }
 
-        .navmenu {
-            display: none;
-        }
+    .navright {
+      font-size: 2rem;
+      flex-grow: 0;
+      text-align: right;
+      margin-right: 10px;
+    }
 
-        .navmenu.show {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            top: 3.25rem;
-            background-image: var(--header-image);
-            background-position: 0px -56px;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-color: var(--header-bg-color);
-            background-blend-mode: multiply;
-            min-height: var(--header-height);
-            width: 100vw;
-            max-width: 768px;
-            color: var(--header-text-color);
-            -webkit-tap-highlight-color: transparent;
-            box-shadow: var(--shadow);
-            position: fixed;
-            z-index: 10;
-        }
+    .navmenu {
+      display: none;
+    }
 
-        .navmenuitem {
-            flex: 1;
-            display: flex;
-            margin: .5rem 0.5rem;
-            border-top: 1px solid var(--header-accent-color);
-            padding-top: 0.5rem;
-            color: var(--header-text-color);
-            font-size: 1.5rem;
-            font-weight: 300;
-            align-items: center;
-        }
+    .navmenu.show {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      top: 3.25rem;
+      background-image: var(--header-image);
+      background-position: 0px -56px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: var(--header-bg-color);
+      background-blend-mode: multiply;
+      min-height: var(--header-height);
+      width: 100vw;
+      max-width: 768px;
+      color: var(--header-text-color);
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: var(--shadow);
+      position: fixed;
+      z-index: 10;
+    }
 
-        .navmenuitem:before,
-        .navmenuitem:after {
-            background: rgba(255, 255, 255, 0.5);
-            display: block;
-            height: 1px;
-            width: 100%;
-            content: '';
-            margin: 0 1rem;
-        }
+    .navmenuitem {
+      flex: 1;
+      display: flex;
+      margin: .5rem 0.5rem;
+      border-top: 1px solid var(--header-accent-color);
+      padding-top: 0.5rem;
+      color: var(--header-text-color);
+      font-size: 1.5rem;
+      font-weight: 300;
+      align-items: center;
+    }
 
-        .navmenuitem:last-child {
-            padding-bottom: 0.5rem;
-        }
+    .navmenuitem:before,
+    .navmenuitem:after {
+      background: rgba(255, 255, 255, 0.5);
+      display: block;
+      height: 1px;
+      width: 100%;
+      content: '';
+      margin: 0 1rem;
+    }
 
-        .navmenuitem i {
-            margin-right: 1rem;
-        }
+    .navmenuitem:last-child {
+      padding-bottom: 0.5rem;
+    }
 
-        .savestate {
-            position: fixed;
-            top: 2.2rem;
-            width: 100%;
-            text-align: center;
-            max-width: 768px;
-            font-size: 1.25rem;
-            z-index: 99;
-            color: var(--header-text-color);
-        }
-    </style>
+    .navmenuitem i {
+      margin-right: 1rem;
+    }
 
-    <script>
-        self = this
-        self.isActive = false
-        self.mixin('fiverMixin')
-        self.settings = self.getSettings()
-        self.saveState = ''
-        self.fadeOut = false
+    .savestate {
+      position: fixed;
+      top: 2.2rem;
+      width: 100%;
+      text-align: center;
+      max-width: 768px;
+      font-size: 1.25rem;
+      z-index: 99;
+      color: var(--header-text-color);
+    }
+  </style>
 
-        toggleMenu() {
-            self.isActive = !self.isActive
-        }
+  <script>
+    self = this
+    self.isActive = false
+    self.mixin('fiverMixin')
+    self.settings = self.getSettings()
+    self.saveState = ''
+    self.fadeOut = false
 
-        // press and hold swap button to swap team 1 with team 2
-        onPickStart() {
-            self.pickSwap = setTimeout(function () {
-                RiotControl.trigger('swap_teams')
-            }, 2000)
-        }
+    toggleMenu() {
+      self.isActive = !self.isActive
+    }
 
-        // cancel the timeout if released early
-        onPickEnd() {
-            clearTimeout(self.pickSwap)
-        }
+    // press and hold swap button to swap team 1 with team 2
+    onPickStart() {
+      self.pickSwap = setTimeout(function () {
+        RiotControl.trigger('swap_teams')
+      }, 2000)
+    }
 
-        onPick() {
-            self.isActive = false
-            RiotControl.trigger('pick_teams')
-        }
+    // cancel the timeout if released early
+    onPickEnd() {
+      clearTimeout(self.pickSwap)
+    }
 
-        onSettingsChanged() {
-            self.settings = self.getSettings()
-            self.update()
-        }
+    onPick() {
+      self.isActive = false
+      RiotControl.trigger('pick_teams')
+    }
 
-        onSaveState(state) {
-            self.saveState = state
-            self.fadeOut = (state == 'fa-check')
-            if (self.fadeOut) {
-                setTimeout(function () {
-                    self.saveState = ''
-                    self.update()
-                }, 1000)
-            }
-            self.update()
-        }
+    onSettingsChanged() {
+      self.settings = self.getSettings()
+      self.update()
+    }
 
-        self.on('before-mount', () => {
-            RiotControl.on('settings_changed', self.onSettingsChanged)
-            RiotControl.on('change_save_state', self.onSaveState)
-        })
+    onSaveState(state) {
+      self.saveState = state
+      self.fadeOut = (state == 'fa-check')
+      if (self.fadeOut) {
+        setTimeout(function () {
+          self.saveState = ''
+          self.update()
+        }, 1000)
+      }
+      self.update()
+    }
 
-        self.on('unmount', () => {
-            RiotControl.off('settings_changed', self.onSettingsChanged)
-            RiotControl.off('change_save_state', self.onSaveState)
-        })
-    </script>
+    self.on('before-mount', () => {
+      RiotControl.on('settings_changed', self.onSettingsChanged)
+      RiotControl.on('change_save_state', self.onSaveState)
+    })
+
+    self.on('unmount', () => {
+      RiotControl.off('settings_changed', self.onSettingsChanged)
+      RiotControl.off('change_save_state', self.onSaveState)
+    })
+  </script>
 
 </nav-bar>

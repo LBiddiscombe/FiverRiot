@@ -4,7 +4,7 @@
     <i class="fa fa-users "></i>Players
   </div>
 
-  <div class="addplayer" onclick={ addPlayer }>
+  <div if={isAdmin()} class="addplayer" onclick={ addPlayer }>
     <i class="fa fa-2x fa-plus-circle" aria-hidden="true"></i>Add Player
   </div>
 

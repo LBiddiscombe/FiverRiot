@@ -115,6 +115,8 @@
 
     handleSelected() {
 
+      if (!self.isAdmin()) return
+
       if (self.player.id === 0 && self.parent.opts.filter != "subs") return
 
       // player list logic goes here
@@ -145,6 +147,7 @@
 
     // press and hold to view player page
     onViewStart() {
+      if (!self.isAdmin()) return
       self.viewPlayer = setTimeout(function () {
         route('players/' + self.player.id)
       }, 2000)

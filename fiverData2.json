@@ -1,6 +1,7 @@
 {
   "id": "2",
   "settings": {
+    "admins": ["lee.biddiscombe@btinternet.com"],
     "clubName": "Monday Night Footy",
     "teamSize": 6,
     "gameFrequency": 7,

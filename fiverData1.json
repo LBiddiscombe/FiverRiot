@@ -1,11 +1,12 @@
 {
   "id": "1",
   "settings": {
+    "admins": ["lee.biddiscombe@btinternet.com"],
     "clubName": "Thursday Night Footy",
     "teamSize": 5,
     "gameFrequency": 7,
-    "gameFee": 6.0,
-    "pitchFee": 61.2,
+    "gameFee": 7.5,
+    "pitchFee": 73.9,
     "hsl": [92, 48, 42],
     "clubs": [
       {

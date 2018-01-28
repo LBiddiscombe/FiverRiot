@@ -2,7 +2,7 @@
 import { fiverMixin } from './fiverMixin.js'
 import { fiverApi } from './fiverApi.js'
 
-function FiverStore() {
+function FiverStore(authMixin) {
   riot.observable(this)
 
   var self = this
@@ -30,19 +30,16 @@ function FiverStore() {
       location.hostname === '127.0.0.1' ||
       location.hostname === ''
     ) {
-      self.fiver.settings.user = 'lee.biddiscombe@btinternet.com'
+      authMixin.setUser('lee.biddiscombe@btinternet.com')
     } else {
-      self.fiver.settings.user = fetch(
-        'https://fiver.azurewebsites.net/.auth/me',
-        {
-          method: 'GET',
-          credentials: 'include',
-          cache: 'no-cache'
-        }
-      )
+      fetch('https://fiver.azurewebsites.net/.auth/me', {
+        method: 'GET',
+        credentials: 'include',
+        cache: 'no-cache'
+      })
         .then(blob => blob.json())
         .then(data => {
-          return data[0].user_id
+          authMixin.setUser(data[0].user_id)
         })
     }
 
@@ -154,7 +151,7 @@ function FiverStore() {
     if (self.fiver.gameIndex < self.fiver.games.length - 1) {
       self.fiver.gameIndex++
       self.trigger('game_changed', self.fiver.games[self.fiver.gameIndex])
-    } else {
+    } else if (authMixin.isAdmin()) {
       // trigger new game dialog here
       let dt = new Date(self.fiver.games[self.fiver.gameIndex].gameDate)
       dt = dt.setDate(dt.getDate() + self.fiver.settings.gameFrequency)
