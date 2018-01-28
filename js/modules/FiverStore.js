@@ -49,6 +49,9 @@ function FiverStore(authMixin) {
   })
 
   var updateSubs = function() {
+    self.fiver.players.map(p => {
+      delete p.paid
+    })
     self.fiver.games[
       self.fiver.games.length - 1
     ].subs = self.fiver.players
