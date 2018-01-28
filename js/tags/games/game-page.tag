@@ -115,7 +115,7 @@
       RiotControl.on('show_add_game', self.onShowAdd)
     })
 
-    self.on('mount', () => {
+    self.on('route', () => {
       window.scrollTo(0, 0)
     })
 

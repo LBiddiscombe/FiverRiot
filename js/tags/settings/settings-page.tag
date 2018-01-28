@@ -96,6 +96,10 @@
       self.refs.savePanel.open('Confirm Settings', 'Save Settings', '')
     })
 
+    self.on('route', () => {
+      window.scrollTo(0, 0)
+    })
+
   </script>
 
 </settings-page>

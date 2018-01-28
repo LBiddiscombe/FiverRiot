@@ -112,6 +112,10 @@
       RiotControl.on('got_all_game_rows', self.onGotGameRows)
     })
 
+    self.on('route', () => {
+      window.scrollTo(0, 0)
+    })
+
     self.on('unmount', () => {
       RiotControl.off('got_all_players', self.onGotPlayers)
       RiotControl.off('got_all_game_rows', self.onGotGameRows)

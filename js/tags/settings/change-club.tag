@@ -41,9 +41,10 @@
         btn.style.background = hslList[i].headHSL
         btn.style.color = hslList[i].mainHSL
       })
+    })
 
+    self.on('route', () => {
       window.scrollTo(0, 0)
-
     })
 
   </script>

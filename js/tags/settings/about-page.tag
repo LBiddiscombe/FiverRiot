@@ -56,6 +56,10 @@
   <script>
     var self = this
 
+    self.on('route', () => {
+      window.scrollTo(0, 0)
+    })
+
   </script>
 
 </about-page>
