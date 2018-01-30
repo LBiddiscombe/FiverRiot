@@ -75,7 +75,8 @@ var fiverApi = {
     })
   },
 
-  queueSave: function(fiverData) {
+  queueSave: function(fiverData, authMixin) {
+    if (!authMixin.isAdmin()) return
     if (timedSave) {
       clearTimeout(timedSave)
     }

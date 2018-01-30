@@ -127,7 +127,7 @@ function FiverStore(authMixin) {
     self.fiver.settings.pitchFee = fiverMixin.toDecimal(newSettings.pitchFee, 2)
     self.fiver.settings.teamSize = fiverMixin.toDecimal(newSettings.teamSize, 0)
     updateHue(self.fiver.settings.hsl[0])
-    fiverApi.queueSave(self.fiver)
+    fiverApi.queueSave(self.fiver, authMixin)
     route('/')
     self.trigger('settings_changed')
   })
@@ -175,7 +175,7 @@ function FiverStore(authMixin) {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
-    fiverApi.queueSave(self.fiver)
+    fiverApi.queueSave(self.fiver, authMixin)
   })
 
   self.on('swap_teams', () => {
@@ -196,7 +196,7 @@ function FiverStore(authMixin) {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
-    fiverApi.queueSave(self.fiver)
+    fiverApi.queueSave(self.fiver, authMixin)
   })
 
   self.on('pick_teams', () => {
@@ -233,7 +233,7 @@ function FiverStore(authMixin) {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
-    fiverApi.queueSave(self.fiver)
+    fiverApi.queueSave(self.fiver, authMixin)
   })
 
   //endregion
@@ -280,7 +280,7 @@ function FiverStore(authMixin) {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
-    fiverApi.queueSave(self.fiver)
+    fiverApi.queueSave(self.fiver, authMixin)
   })
 
   self.on('player_selected', (idx, playerId) => {
@@ -319,7 +319,7 @@ function FiverStore(authMixin) {
         self.fiver.games[self.fiver.gameIndex].players
       )
       self.trigger('subs_changed', self.fiver.games[self.fiver.gameIndex].subs)
-      fiverApi.queueSave(self.fiver)
+      fiverApi.queueSave(self.fiver, authMixin)
       return
     }
 
@@ -352,7 +352,7 @@ function FiverStore(authMixin) {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
-    fiverApi.queueSave(self.fiver)
+    fiverApi.queueSave(self.fiver, authMixin)
   })
 
   self.on('add_payment', (index, value) => {
@@ -364,7 +364,7 @@ function FiverStore(authMixin) {
       'players_changed',
       self.fiver.games[self.fiver.gameIndex].players
     )
-    fiverApi.queueSave(self.fiver)
+    fiverApi.queueSave(self.fiver, authMixin)
   })
 
   self.on('clear_swaps', () => {
