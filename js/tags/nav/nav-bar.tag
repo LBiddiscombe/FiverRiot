@@ -30,6 +30,13 @@
       <a class="navmenuitem " href="#about" onclick={ toggleMenu }>
         <i class="fa fa-info-circle "></i>About
       </a>
+      <a if={!isLoggedIn()} class="navmenuitem " href="https://fiver.azurewebsites.net/.auth/login/aad/callback" onclick={ toggleMenu
+        }>
+        <i class="fa fa-sign-in"></i>Sign In
+      </a>
+      <a if={isLoggedIn()} class="navmenuitem " href="https://fiver.azurewebsites.net/.auth/logout" onclick={ toggleMenu }>
+        <i class="fa fa-sign-out"></i>Sign Out
+      </a>
     </div>
   </div>
   <div if={saveState !='' } class="savestate">
@@ -89,6 +96,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      align-items: stretch;
       top: 3.25rem;
       background-image: var(--header-image);
       background-position: 0px -56px;
@@ -112,14 +120,15 @@
       margin: .5rem 0.5rem;
       border-top: 1px solid var(--header-accent-color);
       padding-top: 0.5rem;
+      padding-left: 1rem;
       color: var(--header-text-color);
       font-size: 1.5rem;
       font-weight: 300;
       align-items: center;
     }
 
-    .navmenuitem:before,
-    .navmenuitem:after {
+    .navmenuitem:not(:last-child):before,
+    .navmenuitem:not(:last-child):after {
       background: rgba(255, 255, 255, 0.5);
       display: block;
       height: 1px;
@@ -130,6 +139,7 @@
 
     .navmenuitem:last-child {
       padding-bottom: 0.5rem;
+      align-self: center;
     }
 
     .navmenuitem i {

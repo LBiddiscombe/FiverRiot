@@ -138,10 +138,12 @@
     }
 
     pay() {
+      if (!self.isAdmin()) return
       RiotControl.trigger('show_payment', self.i, self.player.paid)
     }
 
     sub() {
+      if (!self.isAdmin()) return
       RiotControl.trigger('show_subs')
     }
 
