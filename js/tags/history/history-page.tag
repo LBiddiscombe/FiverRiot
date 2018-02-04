@@ -7,7 +7,7 @@
   <span class="select is-fullwidth is-large">
     <select ref="playerFilter" onchange={filterPlayers}>
       <option>All Players</option>
-      <option each="{ player, i in players }">{player.name}</option>
+      <option each="{ player, i in players }" value="{player.name}">{player.name} ({asMoney(player.balance)})</option>
     </select>
   </span>
 
