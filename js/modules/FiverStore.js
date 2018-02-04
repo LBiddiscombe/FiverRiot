@@ -40,6 +40,7 @@ function FiverStore(authMixin) {
         .then(blob => blob.json())
         .then(data => {
           authMixin.setUser(data[0].user_id)
+          RiotControl.trigger('settings_changed')
         })
     }
 
