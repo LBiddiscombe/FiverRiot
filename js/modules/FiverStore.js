@@ -87,8 +87,10 @@ function FiverStore(authMixin) {
     prevGame.players.forEach(function(p) {
       if (p.id != 0) {
         let player = self.fiver.players.find(player => player.id == p.id)
-        player.balance = fiverMixin.toDecimal(
-          fiverMixin.toDecimal(player.balance, 2) -
+        let payer =
+          self.fiver.players.find(payer => payer.id == player.payerId) || player
+        payer.balance = fiverMixin.toDecimal(
+          fiverMixin.toDecimal(payer.balance, 2) -
             fiverMixin.toDecimal(self.fiver.settings.gameFee, 2) +
             fiverMixin.toDecimal(p.paid, 2),
           2
@@ -107,7 +109,7 @@ function FiverStore(authMixin) {
     // remove payments on copy
     newGame.players.forEach(function(p) {
       let player = self.fiver.players.find(player => player.id == p.id)
-      delete p.paid
+      p.paid = 0
       delete p.team
       p.balance = player.balance
     })

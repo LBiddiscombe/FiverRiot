@@ -5,7 +5,7 @@
       <img show={!selected && team1} src="images\shirt-red.png">
       <img show={!selected && team2} src="images\shirt-white.png">
       <img show={!selected && (tbc || team0)} src="images\shirt-black.png">
-      <a show={ selected } onclick="{ pay }">
+      <a show={ selected && paysMoney } onclick="{ pay }">
         <span class="selected icon is-large anim">
           <i class="fa fa-3x fa-gbp"></i>
         </span>
@@ -13,8 +13,8 @@
     </div>
     <div class="player-box-centre" ontouchstart={ onViewStart} ontouchend={ onViewEnd } onclick="{ handleSelected }">
       <p class="player-name">{player.name}</p>
-      <p if={parent.opts.filter=="teams" } class="player-monies">Paid: { asMoney(player.paid) }</p>
-      <p class="player-monies">Balance: { asMoney(player.balance) }</p>
+      <p if={parent.opts.filter=="teams" } class="player-monies">Paid: { paysMoney ? asMoney(player.paid) : 'See ' + payerRecord.name }</p>
+      <p class="player-monies">Balance: { paysMoney ? asMoney(player.balance) : 'n/a' }</p>
       <p if={ parent.opts.filter!="teams" } class="player-monies">{ moment(player.lastPlayed, "YYYY-MM-DD").fromNow() }</p>
     </div>
     <div class="player-box-right">
@@ -98,6 +98,14 @@
     var self = this
     self.mixin('fiverMixin')
     self.settings = self.getSettings()
+    self.paysMoney = true
+
+    // now get different payer if set
+    if (self.player && self.player.id > 0) {
+      self.playerRecord = RiotControl._stores[0].fiver.players[self.player.id]
+      self.payerRecord = RiotControl._stores[0].fiver.players[self.playerRecord.payerId] || self.playerRecord
+      self.paysMoney = (self.playerRecord === self.payerRecord)
+    }
 
     self.selected = false
     self.tbc = (!self.player.id && self.parent.opts.filter != 'subs')
