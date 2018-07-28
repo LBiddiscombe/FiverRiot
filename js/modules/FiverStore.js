@@ -96,8 +96,18 @@ function FiverStore(authMixin) {
           2
         )
         player.lastPlayed = prevGame.gameDate
+        const payerGameRecord = prevGame.players.find(pr => pr.id === payer.id)
+        if (payerGameRecord) {
+          payerGameRecord.feesDue = payerGameRecord.feesDue
+            ? payerGameRecord.feesDue + 1
+            : 1
+        } else {
+          p.feesDue = 1
+        }
       }
     })
+
+    console.log(prevGame)
 
     const newGame = JSON.parse(JSON.stringify(prevGame))
     newGame.gameDate = dt

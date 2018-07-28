@@ -14,7 +14,7 @@
     <div class="player-box-centre" ontouchstart={ onViewStart} ontouchend={ onViewEnd } onclick="{ handleSelected }">
       <p class="player-name">{player.name}</p>
       <p if={parent.opts.filter=="teams" } class="player-monies">Paid: { paysMoney ? asMoney(player.paid) : 'See ' + payerRecord.name }</p>
-      <p class="player-monies">Balance: { paysMoney ? asMoney(player.balance) : 'n/a' }</p>
+      <p class="player-monies">Balance: { paysMoney ? asMoney(player.balance - playerRecord.childOnlyFees) : 'n/a' }</p>
       <p if={ parent.opts.filter!="teams" } class="player-monies">{ moment(player.lastPlayed, "YYYY-MM-DD").fromNow() }</p>
     </div>
     <div class="player-box-right">
@@ -101,10 +101,11 @@
     self.paysMoney = true
 
     // now get different payer if set
-    if (self.player && self.player.id > 0) {
+    if (self.player) {
       self.playerRecord = RiotControl._stores[0].fiver.players[self.player.id]
       self.payerRecord = RiotControl._stores[0].fiver.players[self.playerRecord.payerId] || self.playerRecord
       self.paysMoney = (self.playerRecord === self.payerRecord)
+      //self.player.balance = self.player.balance - self.playerRecord.childOnlyFees
     }
 
     self.selected = false

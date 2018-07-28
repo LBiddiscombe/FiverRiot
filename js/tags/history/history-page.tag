@@ -4,10 +4,12 @@
     <i class="fa fa-history "></i>History
   </div>
 
-  <span class="select is-fullwidth is-large">
+  <span class="select is-fullwidth">
     <select ref="playerFilter" onchange={filterPlayers}>
       <option>All Players</option>
-      <option each="{ player, i in players }" value="{player.name}">{player.name} ({asMoney(player.balance)})</option>
+      <option each="{ player, i in players }" value="{player.name}">{player.name} | {asMoney(player.balance)} {player.showChildOnlyFees ? '- child only ' + asMoney(player.childOnlyFees)
+        + '=' + asMoney(player.balance - player.childOnlyFees) : '' }
+      </option>
     </select>
   </span>
 
@@ -98,6 +100,9 @@
     }
 
     onGotPlayers(players) {
+      players.map(p => {
+        p.showChildOnlyFees = p.childOnlyFees > 0
+      })
       self.players = players
       self.update()
     }
