@@ -107,8 +107,6 @@ function FiverStore(authMixin) {
       }
     })
 
-    console.log(prevGame)
-
     const newGame = JSON.parse(JSON.stringify(prevGame))
     newGame.gameDate = dt
 
@@ -121,6 +119,7 @@ function FiverStore(authMixin) {
       let player = self.fiver.players.find(player => player.id == p.id)
       p.paid = 0
       delete p.team
+      delete p.feesDue
       p.balance = player.balance
     })
     self.fiver.games.push(newGame)
