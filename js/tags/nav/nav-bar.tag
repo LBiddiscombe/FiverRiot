@@ -30,13 +30,7 @@
       <a class="navmenuitem " href="#about" onclick={ toggleMenu }>
         <i class="fa fa-info-circle "></i>About
       </a>
-      <a if={!isLoggedIn()} class="navmenuitem " href="https://fiver.azurewebsites.net/.auth/login/aad/callback" onclick={ toggleMenu
-        }>
-        <i class="fa fa-sign-in"></i>Sign In
-      </a>
-      <a if={isLoggedIn()} class="navmenuitem " href="https://fiver.azurewebsites.net/.auth/logout" onclick={ toggleMenu }>
-        <i class="fa fa-sign-out"></i>Sign Out
-      </a>
+      <div class="navmenuitem " data-netlify-identity-menu></div>
     </div>
   </div>
   <div if={saveState !='' } class="savestate">
