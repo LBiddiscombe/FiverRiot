@@ -30,7 +30,10 @@
       <a class="navmenuitem " href="#about" onclick={ toggleMenu }>
         <i class="fa fa-info-circle "></i>About
       </a>
-      <div class="navmenuitem " data-netlify-identity-menu></div>
+      <a data-netlify-identity-button  class="navmenuitem" onclick={ login }>
+        <i class="fa fa-id-card"></i><span class="singleline">{user ? 'Log Out' : 'Log In'}</span>
+      </a>
+      <div if={user} class="user">Logged in as {user}</div>
     </div>
   </div>
   <div if={saveState !='' } class="savestate">
@@ -40,6 +43,11 @@
   <style>
     .hidden {
       visibility: hidden;
+    }
+
+    .user {
+      text-align: center;
+      font-weight: 100;
     }
 
     .navbar {
@@ -150,6 +158,11 @@
       z-index: 99;
       color: var(--header-text-color);
     }
+
+    .singleline {
+      white-space: nowrap;
+    }
+
   </style>
 
   <script>
@@ -159,6 +172,25 @@
     self.settings = self.getSettings()
     self.saveState = ''
     self.fadeOut = false
+
+    const user = netlifyIdentity.currentUser()
+    self.user = user ? user.email : ''
+
+    netlifyIdentity.on('login', user => {
+      self.setUser(user.email)
+      self.user = user.email
+      self.update()
+    });
+    netlifyIdentity.on('logout', () => {
+      self.setUser('')
+      self.user = ''
+      self.update()
+    });
+
+    login() {
+      self.toggleMenu();
+      netlifyIdentity.open();
+    }
 
     toggleMenu() {
       self.isActive = !self.isActive

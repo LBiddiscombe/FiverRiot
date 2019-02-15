@@ -25,24 +25,8 @@ function FiverStore(authMixin) {
     updateSubs()
     updateHue(self.fiver.settings.hsl[0])
 
-    if (
-      location.hostname === 'localhost' ||
-      location.hostname === '127.0.0.1' ||
-      location.hostname === ''
-    ) {
-      authMixin.setUser('lee.biddiscombe@btinternet.com')
-    } else {
-      fetch('https://fiver.azurewebsites.net/.auth/me', {
-        method: 'GET',
-        credentials: 'include',
-        cache: 'no-cache'
-      })
-        .then(blob => blob.json())
-        .then(data => {
-          authMixin.setUser(data[0].user_id)
-          RiotControl.trigger('settings_changed')
-        })
-    }
+    const user = netlifyIdentity.currentUser()
+    authMixin.setUser(user ? user.email : '')
 
     setTimeout(function() {
       riot.mount('fiver-app')
@@ -53,9 +37,7 @@ function FiverStore(authMixin) {
     self.fiver.players.map(p => {
       delete p.paid
     })
-    self.fiver.games[
-      self.fiver.games.length - 1
-    ].subs = self.fiver.players
+    self.fiver.games[self.fiver.games.length - 1].subs = self.fiver.players
       .filter(
         p =>
           !self.fiver.games[self.fiver.games.length - 1].players

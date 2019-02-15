@@ -10,8 +10,8 @@ var authMixin = {
   isAdmin: function() {
     // TODO, get admins from club settings
     return (
-      loggedInUser === 'lee.biddiscombe@btinternet.com' ||
-      'jonathan.bishop@btinternet.com'
+      loggedInUser ===
+      ('lee.biddiscombe@btinternet.com' || 'jonathan.bishop@btinternet.com')
     )
   }
 }
