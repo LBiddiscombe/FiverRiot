@@ -24,7 +24,7 @@
       <a if={isAdmin()} class="navmenuitem " href="#settings" onclick={ toggleMenu }>
         <i class="fa fa-cog "></i>Settings
       </a>
-      <a class="navmenuitem " href="#clubs" onclick={ toggleMenu }>
+      <a if={isAdmin()} class="navmenuitem " href="#clubs" onclick={ toggleMenu }>
         <i class="fa fa-th-large "></i>Clubs
       </a>
       <a class="navmenuitem " href="#about" onclick={ toggleMenu }>
