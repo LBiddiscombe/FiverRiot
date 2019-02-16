@@ -36,11 +36,11 @@
       margin: 0 20px 160px;
       min-width: 18em;
     }
-    
+
     .modal-card-title {
       color: var(--header-text-color);
     }
-    
+
     .modal-card-body {
       background-color: transparent;
       overflow-x: hidden;
@@ -84,7 +84,7 @@
       self.allowPayment = false
       self.playerIdx = idx
       self.open = true
-      self.refs.savePanel.open('Confirm Amount', 'Pay', '')
+      self.refs.savePanel.open('', 'Pay', '')
       self.update()
     }
 

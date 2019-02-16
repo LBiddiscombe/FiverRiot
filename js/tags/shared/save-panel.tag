@@ -4,13 +4,13 @@
     <div class="box">
       <div class="field">
         <p class="control">
-          <a class="button is-medium is-white is-fullwidth" onClick={ toggleSaveButton }>
+          <a if={showToggle} class="button is-medium is-white is-fullwidth" onClick={ toggleSaveButton }>
             <span class="icon is-large">
               <i class="fa {fa-square-o: !allowSave, fa-check-square-o: allowSave}"></i>
             </span>
             <span>{ toggleLabel }</span>
           </a>
-          <br>
+          <br if={showToggle}>
 
           <input type="button" value={buttonLabel} class="button is-large is-success is-fullwidth" data-amount=0 disabled={ !allowSave
             } onClick={ onSave }>
@@ -41,7 +41,8 @@
       self.toggleLabel = toggleLabel
       self.buttonLabel = buttonLabel
       self.helpText = helpText
-      self.allowSave = false
+      self.allowSave = toggleLabel === ''
+      self.showToggle = toggleLabel !== ''
       self.update()
     }
 
