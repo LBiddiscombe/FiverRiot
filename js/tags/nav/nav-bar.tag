@@ -64,6 +64,8 @@
       top: 0;
       -webkit-tap-highlight-color: transparent;
       z-index: 19;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .navitem {
