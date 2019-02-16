@@ -48,6 +48,8 @@
     .user {
       text-align: center;
       font-weight: 100;
+      font-size: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .navbar {
