@@ -110,29 +110,19 @@ body {
   max-height: 80px;
   border-radius: 0px;
   margin: 4px;
-  opacity: 0;
-  box-shadow: var(--shadow);
-  animation: loadflip 2s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  opacity: 0.7;
+  animation: loadpulse 1.5s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 
-@keyframes loadflip {
+@keyframes loadpulse {
   0% {
-    transform-origin: top;
-    transform: perspective(600px) rotateX(60deg);
-    opacity: 0;
+    transform: scaleX(1);
   }
   50% {
-    transform: perspective(600px) rotateX(0deg);
-    opacity: 1;
-  }
-  67% {
-    transform: perspective(600px) rotateX(0deg);
-    opacity: 1;
+    transform: scaleX(0.9);
   }
   100% {
-    transform-origin: bottom;
-    transform: perspective(600px) rotateX(-60deg);
-    opacity: 0;
+    transform: scaleX(1);
   }
 }
 
