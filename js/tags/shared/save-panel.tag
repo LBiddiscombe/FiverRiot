@@ -46,7 +46,7 @@
       self.update()
     }
 
-    onSave() {
+    onSave(event) {
       event.preventDefault()
       self.parent.onSave()
     }
