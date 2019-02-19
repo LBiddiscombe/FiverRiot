@@ -34,7 +34,7 @@
     </div>
     <div class="field wrap half">
       <p class="control has-icon is-expanded">
-        <input class="input money is-large" id="gameFee" type="number" pattern="[0-9]*" step="0.01" placeholder="Amount" value={settings.gameFee.toFixed(2)}
+        <input class="input money is-large" id="gameFee" type="text" pattern="[0-9]*" step="0.01" placeholder="Amount" value={settings.gameFee.toFixed(2)}
           onKeyup={ maskMoney } ref="inputMoney">
         <span class="icon is-large">
           <i class="fa fa-gbp"></i>
@@ -42,7 +42,7 @@
       </p>
       <p>&nbsp;</p>
       <p class="control has-icon is-expanded">
-        <input class="input money is-large" id="pitchFee" type="number" pattern="[0-9]*" step="0.01" placeholder="Amount" value={settings.pitchFee.toFixed(2)}
+        <input class="input money is-large" id="pitchFee" type="text" pattern="[0-9]*" step="0.01" placeholder="Amount" value={settings.pitchFee.toFixed(2)}
           onKeyup={ maskMoney } ref="inputMoney">
         <span class="icon is-large">
           <i class="fa fa-gbp"></i>

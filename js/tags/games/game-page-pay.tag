@@ -7,8 +7,9 @@
       <section class="modal-card-body">
         <div class="field level-item">
           <div class="buttons has-addons is-centered">
-            <span class="button is-large" data-amount=5 onclick={ addAmount }>£5</span>
             <span class="button is-large" data-amount={settings.gameFee} onclick={ addAmount }>{asMoney(settings.gameFee)}</span>
+            <span class="button is-large" data-amount={settings.gameFee * 2} onclick={ addAmount }>{asMoney(settings.gameFee * 2)}</span>
+            <span class="button is-large" data-amount=5 onclick={ addAmount }>£5</span>
             <span class="button is-large" data-amount=10 onclick={ addAmount }>£10</span>
             <span class="button is-large" data-amount=20 onclick={ addAmount }>£20</span>
           </div>
@@ -20,7 +21,7 @@
             </a>
           </p>
           <p class="control has-icon is-expanded">
-            <input class="input is-large money" id="pay-money" type="number" pattern="[0-9]*" step="0.01" placeholder="Amount" value="" onKeyup={ maskMoney } ref="inputMoney">
+            <input class="input is-large money" id="pay-money" type="text" pattern="[0-9]*" step="0.01" placeholder="Amount" value="" onKeyup={ maskMoney } ref="inputMoney">
             <span class="icon is-large">
               <i class="fa fa-gbp"></i>
             </span>
