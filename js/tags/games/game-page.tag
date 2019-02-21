@@ -62,6 +62,15 @@
       color: var(--header-text-color);
       -webkit-tap-highlight-color: transparent;
     }
+
+    @media screen and (min-width: 1024px) {
+      nav {
+        max-width: 768px;
+        transform: translateX(-256px);
+        z-index: 2;
+      }
+    }
+
   </style>
 
   <script>

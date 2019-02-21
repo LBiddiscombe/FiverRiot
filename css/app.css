@@ -26,8 +26,8 @@ body {
 .pagename {
   position: fixed;
   top: 3.25rem;
-  width: 100%;
-  max-width: 768px;
+  left: 0;
+  min-width: 100vw;
   text-align: center;
   background-color: transparent;
   color: var(--header-text-color);

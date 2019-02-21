@@ -1,13 +1,13 @@
 <nav-bar>
 
   <div class="navbar">
-    <div class="navitem navleft" onclick={ toggleMenu }>
+    <div class="navitem navleft {hidden: !isMobile}" onclick={ toggleMenu }>
       <i class="fa fa-bars"></i>
     </div>
     <div class="navitem navcenter ">
       {settings.clubName}
     </div>
-    <div class="navitem navright {hidden: !isAdmin()}" ontouchstart={ onPickStart} ontouchend={ onPickEnd } onclick={ onPick
+    <div class="navitem navright {hidden: !isAdmin() || !showPick}" ontouchstart={ onPickStart} ontouchend={ onPickEnd } onclick={ onPick
       }>
       <i class="fa fa-random "></i>
     </div>
@@ -33,7 +33,7 @@
       <a data-netlify-identity-button  class="navmenuitem" onclick={ login }>
         <i class="fa fa-id-card"></i><span class="singleline">{user ? 'Log Out' : 'Log In'}</span>
       </a>
-      <div if={user} class="user">Logged in as {user}</div>
+      <div if={user} class="user">{user}</div>
     </div>
   </div>
   <div if={saveState !='' } class="savestate">
@@ -167,15 +167,49 @@
       white-space: nowrap;
     }
 
+    @media screen and (min-width: 1024px) {
+      .navmenu.show {
+        position: fixed;
+        transform: translateY(2.5rem);
+        width: 256px;
+        background-color: transparent;
+        background-image: none;
+        box-shadow: none;
+      }
+
+      .navmenuitem {
+        color: var(--header-bg-color);
+        padding-left: 0;
+        margin-left: 0;
+      }
+
+      .user {
+        color: var(--header-bg-color);
+      }
+
+      .navmenuitem:not(:last-child):before,
+      .navmenuitem:not(:last-child):after {
+        background: rgba(0, 0, 0, 0.5);
+        display: block;
+        height: 1px;
+        width: 100%;
+        content: '';
+        margin: 0 1rem;
+      }
+
+    }
+
   </style>
 
   <script>
     self = this
-    self.isActive = false
+    self.isMobile = window.innerWidth < 960
+    self.isActive = !self.isMobile
     self.mixin('fiverMixin')
     self.settings = self.getSettings()
     self.saveState = ''
     self.fadeOut = false
+    self.showPick = window.location.hash === ''
 
     const user = netlifyIdentity.currentUser()
     self.user = user ? user.email : ''
@@ -197,7 +231,9 @@
     }
 
     toggleMenu() {
-      self.isActive = !self.isActive
+      if (self.isMobile) {
+        self.isActive = !self.isActive
+      }
     }
 
     // press and hold swap button to swap team 1 with team 2
@@ -213,7 +249,7 @@
     }
 
     onPick() {
-      self.isActive = false
+      self.isActive = !self.isMobile
       RiotControl.trigger('pick_teams')
     }
 
@@ -234,14 +270,21 @@
       self.update()
     }
 
+    onRouteChange() {
+      self.showPick = window.location.hash === ''
+      self.update()
+    }
+
     self.on('before-mount', () => {
       RiotControl.on('settings_changed', self.onSettingsChanged)
       RiotControl.on('change_save_state', self.onSaveState)
+      window.addEventListener("hashchange", self.onRouteChange, false);
     })
 
     self.on('unmount', () => {
       RiotControl.off('settings_changed', self.onSettingsChanged)
       RiotControl.off('change_save_state', self.onSaveState)
+      window.removeEventListener("hashchange", self.onRouteChange, false);
     })
   </script>
 
