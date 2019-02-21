@@ -169,9 +169,10 @@
 
     @media screen and (min-width: 1024px) {
       .navmenu.show {
+        box-sizing: border-box;
         position: fixed;
         transform: translateY(2.5rem);
-        width: 256px;
+        width: 192px;
         background-color: transparent;
         background-image: none;
         box-shadow: none;
@@ -179,22 +180,23 @@
 
       .navmenuitem {
         color: var(--header-bg-color);
-        padding-left: 0;
+        padding-left: 1rem;
         margin-left: 0;
+      }
+
+      .navmenuitem:hover {
+        font-weight: 400;
       }
 
       .user {
         color: var(--header-bg-color);
+        text-align: left;
+        margin-left: 1rem;
       }
 
       .navmenuitem:not(:last-child):before,
       .navmenuitem:not(:last-child):after {
-        background: rgba(0, 0, 0, 0.5);
-        display: block;
-        height: 1px;
-        width: 100%;
-        content: '';
-        margin: 0 1rem;
+        display: none;
       }
 
     }

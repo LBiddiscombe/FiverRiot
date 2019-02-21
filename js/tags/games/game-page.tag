@@ -66,7 +66,7 @@
     @media screen and (min-width: 1024px) {
       nav {
         max-width: 768px;
-        transform: translateX(-256px);
+        transform: translateX(-192px);
         z-index: 2;
       }
     }
