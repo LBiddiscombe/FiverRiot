@@ -158,7 +158,7 @@
 
     // press and hold to view player page
     onViewStart() {
-      if (!self.isAdmin()) return
+      if (!self.isAdmin() || self.parent.opts.filter === 'subs') return
       self.viewPlayer = setTimeout(function () {
         route('players/' + self.player.id)
       }, 2000)
