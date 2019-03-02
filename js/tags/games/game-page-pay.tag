@@ -81,7 +81,7 @@
     }
 
     show(idx, val) {
-      self.refs.inputMoney.value = self.toDecimal(val || 0, 2).toFixed(2)
+      self.refs.inputMoney.value = val > 0 ? self.toDecimal(val || 0, 2).toFixed(2) : ''
       self.allowPayment = false
       self.playerIdx = idx
       self.open = true
