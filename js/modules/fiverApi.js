@@ -70,6 +70,7 @@ var fiverApi = {
         body: JSON.stringify(dataToSave)
       })
         .then(res => {
+          console.log(res)
           if (res.status === 412) {
             throw Error('Error: failed consistency check')
           }
