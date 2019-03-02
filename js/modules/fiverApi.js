@@ -73,8 +73,8 @@ var fiverApi = {
         .then(res => {
           if (res.status === 412) {
             reject('Error: failed consistency check')
-            return res
           }
+          return res
         })
         .then(res => {
           if (res.status !== 412) {
