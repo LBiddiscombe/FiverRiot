@@ -76,14 +76,16 @@ var fiverApi = {
             return
           }
         })
-        .then(() => {
-          RiotControl.trigger('change_save_state', 'fa-check')
-          // get new etag from club data to ensure concurrancy
-          fetch(apiClub + '?getetag=1')
-            .then(blob => blob.json())
-            .then(data => {
-              fiver._etag = data
-            })
+        .then(res => {
+          if (res.status !== 412) {
+            RiotControl.trigger('change_save_state', 'fa-check')
+            // get new etag from club data to ensure concurrancy
+            fetch(apiClub + '?getetag=1')
+              .then(blob => blob.json())
+              .then(data => {
+                fiver._etag = data
+              })
+          }
         })
         .catch(err => {
           reject(err)
