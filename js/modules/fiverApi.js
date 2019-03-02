@@ -97,10 +97,10 @@ var fiverApi = {
     }
     RiotControl.trigger('change_save_state', 'fa-pencil')
     timedSave = setTimeout(function() {
-      fiverApi
-        .saveData(fiverData)
-        .then(() => console.log('saved successfully'))
-        .catch(err => console.log('error saving', err))
+      fiverApi.saveData(fiverData).catch(err => {
+        console.log('error saving', err)
+        RiotControl.trigger('change_save_state', 'fa-times')
+      })
     }, 5000)
   },
 
