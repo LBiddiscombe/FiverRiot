@@ -69,6 +69,7 @@ var fiverApi = {
         headers: headers,
         body: JSON.stringify(dataToSave)
       })
+        .then(blob => blob.json())
         .then(res => {
           console.log(res)
           if (res.status === 412) {
