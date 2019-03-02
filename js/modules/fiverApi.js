@@ -99,8 +99,8 @@ var fiverApi = {
     timedSave = setTimeout(function() {
       fiverApi
         .saveData(fiverData)
-        .then(console.log('saved successfully'))
-        .catch(console.log('error saving'))
+        .then(() => console.log('saved successfully'))
+        .catch(err => console.log('error saving', err))
     }, 5000)
   },
 
