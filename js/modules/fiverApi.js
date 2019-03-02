@@ -76,6 +76,7 @@ var fiverApi = {
           }
         })
         .then(() => {
+          RiotControl.trigger('change_save_state', 'fa-check')
           // get new etag from club data to ensure concurrancy
           fetch(apiClub + '?getetag=1')
             .then(blob => blob.json())
@@ -86,7 +87,6 @@ var fiverApi = {
         .catch(err => {
           reject(err)
         })
-      RiotControl.trigger('change_save_state', 'fa-check')
     })
   },
 
