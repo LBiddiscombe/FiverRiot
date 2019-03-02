@@ -71,9 +71,8 @@ var fiverApi = {
       })
         .then(blob => blob.json())
         .then(res => {
-          console.log(res)
           if (res.status === 412) {
-            throw Error('Error: failed consistency check')
+            reject('Error: failed consistency check')
           }
         })
         .then(() => {
@@ -85,7 +84,6 @@ var fiverApi = {
             })
         })
         .catch(err => {
-          console.log(err)
           reject(err)
         })
       RiotControl.trigger('change_save_state', 'fa-check')
@@ -99,7 +97,10 @@ var fiverApi = {
     }
     RiotControl.trigger('change_save_state', 'fa-pencil')
     timedSave = setTimeout(function() {
-      fiverApi.saveData(fiverData)
+      fiverApi
+        .saveData(fiverData)
+        .then(console.log('saved successfully'))
+        .catch(console.log('error saving'))
     }, 5000)
   },
 
