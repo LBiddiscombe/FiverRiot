@@ -64,15 +64,22 @@ var fiverApi = {
       var headers = new Headers()
       headers.append('content-type', 'application/json')
       headers.append('cache-control', 'no-cache')
-      headers.append('If-Match', fiver._etag)
       fetch(apiClub, {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(dataToSave)
-      }).catch(err => {
-        console.log(err)
-        reject(err)
       })
+        .then(() => {
+          // get new etag from club data to ensure concurrancy
+          fetch(apiClub + '?getetag=1')
+            .then(blob => blob.json())
+            .then(data => {
+              fiver._etag = data
+            })
+        })
+        .catch(err => {
+          reject(err)
+        })
       RiotControl.trigger('change_save_state', 'fa-check')
     })
   },
