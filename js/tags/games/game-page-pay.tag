@@ -21,7 +21,7 @@
             </a>
           </p>
           <p class="control has-icon is-expanded">
-            <input class="input is-large money" id="pay-money" type="text" pattern="[0-9]*" step="0.01" placeholder="Amount" value="" onKeyup={ maskMoney } ref="inputMoney">
+            <input class="input is-large money" id="pay-money" type="number" pattern="[0-9]*" step="0.01" placeholder="Amount" value="" ref="inputMoney">
             <span class="icon is-large">
               <i class="fa fa-gbp"></i>
             </span>
