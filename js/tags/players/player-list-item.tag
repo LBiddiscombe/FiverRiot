@@ -14,7 +14,7 @@
     <div class="player-box-centre" ontouchstart={ onViewStart} ontouchend={ onViewEnd } onclick="{ handleSelected }">
       <p class="player-name">{player.name}</p>
       <p if={parent.opts.filter=="teams" } class="player-monies">Paid: { paysMoney ? asMoney(player.paid) : 'See ' + payerRecord.name }</p>
-      <p class="player-monies">Balance: { paysMoney ? asMoney(player.balance - playerRecord.childOnlyFees) : 'n/a' }</p>
+      <p class="player-monies">Live Balance: { paysMoney ? asMoney(liveBalance) : 'n/a' }</p>
       <p if={ parent.opts.filter!="teams" } class="player-monies">{ moment(player.lastPlayed, "YYYY-MM-DD").fromNow() }</p>
     </div>
     <div class="player-box-right">
@@ -108,6 +108,15 @@
       //self.player.balance = self.player.balance - self.playerRecord.childOnlyFees
     }
 
+    setLiveBalance() {
+      if (self.parent.opts.filter == 'teams') {
+        self.liveBalance = (self.player.balance || 0) - (self.playerRecord.childOnlyFees || 0) - (self.settings.gameFee || 0) + (self.player.paid || 0)
+      } else {
+        self.liveBalance = (self.player.balance || 0) - (self.playerRecord.childOnlyFees || 0)
+      }
+    }
+    self.setLiveBalance()
+
     self.selected = false
     self.tbc = (!self.player.id && self.parent.opts.filter != 'subs')
     self.show = !self.tbc || self.parent.opts.filter != 'all'
@@ -184,6 +193,7 @@
 
     self.on('update', () => {
       self.setTeamColours()
+      self.setLiveBalance()
     })
 
   </script>

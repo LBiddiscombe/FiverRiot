@@ -73,11 +73,7 @@ var fiverApi = {
         .then(res => {
           if (res.status === 412) {
             reject('Error: failed consistency check')
-          }
-          return res
-        })
-        .then(res => {
-          if (res.status !== 412) {
+          } else {
             RiotControl.trigger('change_save_state', 'fa-check')
             // get new etag from club data to ensure concurrancy
             fetch(apiClub + '?getetag=1')
