@@ -102,7 +102,11 @@ var fiverApi = {
     timedSave = setTimeout(function() {
       fiverApi.saveData(fiverData).catch(err => {
         console.log('error saving', err)
-        RiotControl.trigger('change_save_state', 'fa-times')
+        RiotControl.trigger(
+          'change_save_state',
+          'fa-times',
+          'Save failed, refresh page'
+        )
       })
     }, 5000)
   },

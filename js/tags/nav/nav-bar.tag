@@ -37,7 +37,7 @@
     </div>
   </div>
   <div if={saveState !='' } class="savestate">
-    <i class="fa {saveState}"></i>
+    <i class="fa {saveState}"></i> {self.updateMessage}
   </div>
 
   <style>
@@ -260,7 +260,7 @@
       self.update()
     }
 
-    onSaveState(state) {
+    onSaveState(state, message) {
       self.saveState = state
       self.fadeOut = (state == 'fa-check')
       if (self.fadeOut) {
@@ -269,6 +269,7 @@
           self.update()
         }, 1000)
       }
+      self.updateMessage = message
       self.update()
     }
 
