@@ -36,7 +36,7 @@
       <div if={user} class="user">{user}</div>
     </div>
   </div>
-  <div if={saveState !='' } class="savestate">
+  <div if={saveState !='' } class={hasError ? "savestate blink" : "savestate"}>
     <i class="fa {saveState}"></i> {self.updateMessage}
   </div>
 
@@ -167,6 +167,16 @@
       white-space: nowrap;
     }
 
+    .blink {
+      animation: blinker 1s linear infinite;
+    }
+
+    @keyframes blinker {
+      50% {
+        opacity: 0;
+      }
+    }
+
     @media screen and (min-width: 1024px) {
       .navmenu.show {
         box-sizing: border-box;
@@ -263,6 +273,7 @@
     onSaveState(state, message) {
       self.saveState = state
       self.fadeOut = (state == 'fa-check')
+      self.hasError = (state == 'fa-times')
       if (self.fadeOut) {
         setTimeout(function () {
           self.saveState = ''
