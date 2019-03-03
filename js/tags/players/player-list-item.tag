@@ -14,7 +14,7 @@
     <div class="player-box-centre" ontouchstart={ onViewStart} ontouchend={ onViewEnd } onclick="{ handleSelected }">
       <p class="player-name">{player.name}</p>
       <p if={parent.opts.filter=="teams" } class="player-monies">Paid: { paysMoney ? asMoney(player.paid) : 'See ' + payerRecord.name }</p>
-      <p class="player-monies">Live Balance: { paysMoney ? asMoney(liveBalance) : 'n/a' }</p>
+      <p class="player-monies">{balanceLabel} { paysMoney ? asMoney(liveBalance) : 'n/a' }</p>
       <p if={ parent.opts.filter!="teams" } class="player-monies">{ moment(player.lastPlayed, "YYYY-MM-DD").fromNow() }</p>
     </div>
     <div class="player-box-right">
@@ -99,6 +99,8 @@
     self.mixin('fiverMixin')
     self.settings = self.getSettings()
     self.paysMoney = true
+    const today = new Date()
+    const gameDate = self.parent.opts.ymddate ? new Date(self.parent.opts.ymddate.replace( /(\d{2})-(\d{2})-(\d{4})/, "$2/$1/$3")) : null
 
     // now get different payer if set
     if (self.player) {
@@ -109,9 +111,11 @@
     }
 
     setLiveBalance() {
-      if (self.parent.opts.filter == 'teams') {
+      if (self.parent.opts.filter == 'teams' && gameDate <= today && !self.parent.opts.locked) {
+        self.balanceLabel = 'Live Balance: '
         self.liveBalance = (self.player.balance || 0) - (self.playerRecord.childOnlyFees || 0) - (self.settings.gameFee || 0) + (self.player.paid || 0)
       } else {
+        self.balanceLabel = 'Balance: '
         self.liveBalance = (self.player.balance || 0) - (self.playerRecord.childOnlyFees || 0)
       }
     }

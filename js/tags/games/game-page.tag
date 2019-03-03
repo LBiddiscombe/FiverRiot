@@ -21,7 +21,7 @@
     </a>
 
   </nav>
-  <player-list players={players} filter="teams" locked={ locked }></player-list>
+  <player-list players={players} filter="teams" ymddate={ymddate} locked={ locked }></player-list>
   <game-page-add ref="addGameModal"></game-page-add>
   <game-page-pay ref="payModal"></game-page-pay>
   <game-page-subs players={subs} ref="subsModal"></game-page-subs>
@@ -91,6 +91,7 @@
     }
 
     onGameChanged(game) {
+      self.ymddate = game.gameDate
       const newDate = new Date(game.gameDate)
       const options = {
         weekday: 'long',
